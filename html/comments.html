@@ -10,13 +10,23 @@
         <header>
             <h1>Delakilo - Comments</h1>
         </header>
-        <main>                  <!-- da fare -->
-           <ul>
-            <li>Username -> Paperino liked your post!</li>
-            <li>Username -> Pluto published a new post!</li>
-            <li>Username -> Pippo commented your post!</li>
-            <li>Username -> Piripicchio asked to follow you!</li>
-           </ul> 
-        </main>
+        <main>                  <!-- il validator dà warning: vorrebbe un heading con h2 oppure dei div -->
+            <section>
+            <img src="" alt="User Profile" />
+                <a href="homeprofile.html">User 2</a>   <!--va preso dal database sia lo user che l'img -->
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                <!-- tanti commenti così da prendere dal db -->
+            </section>
+            <section>
+                <img src="" alt="User Profile" />
+                <a href="homeprofile.html">User</a>   <!--va preso dal database sia lo user che l'img -->
+                <form action="#" method="post">
+                    <fieldset><label for="AddComment" hidden>Add a comment</label><input id="AddComment" type="text" name="AddComments" placeholder="Add a comment ... "/>
+                    <label for="Pub" hidden>Publish</label>
+                    <input id="Pub" type="submit" value="Publish"/>
+                    </fieldset>
+                </form>
+            </section>
+            </main>
     </body>
 </html>
