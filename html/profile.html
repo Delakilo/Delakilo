@@ -19,11 +19,12 @@
             </ul>
         </nav>
         <main>
-            <article>
-                <h2>Username</h2>
+            <section>
+                <h2>User1</h2>
+                <!-- TODO: create addpost.html file -->
                 <p><a href="addpost.html">Add</a></p>
                 <!-- TODO: put here Profile image -->
-                <!-- <img src="PATH/profile" alt=""/> -->
+                <!-- <img src="" alt=""/> -->
                 <p><strong>Name Surname</strong></p>
                 <p><small>Bio...</small></p>
                 <!-- XX is the shortened number of -->
@@ -32,11 +33,36 @@
                     <li><em>XX<br/>Followers</em></li>
                     <li><em>XX<br/>Following</em></li>
                 </ul>
-                <p><a href="profileedit.html">Edit</a></p>
+                <footer>
+                    <p><a href="profileedit.html">Edit profile</a></p>
+                </footer>
+            </section>
+            <!-- TODO: WARNING no heading in post article -->
+            <article>
+                <figure>
+                    <!-- TODO: Add post image -->
+                    <!-- <img src="" alt=""/> -->
+                    <figcaption>Check out this photo I posted!</figcaption>
+                </figure>
+                <footer>
+                    <form name="Comment" action="comments.html">
+                        <p><label for="Comments" hidden>Comment</label><input id="Comments" type="submit" value="Comment"/></p>
+                    </form>              
+                </footer>
+                <aside>
+                    <!-- TODO: Add images of first tree users that liked this post -->
+                    <!-- <img src="" alt=""/> -->
+                    <!-- <img src="" alt=""/> -->
+                    <!-- <img src="" alt=""/> -->
+                    <!-- TODO: Spazio tra questa riga e la successiva da cavare col CSS -->
+                    <p><small>Liked by n users</small></p>
+                    <form name="ViewComments" action="comments.html">
+                        <!-- TODO: Altrimenti si può fare type="button" e fare con javascript onclick= ... -->
+                        <p><label for="ViewAll" hidden>View all comments</label><input id="ViewAll" type="submit" value="View all comments"/></p>
+                    </form>
+                    <p><small>4 hours ago</small></p>
+                </aside>
             </article>
         </main>
-        <!-- <img src="PATH/post1" alt=""/> -->
-        <!-- <img src="PATH/post2" alt=""/> -->
-        <!-- <img src="PATH/post3" alt=""/> -->
     </body>
 </html>
