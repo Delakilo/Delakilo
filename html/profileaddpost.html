@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Delakilo - Profile Edit</title>
+        <title>Delakilo - Profile Add Post</title>
         <meta charset="UTF-8"/>
         <!-- TODO: add .css -->
         <!-- <link href="PATH/file.css" rel="stylesheet" type="text/css"/> -->
@@ -20,17 +20,18 @@
         </nav>
         <main>
             <section>
-                <h2>Settings</h2>
+                <h2>Post</h2>
+                <!-- TODO: put here selected image -->
+                <!-- <img src="" alt=""/> -->
                 <form action="#" method="post">
                     <fieldset>
-                        <legend>Edit Profile</legend>
+                        <legend>Add Post</legend>
                         <ul>
-                            <li><label for="USRNM">Username:</label><input type="text" id="USRNM" name="username" placeholder="Username"/></li>
-                            <li><label for="NM">Name:</label><input type="text" id="NM" name="name" placeholder="Name"/></li>
-                            <li><label for="SRNM">Surname:</label><input type="text" id="SRNM" name="surname" placeholder="Surname"/></li>
+                            <li><label for="POST_IMG">Image:</label><input type="file" id="POST_IMG" name="post_image" required/></li>
+                            <li><label for="CAPTION">Caption:</label><input type="text" id="CAPTION" name="caption" placeholder="Caption"/></li>
                         </ul>
                     </fieldset>
-                    <label for="EDIT" hidden>Edit:</label><input type="submit" value="Edit" id="EDIT"/>
+                    <label for="POST" hidden>Post:</label><input type="submit" value="Post" id="POST"/>
                 </form>
             </section>
         </main>
