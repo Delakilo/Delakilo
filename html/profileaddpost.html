@@ -23,15 +23,15 @@
                 <h2>Post</h2>
                 <!-- TODO: put here selected image -->
                 <!-- <img src="" alt=""/> -->
-                <form action="#" method="post">
+                <form action="#" method="POST">
                     <fieldset>
                         <legend>Add Post</legend>
                         <ul>
-                            <li><label for="POST_IMG">Image:</label><input type="file" id="POST_IMG" name="post_image" required/></li>
-                            <li><label for="CAPTION">Caption:</label><input type="text" id="CAPTION" name="caption" placeholder="Caption"/></li>
+                            <li><label for="image">Image:</label><input type="file" id="image" name="image" required/></li>
+                            <li><label for="caption">Caption:</label><textarea id="caption" name="caption" placeholder="Caption"></textarea></li>
                         </ul>
                     </fieldset>
-                    <label for="POST" hidden>Post:</label><input type="submit" value="Post" id="POST"/>
+                    <label for="post" hidden>Post:</label><input type="submit" value="Post" id="post"/>
                 </form>
             </section>
         </main>
