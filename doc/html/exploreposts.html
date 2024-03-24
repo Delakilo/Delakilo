@@ -21,11 +21,11 @@
         <main>
             <article>
              <header>
-                 <img src="" alt="User Profile"/>  <!--spazio tra questa riga e la successiva da cavare col CSS-->
+                 <img src="./../img/profile.svg" alt=""/>  <!--spazio tra questa riga e la successiva da cavare col CSS-->
                  <h2><a href="exploreuserprofile.html">User 2</a></h2> <!--va preso dal database sia lo user che l'img -->
              </header>
              <figure>
-                 <img src="" alt="Post"/>
+                 <img src="./../img/posts/post1.jpg" alt="Post"/>
                  <figcaption>Check out this photo I posted! </figcaption> <!-- le frasi sono da prendere dal db -->
              </figure>
              <footer>
@@ -37,14 +37,11 @@
                 </form>             
              </footer>
              <aside>
-                 <img src="" alt="Profiles who like it"/>    <!--sono da prendere dal db -->
-                 <img src="" alt="Profiles who like it"/>
-                 <img src="" alt="Profiles who like it"/>    <!--spazio tra questa riga e la successiva da cavare col CSS-->
+                 <img src="./../img/profile.svg" alt=""/>   <!-- TODO: Add images of first tree users that liked this post -->
+                 <img src="./../img/profile.svg" alt=""/>
+                 <img src="./../img/profile.svg" alt=""/>    <!--spazio tra questa riga e la successiva da cavare col CSS-->
                  <p><small>Liked by n users</small></p>     <!--n è da prendere dal db -->
-                 <form name="ViewComments" action="comments.html">
-                     <p><label for="ViewAll" hidden>View all comments</label><input id="ViewAll" type="submit" value="View all comments"/>
-                     </p>             <!-- altrimenti si può fare type="button" e fare con javascript onclick= ... -->
-                 </form>
+                 <p><a href="comments.html">View all comments</a></p>
                  <p><small>4 hours ago</small></p> <!-- io prenderei dal db il giorno in cui è stato postato e metterei qui solo quello-->
              </aside>
             </article>
