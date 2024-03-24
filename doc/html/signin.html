@@ -21,17 +21,16 @@
             <form action="#" method="POST">
                 <fieldset>
                     <legend>Login</legend>
-                    <ol>
-                        <li><label for="username" hidden>Username:</label><input type="text" id="username" name="username" autocomplete="on" placeholder="Username" required/></li>
+                    <ul>
+                        <li><label for="username" hidden>Username:</label><input id="username" type="text" name="username" autocomplete="on" placeholder="Username" required/></li>
                         <!-- TODO: if EMAIL supported replace previous line with the next one -->
-                        <!-- <li><label for="USRNM" hidden>Username/email:</label><input type="text" name="name" autocomplete="on" placeholder="Username or email" required id="USRNM"/></li> -->
-                        <li><label for="pwd" hidden>Password:</label><input type="password" id="pwd" name="pwd" placeholder="Password" required/></li>
-                    </ol>
+                        <!-- <li><label for="username_or_email" hidden>Username/email:</label><input id="username_or_email" type="text" name="name" autocomplete="on" placeholder="Username or email" required/></li> -->
+                        <li><label for="pwd" hidden>Password:</label><input id="pwd" type="password" name="pwd" placeholder="Password" required/></li>
+                    </ul>
                 </fieldset>
-                <label for="login" hidden>Login:</label><input type="submit" value="Login" id="login"/>
+                <label for="login" hidden>Login:</label><input id="login" type="submit" value="Login"/>
             </form>
         </main>
-        <!-- TODO: footer format still not chosen -->
         <footer>
             <p>Authors:</p>
             <ul>

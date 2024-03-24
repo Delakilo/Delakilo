@@ -21,17 +21,17 @@
         <main>
             <section>
                 <h2>Post</h2>
-                <!-- TODO: put here selected image      ?????? ??????? ???????? -->
+                <!-- TODO: decide if put here selected image for a "preview" of the final result -->
                 <!-- <img src="" alt=""/> -->
                 <form action="#" method="POST">
                     <fieldset>
-                        <legend>Add Post</legend>
+                        <legend>Add post</legend>
                         <ul>
-                            <li><label for="image">Image:</label><input type="file" id="image" name="image" required/></li>
+                            <li><label for="image">Image:</label><input id="image" type="file" name="image" required/></li>
                             <li><label for="caption">Caption:</label><textarea id="caption" name="caption" placeholder="Caption"></textarea></li>
                         </ul>
                     </fieldset>
-                    <label for="post" hidden>Post:</label><input type="submit" value="Post" id="post"/>
+                    <label for="post" hidden>Post:</label><input id="post" type="submit" value="Post"/>
                 </form>
             </section>
         </main>

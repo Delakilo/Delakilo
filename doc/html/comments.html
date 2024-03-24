@@ -10,25 +10,27 @@
         <header>
             <h1>Delakilo</h1>
         </header>
-        <main>                  <!-- TODO: il validator dà WARNING: vorrebbe un heading con h2 oppure dei div -->
+        <main>
+            <!-- TODO: il validator dà WARNING: vorrebbe un heading con h2 oppure dei div -->
             <section>
-            <img src="../img/profile.svg" alt="" />
-                <a href="homeprofile.html">User 2</a>   <!--va preso dal database sia lo user che l'img -->
+            <img src="../img/profile.svg" alt=""/>
+                <a href="homeprofile.html">User 2</a>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                 <!-- tanti commenti così da prendere dal db -->
             </section>
             <section>
-                <img src="../img/profile.svg" alt="" />
-                <a href="homeprofile.html">User</a>   <!--va preso dal database sia lo user che l'img -->
+                <img src="../img/profile.svg" alt=""/>
+                <a href="homeprofile.html">User</a>
                 <form action="#" method="POST">
                     <fieldset>
+                        <!-- TODO: check if add legend -->
                         <ul>
-                            <li><label for="AddComment" hidden>Add a comment</label><input id="AddComment" type="text" name="AddComments" placeholder="Add a comment ... "/></li>
-                            <li><label for="Pub" hidden>Publish</label><input id="Pub" type="submit" value="Publish"/></li>
+                            <li><label for="add_comment" hidden>Add a comment</label><input id="add_comment" type="text" name="AddComment" placeholder="Add a comment..."/></li>
+                            <li><label for="publish" hidden>Publish</label><input id="publish" type="submit" value="Publish"/></li>
                         </ul>
                     </fieldset>
                 </form>
             </section>
-            </main>
+        </main>
     </body>
 </html>
