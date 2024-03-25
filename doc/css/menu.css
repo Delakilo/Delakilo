@@ -1,1 +1,39 @@
 /* Francesco Filippini */
+
+@import url('global.css');
+
+body > nav > ul {
+    list-style: none;
+}
+
+body > nav > ul > li {
+    display: inline-block;
+    border: black medium solid;
+    box-shadow: 6px 8px 5px rgba(0, 0, 0, 1);
+    text-align: center;
+    margin: 10px 0 0;
+    width: 45%;
+    background-color: #fff;
+}
+
+nav ul li a {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    color: black;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    text-decoration: none;
+    padding: 5px 0;
+}
+
+nav ul li:nth-child(odd) {
+    margin-right: 10%;
+}
+
+nav ul li a:hover {
+    color: var(--grape) !important; /* messo important perchè con li con id="" per capire in che pagina siamo non prende bene hover*/
+}                        /* TODO: Se risolviamo il modo di riferirci alle pagine diversamente da id allora forse si può cavare important */
+
+body > nav > ul > li > a:visited {
+    color: rgb(20, 20, 20);
+}

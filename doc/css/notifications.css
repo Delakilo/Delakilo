@@ -1,4 +1,8 @@
 /* Francesco Filippini */
 
 @import url('title.css');
+@import url('menu.css');
 
+body > nav > ul > li#notifications {
+    background-color: var(--moonstone);
+}
