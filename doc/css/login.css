@@ -1,21 +1,6 @@
 /* Enrico Marchionni */
 
-@import url('global.css');
-
-body > header > h1 {
-    background: linear-gradient(to top right, var(--dark-slate-gray), var(--mahogany), var(--grape));
-    box-sizing: border-box;
-    width: 99%;
-    margin: 0.7% 0.5%;
-    border-bottom: medium solid;
-    color: white;
-}
-
-body > header > h1 {
-    text-align: center;
-    font-size: 450%;
-    padding: 2%;
-}
+@import url('title.css');
 
 body > nav > ul {
     list-style: none;
