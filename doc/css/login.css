@@ -11,74 +11,74 @@ body > header > h1 {
     color: white;
 }
 
-header > h1 {
+body > header > h1 {
     text-align: center;
     font-size: 450%;
     padding: 2%;
 }
 
-nav > ul {
+body > nav > ul {
     list-style: none;
     text-align: right;
     margin: 2px;
 }
 
-nav > ul > li {
+body > nav > ul > li {
     display: inline-block;
     border: black medium solid;
     padding: 5px;
     margin: 1px;
 }
 
-nav > ul > li > a {
+body > nav > ul > li > a {
     text-decoration: none;
     color: black;
 }
 
-nav > ul > li > a:visited {
+body > nav > ul > li > a:visited {
     color: rgb(20, 20, 20);
 }
 
-nav > ul > li > a:hover {
+body > nav > ul > li > a:hover {
     color: var(--grape);
 }
 
-main > img {
+body > main > img {
     display: inline-block;
     width: 15%;
 }
 
-main {
+body > main {
     text-align: center;
 }
 
-main > form {
+body > main > form {
     display: inline-block;
     width: 25%;
     vertical-align: top;
     padding: 20px 5%;
 }
 
-main > form > fieldset > p {
+body > main > form > fieldset > p {
     width: 80%;
     margin: 0 10%;
     text-align: left;
 }
 
-main > form > fieldset > p {
+body > main > form > fieldset > p {
     margin-bottom: 20px;
 }
 
-main > form > fieldset > p > input, main > form > fieldset > p > label {
+body > main > form > fieldset > p > input, body > main > form > fieldset > p > label {
     display: inline-block;
     width: 45%;
 }
 
-main > form > p {
+body > main > form > p {
     text-align: right;
 }
 
-body footer {
+body > footer {
     background: linear-gradient(to top right, var(--dark-slate-gray), var(--mahogany), var(--grape));
     box-sizing: border-box;
     position: fixed;
@@ -90,6 +90,6 @@ body footer {
     color: white;
 }
 
-body footer > ul {
+body > footer > ul {
     list-style: none;
 }
