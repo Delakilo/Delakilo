@@ -3,33 +3,26 @@
     <head>
         <title>Delakilo - Sign up</title>
         <meta charset="UTF-8"/>
-        <!-- TODO: add .css -->
-        <!-- <link href="PATH/file.css" rel="stylesheet" type="text/css"/> -->
+        <link href="../css/login.css" rel="stylesheet" type="text/css"/>
+        <link href="../css/signup.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
         <nav>
-            <ul>
-                <li><a href="signin.html">Sign in</a></li>
-                <li><a href="signup.html">Sign up</a></li>
-            </ul>
+            <ul><li id="signin"><a href="signin.html">Sign in</a></li><li id="signup"><a href="signup.html">Sign up</a></li></ul>
         </nav>
         <header>
             <h1>Delakilo</h1>
         </header>
-        <img src="../img/logo.svg" alt=""/>
         <main>
+            <img src="../img/logo.svg" alt=""/>
             <form action="#" method="POST">
                 <fieldset>
                     <legend>Register</legend>
-                    <ul>
-                        <!-- TODO: decide if support EMAIL -->
-                        <!-- <li><label for="email" hidden>Email:</label><input id="email" type="email" name="email" autocomplete="on" placeholder="Email" required/></li> -->
-                        <li><label for="username" hidden>Username:</label><input id="username" type="text" name="username" placeholder="Username" required/></li>
-                        <li><label for="pwd1" hidden>Password:</label><input id="pwd1" type="password" name="pwd1" placeholder="Password" required/></li>
-                        <li><label for="pwd2" hidden>Confirm password:</label><input id="pwd2" type="password" name="pwd2" placeholder="Password" required/></li>
-                    </ul>
+                    <p><label for="username">Username:</label><input id="username" type="text" name="username" placeholder="Username" required/></p>
+                    <p><label for="pwd1">Password:</label><input id="pwd1" type="password" name="pwd1" placeholder="Password" required/></p>
+                    <p><label for="pwd2">Confirm Password:</label><input id="pwd2" type="password" name="pwd2" placeholder="Password" required/></p>
                 </fieldset>
-                <label for="register" hidden>Register:</label><input id="register" type="submit" value="Register"/>
+                <p><label for="register" hidden>Register:</label><input id="register" type="submit" value="Register"/></p>
             </form>
         </main>
         <footer>

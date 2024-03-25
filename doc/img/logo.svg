@@ -2,9 +2,9 @@
 <svg width="800" height="800" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
     <defs>
         <linearGradient id="grad" x1="0%" y1="100%" x2="100%" y2="0%">
-        <stop offset="0%" stop-color="#143eb3"/>
-        <stop offset="50%" stop-color="#6661d1"/>
-        <stop offset="100%" stop-color="#6f0ab3"/>
+        <stop offset="0%" stop-color="#183A37"/>
+        <stop offset="50%" stop-color="#C44900"/>
+        <stop offset="100%" stop-color="#6f0AB3"/>
         </linearGradient>
     </defs>
     <rect width="50" height="50" fill="url(#grad)" rx="8" ry="8"/>

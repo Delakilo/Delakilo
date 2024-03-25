@@ -1,0 +1,5 @@
+@import url('global.css');
+
+nav > ul > li#signup {
+    background-color: var(--moonstone);
+}

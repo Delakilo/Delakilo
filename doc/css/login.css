@@ -1,0 +1,93 @@
+@import url('global.css');
+
+body > header > h1 {
+    background: linear-gradient(to top right, var(--dark-slate-gray), var(--mahogany), var(--grape));
+    box-sizing: border-box;
+    width: 99%;
+    margin: 0.7% 0.5%;
+    border-bottom: medium solid;
+    color: white;
+}
+
+header > h1 {
+    text-align: center;
+    font-size: 450%;
+    padding: 2%;
+}
+
+nav > ul {
+    list-style: none;
+    text-align: right;
+    margin: 2px;
+}
+
+nav > ul > li {
+    display: inline-block;
+    border: black medium solid;
+    padding: 5px;
+    margin: 1px;
+}
+
+nav > ul > li > a {
+    text-decoration: none;
+    color: black;
+}
+
+nav > ul > li > a:visited {
+    color: rgb(20, 20, 20);
+}
+
+nav > ul > li > a:hover {
+    color: var(--grape);
+}
+
+main > img {
+    display: inline-block;
+    width: 15%;
+}
+
+main {
+    text-align: center;
+}
+
+main > form {
+    display: inline-block;
+    width: 25%;
+    vertical-align: top;
+    padding: 20px 5%;
+}
+
+main > form > fieldset > p {
+    width: 80%;
+    margin: 0 10%;
+    text-align: left;
+}
+
+main > form > fieldset > p {
+    margin-bottom: 20px;
+}
+
+main > form > fieldset > p > input, main > form > fieldset > p > label {
+    display: inline-block;
+    width: 45%;
+}
+
+main > form > p {
+    text-align: right;
+}
+
+body footer {
+    background: linear-gradient(to top right, var(--dark-slate-gray), var(--mahogany), var(--grape));
+    box-sizing: border-box;
+    position: fixed;
+    padding: 0 10px;
+    bottom: 0;
+    width: 99%;
+    margin: 0.7% 0.5%;
+    border-top: medium solid;
+    color: white;
+}
+
+body footer > ul {
+    list-style: none;
+}
