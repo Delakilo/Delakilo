@@ -5,6 +5,7 @@
 body > nav > ul > li#signin {
     font-weight: bold;
     background-color: var(--moonstone-opaque);
+    box-shadow: 2px 2px 3px black;
 }
 
 body > nav > ul > li#signup {
@@ -13,4 +14,5 @@ body > nav > ul > li#signup {
 
 body > nav > ul > li#signup > a:hover {
     opacity: 0.8;
+    color: var(--grape);
 }

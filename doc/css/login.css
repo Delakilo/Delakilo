@@ -16,6 +16,10 @@ body > nav > ul > li {
     margin: 1px;
 }
 
+body > nav > ul > li {
+    color: black;
+}
+
 body > nav > ul > li > a {
     text-decoration: none;
     color: black;
