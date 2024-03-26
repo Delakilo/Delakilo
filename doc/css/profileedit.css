@@ -1,0 +1,43 @@
+/* Alessandro Verna */
+
+@import url(bars.css);
+@import url(menu.css);
+
+body > main > img {
+    width: 10%;
+    margin-left:25%;
+}
+
+body > main > form {
+    margin-right: 25%;
+    margin-left: 25%;
+}
+
+body > main > form > fieldset > ul {
+    list-style: none;
+}
+
+body > main > form > fieldset > ul > li {
+    padding: 5px;
+}
+
+body > main > form > fieldset > ul > li {
+    width: 80%;
+    margin: 0 5%;
+    text-align: left;
+}
+
+body > main > form > fieldset > ul > li > input, body > main > form > fieldset > ul > li > label {
+    display: inline-block;
+    width: 45%;
+}
+
+body > main > form > input[type="submit"] {
+    background-color: var(--mahogany-opaque);
+    color: white;
+    font-size: 100%;
+    padding: 5px 8px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
