@@ -3,6 +3,7 @@
 :root {
     /* white text colors, LOGO */
     --dark-slate-gray: #183A37;
+    /* Used also for forms buttons */
     --mahogany: #C44900;
     --grape: #6f0ab3;
 
@@ -11,6 +12,16 @@
     --moonstone: #729EA1;
     /* page BACKGROUND */
     --wheat: #EFD6AC;
+
+    /* Visited text */
+    --dark-grey: rgb(45, 45, 45);
+
+    /* Used in HEADERS and FOOTERS */
+    --dark-slate-gray-opaque: rgba(24, 58, 55, 0.85);
+    --wheat-opaque: rgba(239, 214, 172, 0.85);
+    --mahogany-opaque: rgba(196, 73, 0, 0.85);
+    --moonstone-opaque: rgba(114, 158, 161, 0.85);
+    --grape-opaque: rgba(111, 10, 179, 0.85);
 }
 
 body {

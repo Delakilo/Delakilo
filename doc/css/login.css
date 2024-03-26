@@ -1,15 +1,16 @@
 /* Enrico Marchionni */
 
-@import url('title.css');
+@import url('bars.css');
 
 body > nav > ul {
     list-style: none;
     text-align: right;
-    margin: 2px;
+    margin: 0.5%;
 }
 
 body > nav > ul > li {
     display: inline-block;
+    border-radius: 12px;
     border: black medium solid;
     padding: 5px;
     margin: 1px;
@@ -21,16 +22,13 @@ body > nav > ul > li > a {
 }
 
 body > nav > ul > li > a:visited {
-    color: rgb(20, 20, 20);
-}
-
-body > nav > ul > li > a:hover {
-    color: var(--grape);
+    color: var(--dark-grey);
 }
 
 body > main > img {
     display: inline-block;
-    width: 15%;
+    vertical-align: middle;
+    height: 250px;
 }
 
 body > main {
@@ -39,42 +37,57 @@ body > main {
 
 body > main > form {
     display: inline-block;
-    width: 25%;
-    vertical-align: top;
-    padding: 20px 5%;
+    vertical-align: middle;
+    width: 35%;
+    height: 250px;
+    padding: 20px 2%;
 }
 
-body > main > form > fieldset > p {
+body > main > form > h2 {
+    text-align: left;
+    margin-top: 0;
+}
+
+body > main > form > ul {
+    list-style: none;
+}
+
+body > main > form > ul > li {
+    padding: 5px;
+}
+
+body > main > form > ul > li:not(:last-child) {
     width: 80%;
     margin: 0 10%;
     text-align: left;
 }
 
-body > main > form > fieldset > p {
-    margin-bottom: 20px;
-}
-
-body > main > form > fieldset > p > input, body > main > form > fieldset > p > label {
+body > main > form > ul > li:not(:last-child) > input, body > main > form > ul > li:not(:last-child) > label {
     display: inline-block;
     width: 45%;
 }
 
-body > main > form > p {
+body > main > form > ul > li:last-child {
     text-align: right;
+    margin-top: 20px;
 }
 
-body > footer {
-    background: linear-gradient(to top right, var(--dark-slate-gray), var(--mahogany), var(--grape));
-    box-sizing: border-box;
-    position: fixed;
-    padding: 0 10px;
-    bottom: 0;
-    width: 99%;
-    margin: 0.7% 0.5%;
-    border-top: medium solid;
+body > main > form > ul > li > input[type="submit"] {
+    background-color: var(--mahogany-opaque);
     color: white;
+    font-size: 100%;
+    padding: 5px 8px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
-body > footer > ul {
-    list-style: none;
+@media screen and (max-width: 768px) {
+    body > main > img {
+        display: none;
+    }
+
+    body > main > form {
+        width: 75%;
+    }
 }

@@ -3,5 +3,14 @@
 @import url('global.css');
 
 body > nav > ul > li#signin {
-    background-color: var(--moonstone);
+    font-weight: bold;
+    background-color: var(--moonstone-opaque);
+}
+
+body > nav > ul > li#signup {
+    border-style: none;
+}
+
+body > nav > ul > li#signup > a:hover {
+    opacity: 0.8;
 }
