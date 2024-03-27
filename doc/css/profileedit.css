@@ -4,19 +4,18 @@
 @import url(menu.css);
 
 body > main > img {
-    width: 15%;
-    margin-left:25%;
-    margin-right: 25%;
+    width: 10%;
 }
 
 body > main {
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 body > main > form {
-    margin-left: 25%;
-    margin-right: 25%;
-    display: inline-block;
+    box-sizing: border-box;
     width: 75%;
     padding: 20px 2%;
 }

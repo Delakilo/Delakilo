@@ -4,6 +4,8 @@
 
 body > nav {
     margin: 0 5%;
+    position: fixed;
+    bottom: 0;
 }
 
 body > nav > ul {
@@ -18,12 +20,18 @@ body > nav > ul > li {
     display: inline-block;
     box-sizing: border-box;
     border: black medium solid;
-    border-radius: 15px;
-    box-shadow: 6px 8px 5px black;
     text-align: center;
     width: 20%;
     background-color: var(--mahogany-opaque);
     padding: 5px 0;
+}
+
+body > nav > ul > li > a > img {
+    width: 30%;
+    height: 30%;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
 }
 
 body > nav > ul > li > a {
@@ -33,7 +41,7 @@ body > nav > ul > li > a {
 }
 
 body > nav > ul > li:not(:last-child) {
-    margin-right: 2%;
+    margin-right: 1%;
 }
 
 body > nav > ul > li > a:hover {
@@ -42,4 +50,44 @@ body > nav > ul > li > a:hover {
 
 body > nav > ul > li > a:visited {
     color: var(--dark-grey);
+}
+
+.menu-text {
+    position: absolute;
+    left: -9999px;
+}
+
+@media screen and (min-width: 768px) {
+    .menu-text {
+        position: static;
+        left: 0;
+    }
+
+    body > nav > ul > li {
+        display: inline-block;
+        box-sizing: border-box;
+        border: black medium solid;
+        border-radius: 15px;
+        box-shadow: 6px 8px 5px black;
+        text-align: center;
+        width: 20%;
+        background-color: var(--mahogany-opaque);
+        padding: 5px 0;
+    }
+
+    body > nav {
+        position: static;
+    }
+
+    body > nav > ul > li:not(:last-child) {
+        margin-right: 2%;
+    }
+
+    body > nav > ul > li > a > img {
+        display: none;
+    }
+
+    body > nav > ul > li > a {
+        display: inline;
+    }
 }
