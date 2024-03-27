@@ -3,6 +3,29 @@
 @import url('bars.css');
 @import url('menu.css');
 
+body > main > article > header {
+    background-color: var(--mahogany);
+    display: flex;
+    margin-left: 25%;
+    margin-right: 25%;
+    width: 700px;
+    height: 75px;
+}
+
+body > main > article > header > img {
+    width: 10%;
+}
+
+body > main > article > header > h2 {
+    padding: 1%;
+}
+
+body > main > article > figure > img {
+    margin-left: 313px;
+    width: 700px;
+    height: 700px;
+}
+
 @media screen and (min-width: 768px) {
     body > main > img {
         display: inline-block;
