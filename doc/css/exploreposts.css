@@ -1,0 +1,12 @@
+@import url('bars.css');
+@import url('menu.css');
+
+@media screen and (min-width: 768px) {
+    body > main > img {
+        display: inline-block;
+    }
+
+    body > main > form {
+        width: 40%;
+    }
+}
