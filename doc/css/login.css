@@ -31,7 +31,8 @@ body > nav > ul > li > a:visited {
 
 body > main > img {
     display: inline-block;
-    vertical-align: middle;
+    box-sizing: border-box;
+    vertical-align: top;
     height: 250px;
 }
 
@@ -41,8 +42,9 @@ body > main {
 
 body > main > form {
     display: inline-block;
-    vertical-align: middle;
-    width: 35%;
+    box-sizing: border-box;
+    vertical-align: top;
+    width: 40%;
     height: 250px;
     padding: 20px 2%;
 }
