@@ -30,7 +30,7 @@ body > nav > ul > li > a:visited {
 }
 
 body > main > img {
-    display: inline-block;
+    display: none;
     box-sizing: border-box;
     vertical-align: top;
     height: 250px;
@@ -44,7 +44,7 @@ body > main > form {
     display: inline-block;
     box-sizing: border-box;
     vertical-align: top;
-    width: 40%;
+    width: 75%;
     height: 250px;
     padding: 20px 2%;
 }
@@ -88,12 +88,12 @@ body > main > form > ul > li > input[type="submit"] {
     cursor: pointer;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (min-width: 768px) {
     body > main > img {
-        display: none;
+        display: inline-block;
     }
 
     body > main > form {
-        width: 75%;
+        width: 40%;
     }
 }
