@@ -1,6 +1,6 @@
 /* Enrico Marchionni */
 
-@import url('global.css');
+@import url('login.css');
 
 body > nav > ul > li#signup {
     font-weight: bold;

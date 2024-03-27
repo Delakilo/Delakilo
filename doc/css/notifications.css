@@ -4,7 +4,7 @@
 @import url('menu.css');
 
 body > nav > ul > li#notifications {
-    background-color: var(--moonstone);
+    background-color: var(--moonstone-opaque);
 }
 
 body > main > ul {
@@ -19,14 +19,13 @@ body > main > ul > li {
     border: black medium solid;
     margin: 0 20px;
     padding: 10px 0;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font-size: 13pt;
     text-align: left;
     font-style: italic;
     color: black;
-    background-color: var(--moonstone-opaque);
+    background-color: var(--moonstone);
 }
 
-body > main > ul > li:is(:first-child) {
+body > main > ul > li:first-child {
     margin-top: 30px;
 }

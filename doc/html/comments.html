@@ -5,13 +5,15 @@
         <title>Delakilo - Comments</title>
         <meta charset="UTF-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <!-- TODO: add .css -->
-        <!-- <link href="PATH/file.css" rel="stylesheet" type="text/css"/> -->
+        <link href="../css/comments.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
         <header>
             <h1>Delakilo</h1>
         </header>
+        <nav>
+            <ul><li id="home"><a href="home.html">Home</a></li><li id="explore"><a href="explore.html">Explore</a></li><li id="notifications"><a href="notifications.html">Notifications</a></li><li id="profile"><a href="profile.html">Profile</a></li></ul>
+        </nav>
         <main>
             <!-- TODO: il validator dà WARNING: vorrebbe un heading con h2 oppure dei div -->
             <section>
@@ -29,15 +31,13 @@
             </section>
             <section>
                 <img src="../img/profile.svg" alt=""/>
-                <a href="homeprofile.html">User1</a> <!-- TODO: mettere il profilo di chi deve commentare-->
+                <a href="profile.html">User1</a> <!-- TODO: mettere il profilo di chi deve commentare-->
                 <form action="#" method="post">
-                    <fieldset>
-                        <legend>Comment</legend>
+                    <h2>Comment</h2>
                         <ul>
                             <li><label for="add_comment" hidden>Add a comment</label><textarea id="add_comment" name="AddComment" placeholder="Add a comment..."></textarea></li>
+                            <li><label for="publish" hidden>Publish</label><input id="publish" type="submit" value="Publish"/></li>
                         </ul>
-                    </fieldset>
-                    <label for="publish" hidden>Publish</label><input id="publish" type="submit" value="Publish"/>
                 </form>
             </section>
         </main>
