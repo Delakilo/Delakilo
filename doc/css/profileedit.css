@@ -4,35 +4,53 @@
 @import url(menu.css);
 
 body > main > img {
-    width: 10%;
+    width: 15%;
     margin-left:25%;
+    margin-right: 25%;
+}
+
+body > main {
+    text-align: center;
 }
 
 body > main > form {
-    margin-right: 25%;
     margin-left: 25%;
+    margin-right: 25%;
+    display: inline-block;
+    width: 75%;
+    padding: 20px 2%;
 }
 
-body > main > form > fieldset > ul {
+body > main > form > h2 {
+    text-align: center;
+    margin-top: 0;
+}
+
+body > main > form > ul {
     list-style: none;
 }
 
-body > main > form > fieldset > ul > li {
+body > main > form > ul > li {
     padding: 5px;
 }
 
-body > main > form > fieldset > ul > li {
+body > main > form > ul > li:not(:last-child) {
     width: 80%;
-    margin: 0 5%;
+    margin: 0px 10%;
     text-align: left;
 }
 
-body > main > form > fieldset > ul > li > input, body > main > form > fieldset > ul > li > label {
+body > main > form > ul > li:not(:last-child) > input, body > main > form > ul > li:not(:last-child) > label {
     display: inline-block;
     width: 45%;
 }
 
-body > main > form > input[type="submit"] {
+body > main > form > ul > li:last-child {
+    text-align: right;
+    margin-top: 20px;
+}
+
+body > main > form > ul > li > input[type="submit"] {
     background-color: var(--mahogany-opaque);
     color: white;
     font-size: 100%;
@@ -40,4 +58,14 @@ body > main > form > input[type="submit"] {
     border: none;
     border-radius: 5px;
     cursor: pointer;
+}
+
+@media screen and (min-width: 768px) {
+    body > main > img {
+        display: inline-block;
+    }
+
+    body > main > form {
+        width: 40%;
+    }
 }
