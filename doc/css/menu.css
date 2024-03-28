@@ -22,7 +22,7 @@ body > nav > ul > li {
     border: black medium solid;
     text-align: center;
     width: 20%;
-    background-color: var(--mahogany-opaque);
+    background-color: var(--chamoisee-opaque);
     padding: 5px 0;
 }
 
@@ -60,6 +60,7 @@ body > nav > ul > li > a:visited {
 @media only screen
         and (orientation: landscape)
         and (min-width: 768px) {
+
     .menu-text {
         position: static;
         left: 0;
@@ -73,7 +74,6 @@ body > nav > ul > li > a:visited {
         box-shadow: 6px 8px 5px black;
         text-align: center;
         width: 20%;
-        background-color: var(--mahogany-opaque);
         padding: 5px 0;
     }
 
