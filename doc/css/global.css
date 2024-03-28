@@ -3,12 +3,12 @@
 :root {
     /* COLORS */
     --dark-slate-gray: #183A37; /* white text color, HEADER and FOOTER */
-    --reseda-green: #848872; /* black text color */
+    --reseda-green: #848872; /* black text color, background-color of some parts */
     --wheat: #EFD6AC; /* black text color, BACKGROUND */
     --mahogany: #C44900; /* white text color, HEADER and FOOTER */
     --chamoisee: #9B7451; /* black text color, UNSELECTED BUTTONS in MENU, FORMS... */
     --moonstone: #729EA1; /* black text color, SELECTED BUTTONS in MENU, FORMS... */
-    --grape: #6f0AB3; /* white text color, LOGO, HEADER and FOOTER */
+    --grape: #6f0AB3; /* white text color, LOGO, HEADER and FOOTER + :hover */
 
     /* COLORS OPAQUE */
     --dark-slate-gray-opaque: rgba(24, 58, 55, 0.85);

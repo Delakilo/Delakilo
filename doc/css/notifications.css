@@ -23,7 +23,7 @@ body > main > ul > li {
     text-align: left;
     font-style: italic;
     color: black;
-    background-color: var(--moonstone);
+    background-color: var(--reseda-green);
 }
 
 body > main > ul > li:first-child {

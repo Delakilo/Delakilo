@@ -9,7 +9,6 @@ body > nav > ul > li#home {
 
 body > main {
     margin: 20px 40px;
-    /* background-color: var(--moonstone); */
     height: 100%;
     width: 95%;
     box-sizing: border-box;
@@ -22,6 +21,7 @@ body > main > section {
 body > main > section:last-child {
     margin-top: 30px;
     border: black 3px dotted;
+    background-color: var(--reseda-green);
 }
 
 body > main > section > img {
