@@ -57,7 +57,9 @@ body > nav > ul > li > a:visited {
     left: -9999px;
 }
 
-@media screen and (min-width: 768px) {
+@media only screen
+        and (orientation: landscape)
+        and (min-width: 768px) {
     .menu-text {
         position: static;
         left: 0;

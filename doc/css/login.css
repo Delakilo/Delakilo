@@ -10,14 +10,13 @@ body > nav > ul {
 
 body > nav > ul > li {
     display: inline-block;
+
+    color: black;
+
     border-radius: 12px;
     border: black medium solid;
     padding: 5px;
     margin: 1px;
-}
-
-body > nav > ul > li {
-    color: black;
 }
 
 body > nav > ul > li > a {
@@ -35,18 +34,23 @@ body > main {
 
 body > main > img {
     display: none;
+
     box-sizing: border-box;
+
     vertical-align: top;
     height: 250px;
 }
 
 body > main > form {
     display: inline-block;
-    box-sizing: border-box;
+
     vertical-align: top;
-    width: 75%;
+
+    box-sizing: border-box;
+    width: 90%;
     height: 250px;
     padding: 20px 2%;
+    margin: 0 5% 5%;
 }
 
 body > main > form > h2 {
@@ -79,8 +83,9 @@ body > main > form > ul > li:last-child {
 }
 
 body > main > form > ul > li > input[type="submit"] {
-    background-color: var(--mahogany-opaque);
-    color: white;
+    background-color: var(--moonstone-opaque);
+    box-shadow: 2px 2px 3px black;
+
     font-size: 100%;
     padding: 5px 8px;
     border: none;
@@ -88,7 +93,10 @@ body > main > form > ul > li > input[type="submit"] {
     cursor: pointer;
 }
 
-@media screen and (min-width: 768px) {
+@media only screen
+        and (orientation: landscape)
+        and (min-width: 768px) {
+
     body > main > img {
         display: inline-block;
     }
