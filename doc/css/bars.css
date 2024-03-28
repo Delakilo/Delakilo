@@ -2,28 +2,25 @@
 
 @import url('global.css');
 
-body > header > h1 {
+body > header > h1, body > footer {
     background: linear-gradient(to top right, var(--dark-slate-gray-opaque), var(--mahogany-opaque), var(--grape-opaque));
 
     color: white;
-    text-align: center;
-    font-size: 400%;
 
     box-sizing: border-box;
     width: 99%;
     padding: 1%;
+}
+
+body > header > h1 {
+    text-align: center;
+    font-size: 400%;
+
     margin: 0.7% 0.5% 2%;
     border-bottom: medium solid;
 }
 
 body > footer {
-    background: linear-gradient(to top right, var(--dark-slate-gray-opaque), var(--mahogany-opaque), var(--grape-opaque));
-
-    color: white;
-
-    box-sizing: border-box;
-    width: 99%;
-    padding: 0 10px;
     margin: 2% 0.5% 0.7%;
     border-top: medium solid;
 }
