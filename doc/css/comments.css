@@ -9,7 +9,7 @@ body > nav > ul > li#home {
 
 body > main {
     margin: 20px 40px;
-    background-color: var(--moonstone);
+    /* background-color: var(--moonstone); */
     height: 100%;
     width: 95%;
     box-sizing: border-box;
@@ -88,8 +88,9 @@ body > main > section > form > ul > li {
 
 
 body > main > section > form > ul > li > input {
-    background-color: var(--grape);
-    color: white;
+    background-color: var(--moonstone);
+    color: black;
+    box-shadow: 2px 2px 3px black;
     font-size: 100%;
     padding: 5px 8px;
     border: none;
@@ -98,7 +99,7 @@ body > main > section > form > ul > li > input {
 }
 
 body > main > section > form > ul > li > input:hover {
-    color: var(--mahogany);
+    color: var(--grape);
 }
 
 body > main > section:last-of-type > form > ul > li {
