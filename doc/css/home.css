@@ -69,3 +69,41 @@ body > main > article > footer > form > ul > li > input {
 body > main > article > footer > form > ul > li > input:hover {
     color: var(--grape);
 }
+
+body > main > article > aside > img:first-child {
+    margin: 0 0 0 10px;
+}
+
+body > main > article > aside > img {
+    width: 2%;
+}
+
+body > main > article > aside > img, body > main > article > aside > p:first-of-type {
+    display: inline-block;
+    vertical-align: middle;
+    box-sizing: border-box;
+}
+
+body > main > article > aside > p {
+    color: black;
+    font-size: 130%;
+    font-family: 'Times New Roman', Times, serif;
+    max-width: 60%;
+}
+
+body > main > article > aside > p:first-of-type {
+    margin: 0 0 0 10px;                /* TODO: se enrico mette i margin nel body controllare qui se è il caso di mettere solo del padding*/
+}
+
+body > main > article > aside > p > a, body > main > article > aside > p:last-of-type {
+    font-style: oblique;
+    font-weight: lighter;
+    color: var(--dark-slate-gray-opaque);
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    margin: 0;
+    padding: 0 10px;
+}
+
+body > main > article > aside > p > a {
+    text-decoration: none;
+}
