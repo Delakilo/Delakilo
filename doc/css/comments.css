@@ -8,9 +8,11 @@ body > nav > ul > li#home {
 }
 
 body > main {
-    margin: 20px 50px;
+    margin: 20px 40px;
     background-color: var(--moonstone);
     height: 100%;
+    width: 95%;
+    box-sizing: border-box;
 }
 
 body > main > section {
@@ -44,38 +46,80 @@ body > main > section > a:hover {
     color: var(--grape);
 }
 
-body > main > section > p {                 /* The paragraph that describes when the comment was posted */
+body > main > section > p {
     box-sizing: border-box;
-    color: var(--dark-slate-gray-opaque);
-    padding: 0;
-    margin: 0 10px;
-    font-style: oblique;
-    font-weight: lighter;
-    font-family: Georgia, 'Times New Roman', Times, serif;
     text-align: left;
+    margin: 0;
+    padding: 0;
 }
 
-body > main > section > p:first-of-type {           /* The comment */
-    box-sizing: border-box;
+body > main > section > p:not(:has(small)) {          /* The comment */ /* TODO: controllare se supportato da tutti i browser oppure fare questa cosa con javascript*/
     color: black;
     padding: 8px;
     margin: 8px 8px 2px;
     font-style: normal;
-    text-align: left;
     border: black 1px solid;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
-body > main > section > form > ul {
-    list-style: none;
-    text-align: left;
-    /* It's important to put margin and padding to 0 to avoid unexpected browser behavior */
-    margin: 15px 0;
-    padding: 0;
+body > main > section > p > small {                 /* The paragraph that describes when the comment was posted */
+    color: var(--dark-slate-gray-opaque);
+    margin: 0 10px;
+    font-style: oblique;
+    font-weight: lighter;
+    font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
-/* body > main > section > form > ul > li {
+body > main > section > form {
+    text-align: left;
+    box-sizing: border-box;
+}
+
+body > main > section > form > ul {
+    list-style: none;
+    margin: 5px;
+    padding: 5px;
+}
+
+body > main > section > form > ul > li {
     display: inline-block;
-    width: 5%;
-    padding: 10px;
-} */
+    width: 4%;
+}
+
+
+body > main > section > form > ul > li > input {
+    background-color: var(--grape);
+    color: white;
+    font-size: 100%;
+    padding: 5px 8px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+body > main > section > form > ul > li > input:hover {
+    color: var(--mahogany);
+}
+
+body > main > section:last-of-type > form > ul > li {
+    width: 50%;
+}
+
+body > main > section > form > ul > li > textarea {
+    width: 100%;
+    padding: 5px 0;
+}
+
+body > main > section:last-of-type > form > ul > li:last-child {
+    text-align: right;
+    margin-top: 20px;
+}
+
+body > main > section > form > h2 {
+    font-size: 260%;
+    font-family: monospace;
+    font-weight: bold;
+    font-style: normal;
+    margin: 15px;
+    color: var(--dark-slate-gray-opaque);
+}
