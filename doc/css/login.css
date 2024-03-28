@@ -29,15 +29,15 @@ body > nav > ul > li > a:visited {
     color: var(--dark-grey);
 }
 
+body > main {
+    text-align: center;
+}
+
 body > main > img {
     display: none;
     box-sizing: border-box;
     vertical-align: top;
     height: 250px;
-}
-
-body > main {
-    text-align: center;
 }
 
 body > main > form {
