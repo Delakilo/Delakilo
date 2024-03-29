@@ -16,10 +16,13 @@ body > main > article > header > img, body > main > article > header > h2 {
     box-sizing: border-box;
 }
 
-body > main > article  img {
-    max-height: 40px;
+body > main > article  img, body > main > section > img  {
     margin: 0;
     padding: 0;
+}
+
+body > main > article  img {
+    max-height: 40px;
 }
 
 body > main > article > header > h2 > a {
@@ -40,12 +43,12 @@ body > main > article > figure > img {
     width: 60%;
 }
 
-body > main > article > figure > figcaption {
+body > main > article > figure > figcaption, main > section > p {
     color: black;
     font-size: 110%;
-    font-weight: bold;
     font-family: 'Courier New', Courier, monospace;
-    margin: 10px 0;
+    margin: 0;
+    padding: 10px 0;
     max-width: 60%;
 }
 
@@ -86,7 +89,7 @@ body > main > article > aside > img, body > main > article > aside > p:first-of-
 
 body > main > article > aside > p {
     color: black;
-    font-size: 130%;
+    font-size: 120%;
     font-family: 'Times New Roman', Times, serif;
     max-width: 60%;
 }
@@ -106,4 +109,77 @@ body > main > article > aside > p > a, body > main > article > aside > p:last-of
 
 body > main > article > aside > p > a {
     text-decoration: none;
+}
+
+/* RULES FOR HOMEPROFILE.HTML AND PROFILE.HTML */
+
+body > main > section > h2 {
+    text-align: left;
+    padding: 20px;
+    margin: 0;
+    box-sizing: border-box;
+    color: black;
+    font-size: 300%;
+    font-weight: bold;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+body > main > section > img, body > main > section > ul, body > main > section > ul > li {
+    display: inline-block;
+    vertical-align: top;
+    box-sizing: border-box;
+    width: 25%;
+}
+
+body > main > section > img {
+    height: 250px;
+}
+
+body > main > section > p {
+    padding: 5px 0 10px 20px;
+}
+
+body > main > section > p > strong {
+    font-size: 130%;
+    font-weight: bold;
+}
+
+body > main > section > ul {
+    list-style: none;
+    padding: 5px;
+}
+
+body > main > section > ul > li {
+    font-style: italic;
+    font-weight: lighter;
+    color: black;
+    font-size: 100%;
+    text-align: center;
+    padding: 10px;
+}
+
+body > main > section > footer {
+    text-align: center;
+}
+
+body > main > section > footer > p {
+    text-align: center;
+    background-color: var(--moonstone);
+    box-shadow: 5px 3px 3px black;
+    font-size: 120%;
+    padding: 10px 5px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 60%;
+}
+
+body > main > section > footer > p > a {
+    text-decoration: none;
+    width: 100%;
+    color: black;
+}
+
+body > main > section > footer > p > a:hover {
+    color: var(--grape);
 }
