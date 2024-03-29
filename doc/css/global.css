@@ -3,8 +3,8 @@
 :root {
     /* COLORS */
     --dark-slate-gray: #183A37; /* white text color, HEADER and FOOTER */
-    --reseda-green: #848872; /* black text color, background-color of some parts */
-    --wheat: #EFD6AC; /* black text color, BACKGROUND */
+    --reseda-green: #848872; /* black text color, GENERAL CONTENT BACKGROUND */
+    --wheat: #EFD6AC; /* black text color, PAGES BACKGROUND */
     --mahogany: #C44900; /* white text color, HEADER and FOOTER */
     --chamoisee: #9B7451; /* black text color, UNSELECTED BUTTONS in MENU, FORMS... */
     --moonstone: #729EA1; /* black text color, SELECTED BUTTONS in MENU, FORMS... */
