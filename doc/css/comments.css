@@ -1,25 +1,23 @@
 /* Francesco Filippini */
 
 @import url('menu.css');
+@import url('forms.css');
 
 body > nav > ul > li#home {
     background-color: var(--moonstone-opaque);
 }
 
 body > main {
-    margin: 20px 40px;
-    height: 100%;
-    width: 95%;
     box-sizing: border-box;
 }
 
 body > main > section {
-    margin-bottom: 20px;
+    margin-bottom: 2%;
 }
 
 body > main > section:last-child {
-    margin-top: 30px;
-    border: black 3px dotted;
+    margin-top: 4%;
+    border: black medium dotted;
     background-color: var(--reseda-green);
 }
 
@@ -61,7 +59,7 @@ body > main > section > p:not(:has(small)) {          /* The comment */ /* TODO:
     padding: 8px;
     margin: 8px 8px 2px;
     font-style: normal;
-    border: black 1px solid;
+    border: black medium solid;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
@@ -73,57 +71,21 @@ body > main > section > p > small {                 /* The paragraph that descri
     font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
-body > main > section > form {
-    text-align: left;
-    box-sizing: border-box;
+/* FORM */
+body > main > section:first-child > form > ul {
+    text-align: right;
 }
-
-body > main > section > form > ul {
-    list-style: none;
-    margin: 5px;
-    padding: 5px;
+body > main > section:first-child > form > ul > li {
+    display: inline;
+    margin: 0;
 }
-
-body > main > section > form > ul > li {
-    display: inline-block;
-    width: 4%;
+body > main > section:first-child > form > ul > li > input {
+    width: auto;
 }
-
-
-body > main > section > form > ul > li > input {
-    background-color: var(--moonstone);
-    color: black;
-    box-shadow: 2px 2px 3px black;
-    font-size: 100%;
-    padding: 5px 8px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+body > main > section > form > ul > li:not(:last-child) > label {
+    display: none;
 }
-
-body > main > section > form > ul > li > input:hover {
-    color: var(--grape);
-}
-
-body > main > section:last-of-type > form > ul > li {
-    width: 50%;
-}
-
 body > main > section > form > ul > li > textarea {
     width: 100%;
     padding: 5px 0;
-}
-
-body > main > section:last-of-type > form > ul > li:last-child {
-    text-align: right;
-    margin-top: 20px;
-}
-
-body > main > section > form > h2 {
-    font-size: 260%;
-    font-family: monospace;
-    font-weight: bold;
-    font-style: normal;
-    margin: 15px;
-    color: var(--dark-slate-gray-opaque);
 }

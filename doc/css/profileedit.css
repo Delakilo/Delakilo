@@ -1,9 +1,10 @@
 /* Alessandro Verna */
 
 @import url(menu.css);
+@import url(forms.css);
 
-body > main > img {
-    width: 10%;
+body > nav > ul > li#profile {
+    background-color: var(--moonstone-opaque);
 }
 
 body > main {
@@ -13,57 +14,13 @@ body > main {
     flex-direction: column;
 }
 
+body > main > img {
+    width: 10%;
+}
+
+/* FORM */
 body > main > form {
     box-sizing: border-box;
     width: 75%;
-    padding: 20px 2%;
-}
-
-body > main > form > h2 {
-    text-align: center;
-    margin-top: 0;
-}
-
-body > main > form > ul {
-    list-style: none;
-}
-
-body > main > form > ul > li {
-    padding: 5px;
-}
-
-body > main > form > ul > li:not(:last-child) {
-    width: 80%;
-    margin: 0px 10%;
-    text-align: left;
-}
-
-body > main > form > ul > li:not(:last-child) > input, body > main > form > ul > li:not(:last-child) > label {
-    display: inline-block;
-    width: 45%;
-}
-
-body > main > form > ul > li:last-child {
-    text-align: right;
-    margin-top: 20px;
-}
-
-body > main > form > ul > li > input[type="submit"] {
-    background-color: var(--mahogany-opaque);
-    color: white;
-    font-size: 100%;
-    padding: 5px 8px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-@media screen and (min-width: 768px) {
-    body > main > img {
-        display: inline-block;
-    }
-
-    body > main > form {
-        width: 40%;
-    }
+    padding: 2% 2%;
 }

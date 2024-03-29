@@ -1,6 +1,7 @@
 /* Francesco Filippini */
 
 @import url('menu.css');
+@import url('forms.css');
 
 body > nav > ul > li#home {
     background-color: var(--moonstone-opaque);
@@ -50,25 +51,21 @@ body > main > article > figure > figcaption, main > section > p {
     max-width: 60%;
 }
 
+/* FORM */
+body > main > article > footer > form > ul {
+    text-align: right;
+}
 body > main > article > footer > form > ul > li {
-    display: inline-block;
-    width: 4%;
+    display: inline;
+    margin: 0 !important;
 }
-
 body > main > article > footer > form > ul > li > input {
-    background-color: var(--moonstone);
-    color: black;
-    box-shadow: 2px 2px 3px black;
-    font-size: 100%;
-    padding: 5px 8px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+    width: auto !important;
 }
-
-body > main > article > footer > form > ul > li > input:hover {
-    color: var(--grape);
+body > main > article > footer > form > ul > li:not(:last-child) > label {
+    display: none;
 }
+/* END FORM */
 
 body > main > article > aside > img:first-child {
     margin: 0 0 0 10px;

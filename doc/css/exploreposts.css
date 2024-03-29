@@ -24,13 +24,3 @@ body > main > article > figure > img {
     width: 700px;
     height: 700px;
 }
-
-@media screen and (min-width: 768px) {
-    body > main > img {
-        display: inline-block;
-    }
-
-    body > main > form {
-        width: 40%;
-    }
-}

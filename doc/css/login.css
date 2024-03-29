@@ -1,13 +1,18 @@
 /* Enrico Marchionni */
 
 @import url('bars.css');
+@import url('forms.css');
 
+body > main {
+    text-align: center;
+}
+
+/* SIGN IN and SIGN UP links */
 body > nav > ul {
     list-style: none;
     text-align: right;
     margin: 0.5%;
 }
-
 body > nav > ul > li {
     display: inline-block;
 
@@ -18,20 +23,15 @@ body > nav > ul > li {
     padding: 5px;
     margin: 1px;
 }
-
 body > nav > ul > li > a {
     text-decoration: none;
     color: black;
 }
-
 body > nav > ul > li > a:visited {
     color: var(--dark-grey);
 }
 
-body > main {
-    text-align: center;
-}
-
+/* LOGO image */
 body > main > img {
     display: none;
 
@@ -41,6 +41,7 @@ body > main > img {
     height: 250px;
 }
 
+/* FORM */
 body > main > form {
     display: inline-block;
 
@@ -53,54 +54,17 @@ body > main > form {
     margin: 0 5% 5%;
 }
 
-body > main > form > h2 {
-    text-align: left;
-    margin-top: 0;
-}
-
-body > main > form > ul {
-    list-style: none;
-}
-
-body > main > form > ul > li {
-    padding: 5px;
-}
-
-body > main > form > ul > li:not(:last-child) {
-    width: 80%;
-    margin: 0 10%;
-    text-align: left;
-}
-
-body > main > form > ul > li:not(:last-child) > input, body > main > form > ul > li:not(:last-child) > label {
-    display: inline-block;
-    width: 45%;
-}
-
-body > main > form > ul > li:last-child {
-    text-align: right;
-    margin-top: 20px;
-}
-
-body > main > form > ul > li > input[type="submit"] {
-    background-color: var(--moonstone-opaque);
-    box-shadow: 2px 2px 3px black;
-
-    font-size: 100%;
-    padding: 5px 8px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
+/* DESKTOP style */
 @media only screen
         and (orientation: landscape)
         and (min-width: 768px) {
 
+    /* LOGO image */
     body > main > img {
         display: inline-block;
     }
 
+    /* FORM */
     body > main > form {
         width: 40%;
     }
