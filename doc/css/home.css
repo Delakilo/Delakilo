@@ -1,6 +1,5 @@
 /* Francesco Filippini */
 
-@import url('bars.css');
 @import url('menu.css');
 
 body > nav > ul > li#home {
@@ -16,12 +15,12 @@ body > main > article > header > img, body > main > article > header > h2 {
     box-sizing: border-box;
 }
 
-body > main > article  img, body > main > section > img  {
+body > main > article img, body > main > section > img  {
     margin: 0;
     padding: 0;
 }
 
-body > main > article  img {
+body > main > article img {
     max-height: 40px;
 }
 
@@ -30,7 +29,6 @@ body > main > article > header > h2 > a {
     text-decoration: none;
     font-size: 120%;
     font-weight: bold;
-    font-family: sans-serif;
     max-width: 20%;
 }
 
@@ -56,7 +54,6 @@ body > main > article > footer > form > ul > li {
     display: inline-block;
     width: 4%;
 }
-
 
 body > main > article > footer > form > ul > li > input {
     background-color: var(--moonstone);
