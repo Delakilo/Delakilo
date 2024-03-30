@@ -1,6 +1,6 @@
 /* Francesco Filippini */
 
-@import url('bars.css');
+@import url('global.css');
 
 body > nav {
     position: fixed;

@@ -1,0 +1,75 @@
+/* Enrico Marchionni & Francesco Filippini */
+
+@import url('global.css');
+
+body > main > section > h2 {
+    text-align: left;
+    padding: 20px;
+    margin: 0;
+    box-sizing: border-box;
+    font-size: 300%;
+    font-weight: bold;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+body > main > section > img  {
+    margin: 0;
+    padding: 0;
+    height: 250px;
+}
+
+body > main > section > ul {
+    list-style: none;
+    padding: 5px;
+}
+
+body > main > section > ul > li {
+    font-style: italic;
+    font-weight: lighter;
+    color: black;
+    font-size: 100%;
+    text-align: center;
+    padding: 10px;
+    width: 90px;
+}
+
+body > main > section > img, body > main > section > ul, body > main > section > ul > li {
+    display: inline-block;
+    vertical-align: middle;
+    box-sizing: border-box;
+}
+
+body > main > section > p {
+    color: black;
+    font-size: 110%;
+    font-family: 'Courier New', Courier, monospace;
+    margin: 0;
+    padding: 5px 0 10px 20px;
+}
+
+body > main > section > p > strong {
+    font-size: 130%;
+    font-weight: bold;
+}
+
+body > main > section > footer > p {
+    text-align: center;
+    background-color: var(--moonstone);
+    box-shadow: 5px 3px 3px black;
+    font-size: 120%;
+    padding: 10px 5px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+}
+
+body > main > section > footer > p > a {
+    text-decoration: none;
+    width: 100%;
+    color: black;
+}
+
+body > main > section > footer > p > a:hover {
+    color: var(--grape);
+}

@@ -1,54 +1,13 @@
 /* Francesco Filippini */
 
+@import url('bars.css');
 @import url('menu.css');
 @import url('forms.css');
+@import url('post.css');
+@import url('profile.css');
 
 body > nav > ul > li#home {
     background-color: var(--moonstone-opaque);
-}
-
-body > main > article > header > img, body > main > article > header > h2 {
-    display: inline-block;
-    vertical-align: middle;
-    text-align: left;
-    padding: 0;
-    margin: 0 0 0 10px;
-    box-sizing: border-box;
-}
-
-body > main > article img, body > main > section > img  {
-    margin: 0;
-    padding: 0;
-}
-
-body > main > article img {
-    max-height: 40px;
-}
-
-body > main > article > header > h2 > a {
-    color: black;
-    text-decoration: none;
-    font-size: 120%;
-    font-weight: bold;
-    max-width: 20%;
-}
-
-body > main > article > header > h2 > a:hover {
-    color: var(--grape);
-}
-
-body > main > article > figure > img {
-    max-height: 500px;
-    width: 60%;
-}
-
-body > main > article > figure > figcaption, main > section > p {
-    color: black;
-    font-size: 110%;
-    font-family: 'Courier New', Courier, monospace;
-    margin: 0;
-    padding: 10px 0;
-    max-width: 60%;
 }
 
 /* FORM */
@@ -64,116 +23,4 @@ body > main > article > footer > form > ul > li > input {
 }
 body > main > article > footer > form > ul > li:not(:last-child) > label {
     display: none;
-}
-/* END FORM */
-
-body > main > article > aside > img:first-child {
-    margin: 0 0 0 10px;
-}
-
-body > main > article > aside > img {
-    width: 2%;
-}
-
-body > main > article > aside > img, body > main > article > aside > p:first-of-type {
-    display: inline-block;
-    vertical-align: middle;
-    box-sizing: border-box;
-}
-
-body > main > article > aside > p {
-    color: black;
-    font-size: 120%;
-    font-family: 'Times New Roman', Times, serif;
-    max-width: 60%;
-}
-
-body > main > article > aside > p:first-of-type {
-    margin: 0 0 0 10px;                /* TODO: se enrico mette i margin nel body controllare qui se è il caso di mettere solo del padding*/
-}
-
-body > main > article > aside > p > a, body > main > article > aside > p:last-of-type {
-    font-style: oblique;
-    font-weight: lighter;
-    color: var(--dark-slate-gray-opaque);
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    margin: 0;
-    padding: 0 10px;
-}
-
-body > main > article > aside > p > a {
-    text-decoration: none;
-}
-
-/* RULES FOR HOMEPROFILE.HTML AND PROFILE.HTML */
-
-body > main > section > h2 {
-    text-align: left;
-    padding: 20px;
-    margin: 0;
-    box-sizing: border-box;
-    color: black;
-    font-size: 300%;
-    font-weight: bold;
-    font-family: 'Courier New', Courier, monospace;
-}
-
-body > main > section > img, body > main > section > ul, body > main > section > ul > li {
-    display: inline-block;
-    vertical-align: top;
-    box-sizing: border-box;
-    width: 25%;
-}
-
-body > main > section > img {
-    height: 250px;
-}
-
-body > main > section > p {
-    padding: 5px 0 10px 20px;
-}
-
-body > main > section > p > strong {
-    font-size: 130%;
-    font-weight: bold;
-}
-
-body > main > section > ul {
-    list-style: none;
-    padding: 5px;
-}
-
-body > main > section > ul > li {
-    font-style: italic;
-    font-weight: lighter;
-    color: black;
-    font-size: 100%;
-    text-align: center;
-    padding: 10px;
-}
-
-body > main > section > footer {
-    text-align: center;
-}
-
-body > main > section > footer > p {
-    text-align: center;
-    background-color: var(--moonstone);
-    box-shadow: 5px 3px 3px black;
-    font-size: 120%;
-    padding: 10px 5px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    width: 60%;
-}
-
-body > main > section > footer > p > a {
-    text-decoration: none;
-    width: 100%;
-    color: black;
-}
-
-body > main > section > footer > p > a:hover {
-    color: var(--grape);
 }

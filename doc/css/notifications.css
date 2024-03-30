@@ -1,5 +1,6 @@
 /* Francesco Filippini */
 
+@import url('bars.css');
 @import url('menu.css');
 
 body > nav > ul > li#notifications {

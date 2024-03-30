@@ -1,0 +1,79 @@
+/* Enrico Marchionni & Francesco Filippini */
+
+@import url('global.css');
+
+body > main > article > header > img, body > main > article > header > h2 {
+    display: inline-block;
+    vertical-align: middle;
+    text-align: left;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body > main > article > header > h2 {
+    margin: 0;
+}
+
+body > main > article > figure {
+    margin: 0;
+    padding: 0;
+}
+
+body > main > article img {
+    margin: 0;
+    padding: 0;
+    max-height: 40px;
+}
+
+body > main > article > header > h2 > a {
+    color: black;
+    text-decoration: none;
+    font-size: 120%;
+    font-weight: bold;
+    max-width: 20%;
+}
+
+body > main > article > header > h2 > a:hover {
+    color: var(--grape);
+}
+
+body > main > article > figure > img {
+    max-height: 500px;
+    width: 60%;
+}
+
+body > main > article > figure > figcaption {
+    font-size: 110%;
+    font-family: 'Courier New', Courier, monospace;
+    margin: 0;
+    padding: 10px 0;
+}
+
+body > main > article > aside > img {
+    width: 2%;
+}
+
+body > main > article > aside > img, body > main > article > aside > p:first-of-type {
+    display: inline-block;
+    vertical-align: middle;
+    box-sizing: border-box;
+}
+
+body > main > article > aside > p {
+    color: black;
+    font-size: 120%;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+body > main > article > aside > p > a {
+    text-decoration: none;
+}
+
+body > main > article > aside > p > a, body > main > article > aside > p:last-of-type {
+    font-style: oblique;
+    font-weight: lighter;
+    color: var(--dark-slate-gray-opaque);
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    margin: 0;
+    padding: 0 10px;
+}
