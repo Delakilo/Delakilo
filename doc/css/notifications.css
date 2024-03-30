@@ -16,7 +16,7 @@ body > main > ul > li {
     box-sizing: border-box;
     display: list-item;
     border: black medium solid;
-    margin: 2px 20px;
+    margin: 0 0 0.25%;
     padding: 10px 0;
     font-size: 13pt;
     text-align: left;
@@ -26,5 +26,5 @@ body > main > ul > li {
 }
 
 body > main > ul > li:first-child {
-    margin-top: 30px;
+    margin-top: 1%;
 }

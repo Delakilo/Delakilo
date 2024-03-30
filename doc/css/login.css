@@ -11,7 +11,7 @@ body > main {
 body > nav > ul {
     list-style: none;
     text-align: right;
-    margin: 0.5%;
+    margin: 0;
 }
 body > nav > ul > li {
     display: inline-block;
