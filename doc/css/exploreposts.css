@@ -2,26 +2,24 @@
 
 @import url('bars.css');
 @import url('menu.css');
+@import url('post.css');
+@import url('forms.css');
 
-body > main > article > header {
-    background-color: var(--mahogany);
-    display: flex;
-    margin-left: 25%;
-    margin-right: 25%;
-    width: 700px;
-    height: 75px;
+body > nav > ul > li#explore {
+    background-color: var(--moonstone-opaque);
 }
 
-body > main > article > header > img {
-    width: 10%;
+/* FORM */
+body > main > article > footer > form > ul {
+    text-align: right;
 }
-
-body > main > article > header > h2 {
-    padding: 1%;
+body > main > article > footer > form > ul > li {
+    display: inline;
+    margin: 0 !important;
 }
-
-body > main > article > figure > img {
-    margin-left: 313px;
-    width: 700px;
-    height: 700px;
+body > main > article > footer > form > ul > li > input {
+    width: auto !important;
+}
+body > main > article > footer > form > ul > li:not(:last-child) > label {
+    display: none;
 }
