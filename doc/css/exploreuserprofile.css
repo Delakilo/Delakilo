@@ -3,3 +3,18 @@
 @import url('forms.css');
 @import url('post.css');
 @import url('profile.css');
+
+/* FORM */
+body > main > article > footer > form > ul {
+    text-align: right;
+}
+body > main > article > footer > form > ul > li {
+    display: inline;
+    margin: 0 !important;
+}
+body > main > article > footer > form > ul > li > input {
+    width: auto !important;
+}
+body > main > article > footer > form > ul > li:not(:last-child) > label {
+    display: none;
+}
