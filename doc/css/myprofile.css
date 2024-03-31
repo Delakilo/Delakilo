@@ -8,3 +8,7 @@
 body > nav > ul > li#profile {
     background-color: var(--moonstone-opaque);
 }
+
+body > main > section > div > h2, body > main > section > div > p {
+    display: inline-block;
+}

@@ -2,7 +2,14 @@
 
 @import url('global.css');
 
-body > main > section > h2 {
+body > main > section {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    width: 60%;
+}
+
+body > main > section h2 {
     text-align: left;
     padding: 20px;
     margin: 0;
@@ -12,18 +19,18 @@ body > main > section > h2 {
     font-family: 'Courier New', Courier, monospace;
 }
 
-body > main > section > img  {
+body > main > section > div > img  {
     margin: 0;
     padding: 0;
     height: 250px;
 }
 
-body > main > section > ul {
+body > main > section > div > ul {
     list-style: none;
     padding: 5px;
 }
 
-body > main > section > ul > li {
+body > main > section > div > ul > li {
     font-style: italic;
     font-weight: lighter;
     color: black;
@@ -33,7 +40,7 @@ body > main > section > ul > li {
     width: 90px;
 }
 
-body > main > section > img, body > main > section > ul, body > main > section > ul > li {
+body > main > section > div > img, body > main > section > div > ul, body > main > section > div > ul > li {
     display: inline-block;
     vertical-align: middle;
     box-sizing: border-box;
