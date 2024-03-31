@@ -42,7 +42,7 @@ body {
 }
 
 body > main {
-    /* Allows main to GROW and SHRINK when necessary */
+    /* Allows main to occupy space left over */
     flex: 1;
     margin: 1%;
 }

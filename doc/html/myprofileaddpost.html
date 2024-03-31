@@ -5,8 +5,7 @@
         <title>Delakilo - Profile Add Post</title>
         <meta charset="UTF-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <!-- TODO: add .css -->
-        <!-- <link href="PATH/file.css" rel="stylesheet" type="text/css"/> -->
+        <link href="../css/myprofileaddpost.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
         <header>
@@ -21,14 +20,12 @@
                 <!-- TODO: decide if put here selected image for a "preview" of the final result -->
                 <!-- <img src="" alt=""/> -->
                 <form action="#" method="POST">
-                    <fieldset>
-                        <legend>Add post</legend>
-                        <ul>
-                            <li><label for="image">Image:</label><input id="image" type="file" name="image" required/></li>
-                            <li><label for="caption">Caption:</label><textarea id="caption" name="caption" placeholder="Caption"></textarea></li>
-                        </ul>
-                    </fieldset>
-                    <label for="post" hidden>Post:</label><input id="post" type="submit" value="Post"/>
+                    <h2>Add post</h2>
+                    <ul>
+                        <li><label for="image">Image:</label><input id="image" type="file" name="image" required/></li>
+                        <li><label for="caption">Caption:</label><textarea id="caption" name="caption" placeholder="Caption"></textarea></li>
+                        <li><label for="post" hidden>Post:</label><input id="post" type="submit" value="Post"/></li>
+                    </ul>
                 </form>
             </section>
         </main>
