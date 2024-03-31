@@ -4,6 +4,10 @@
 @import url('post.css');
 @import url('profile.css');
 
+body > nav > ul > li#explore {
+    background-color: var(--moonstone-opaque);
+}
+
 /* FORM */
 body > main > article > footer > form > ul {
     text-align: right;
