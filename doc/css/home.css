@@ -10,18 +10,3 @@
 body > nav > ul > li#home {
     background-color: var(--moonstone-opaque);
 }
-
-/* FORM */
-body > main > article > footer > form > ul {
-    text-align: left;
-}
-body > main > article > footer > form > ul > li {
-    display: inline;
-    margin: 0 !important;
-}
-body > main > article > footer > form > ul > li > input {
-    width: auto !important;
-}
-body > main > article > footer > form > ul > li:not(:last-child) > label {
-    display: none;
-}
