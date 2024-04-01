@@ -13,7 +13,7 @@ body > nav > ul > li#home {
 
 /* FORM */
 body > main > article > footer > form > ul {
-    text-align: right;
+    text-align: left;
 }
 body > main > article > footer > form > ul > li {
     display: inline;

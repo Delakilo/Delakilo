@@ -31,10 +31,9 @@ body > main form > ul > li:last-child {
     margin-top: 20px;
 }
 
-body > main form > ul > li > input[type="submit"], body > main form > ul > li > input[type="button"] {
+body > main form > ul > li > input[type="submit"], body > main form > ul > li > input[type="button"], body > main form > ul > li > a {
     background-color: var(--moonstone-opaque);
     box-shadow: 2px 2px 3px black;
-
     font-size: 100%;
     padding: 5px 8px;
     border: none;
