@@ -1,7 +1,9 @@
 /* Enrico Marchionni */
 
-@import url('bars.css');
-@import url('forms.css');
+@import url('templates/global.css');
+@import url('templates/global.css');
+@import url('templates/bars.css');
+@import url('templates/forms.css');
 
 body > main {
     text-align: center;
@@ -16,19 +18,10 @@ body > nav > ul {
 body > nav > ul > li {
     display: inline-block;
 
-    color: black;
-
     border-radius: 12px;
     border: black medium solid;
     padding: 5px;
     margin: 1px;
-}
-body > nav > ul > li > a {
-    text-decoration: none;
-    color: black;
-}
-body > nav > ul > li > a:visited {
-    color: var(--dark-grey);
 }
 
 /* LOGO image */

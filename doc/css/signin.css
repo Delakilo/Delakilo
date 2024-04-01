@@ -1,5 +1,6 @@
 /* Enrico Marchionni */
 
+@import url('templates/global.css');
 @import url('login.css');
 
 body > nav > ul > li#signin {
@@ -10,9 +11,4 @@ body > nav > ul > li#signin {
 
 body > nav > ul > li#signup {
     border-style: none;
-}
-
-body > nav > ul > li#signup > a:hover {
-    opacity: 0.8;
-    color: var(--grape);
 }

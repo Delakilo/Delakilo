@@ -1,5 +1,6 @@
 /* Enrico Marchionni */
 
+/* DEFINITIONS */
 :root {
     /* COLORS */
     --dark-slate-gray: #183A37; /* white text color, HEADER and FOOTER */
@@ -23,12 +24,12 @@
     --dark-grey: rgb(45, 45, 45);
 }
 
+/* PAGINATION */
 body, html {
     margin: 0;
     padding: 0;
     height: 99%;
 }
-
 body {
     background-color: var(--wheat);
 
@@ -40,9 +41,20 @@ body {
     min-height: 99%;
     margin: 0.5%;
 }
-
 body > main {
     /* Allows main to occupy space left over */
     flex: 1;
     margin: 1%;
+}
+
+/* LINKS */
+body a {
+    color: black;
+    text-decoration: none;
+}
+body a:visited {
+    color: var(--dark-grey);
+}
+body a:hover {
+    color: var(--grape-opaque);
 }

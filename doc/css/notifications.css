@@ -1,7 +1,8 @@
 /* Francesco Filippini */
 
-@import url('bars.css');
-@import url('menu.css');
+@import url('templates/global.css');
+@import url('templates/bars.css');
+@import url('templates/menu.css');
 
 body > nav > ul > li#notifications {
     background-color: var(--moonstone-opaque);

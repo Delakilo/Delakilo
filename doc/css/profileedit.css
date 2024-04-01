@@ -1,8 +1,9 @@
 /* Alessandro Verna */
 
-@import url('bars.css');
-@import url('menu.css');
-@import url('forms.css');
+@import url('templates/global.css');
+@import url('templates/bars.css');
+@import url('templates/menu.css');
+@import url('templates/forms.css');
 
 body > nav > ul > li#profile {
     background-color: var(--moonstone-opaque);

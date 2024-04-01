@@ -1,8 +1,9 @@
 /* Francesco Filippini */
 
-@import url('bars.css');
-@import url('menu.css');
-@import url('forms.css');
+@import url('templates/global.css');
+@import url('templates/bars.css');
+@import url('templates/menu.css');
+@import url('templates/forms.css');
 
 body > nav > ul > li#home {
     background-color: var(--moonstone-opaque);
@@ -35,17 +36,11 @@ body > main > section > img {
 
 body > main > section > a {
     box-sizing: border-box;
-    color: black;
-    text-decoration: none;
     padding: 5px;
     font-size: 120%;
     margin: 0 0 0 5px;
     font-weight: bold;
     font-family: sans-serif;
-}
-
-body > main > section > a:hover {
-    color: var(--grape);
 }
 
 body > main > section > p {

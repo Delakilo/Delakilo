@@ -1,9 +1,10 @@
 /* Enrico Marchionni & Francesco Filippini */
 
-@import url('bars.css');
-@import url('menu.css');
-@import url('profile.css');
-@import url('post.css');
+@import url('templates/global.css');
+@import url('templates/bars.css');
+@import url('templates/menu.css');
+@import url('templates/profile.css');
+@import url('templates/post.css');
 
 body > nav > ul > li#profile {
     background-color: var(--moonstone-opaque);

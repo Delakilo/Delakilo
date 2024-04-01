@@ -1,4 +1,4 @@
-/* Francesco Filippini */
+/* Francesco Filippini & Enrico Marchionni */
 
 @import url('global.css');
 
@@ -33,17 +33,7 @@ body > nav > ul > li > a > img {
 }
 
 body > nav > ul > li > a {
-    color: black;
-    text-decoration: none;
     font-size: 110%;
-}
-
-body > nav > ul > li > a:hover {
-    color: var(--grape) !important;
-}
-
-body > nav > ul > li > a:visited {
-    color: var(--dark-grey);
 }
 
 .menu-text {

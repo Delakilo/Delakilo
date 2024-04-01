@@ -78,11 +78,5 @@ body > main > section > footer > p {
 }
 
 body > main > section > footer > p > a {
-    text-decoration: none;
     width: 100%;
-    color: black;
-}
-
-body > main > section > footer > p > a:hover {
-    color: var(--grape);
 }
