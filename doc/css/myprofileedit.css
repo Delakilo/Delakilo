@@ -9,20 +9,10 @@ body > nav > ul > li#profile {
     background-color: var(--moonstone-opaque);
 }
 
-body > main {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+body > main > section {
+    text-align: center;
 }
 
-body > main > img {
+body > main > section > img {
     width: 10%;
-}
-
-/* FORM */
-body > main > form {
-    box-sizing: border-box;
-    width: 75%;
-    padding: 2% 2%;
 }

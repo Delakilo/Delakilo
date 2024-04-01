@@ -8,18 +8,19 @@ body > nav > ul > li#notifications {
     background-color: var(--moonstone-opaque);
 }
 
-body > main > ul {
+body > main > article > ul {
     list-style: none;
     margin: 0;
     padding: 0;
 }
 
-body > main > ul > li {
+body > main > article > ul > li {
     box-sizing: border-box;
     display: list-item;
     border: black medium solid;
     margin: 0 0 0.25%;
     padding: 10px 0;
+    /* TODO: put font size in percentage, maybe this should be done globally... */
     font-size: 13pt;
     text-align: left;
     font-style: italic;
@@ -27,6 +28,6 @@ body > main > ul > li {
     background-color: var(--reseda-green);
 }
 
-body > main > ul > li:first-child {
+body > main > article > ul > li:first-child {
     margin-top: 1%;
 }

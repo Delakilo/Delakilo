@@ -1,4 +1,5 @@
 /* Alessandro Verna */
+
 @import url('templates/global.css');
 @import url('templates/bars.css');
 @import url('templates/menu.css');
@@ -8,23 +9,10 @@ body > nav > ul > li#explore {
     background-color: var(--moonstone-opaque);
 }
 
-body > main {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-}
-
-body > main > img {
-    width: 10%;
-}
-
 /* FORM */
-body > main > form {
-    box-sizing: border-box;
-    width: 75%;
-    padding: 2% 2%;
+body > main > section > form {
+    text-align: center;
 }
-
-body > main > form #search_bar {
-    width: 100%;
+body > main > section > form > ul > li {
+    display: inline;
 }

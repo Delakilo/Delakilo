@@ -17,30 +17,30 @@ body > main > section {
     margin-bottom: 2%;
 }
 
-body > main > section:last-child {
-    margin-top: 4%;
-    border: black medium dotted;
-    background-color: var(--reseda-green);
-}
-
-body > main > section > img, body > main > section > a {
+body > main > section > header > img, body > main > section > header > h2 {
     display: inline-block;
     vertical-align: middle;
     text-align: left;
 }
 
-body > main > section > img {
-    max-height: 30px;
-    max-width: 100%;
+body > main > section > header > h2 {
+    margin: 0 0 0 1%;
 }
 
-body > main > section > a {
-    box-sizing: border-box;
-    padding: 5px;
+body > main > section > header > img {
+    width: 10%;
+}
+
+body > main > section > header > h2 > a {
     font-size: 120%;
-    margin: 0 0 0 5px;
     font-weight: bold;
-    font-family: sans-serif;
+    max-width: 20%;
+}
+
+body > main > section:last-child {
+    margin-top: 4%;
+    border: black medium dotted;
+    background-color: var(--reseda-green);
 }
 
 body > main > section > p {

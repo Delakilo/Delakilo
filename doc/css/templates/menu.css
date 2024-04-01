@@ -2,6 +2,14 @@
 
 @import url('global.css');
 
+body > main > article, body > main > section {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    width: 90%;
+    max-width: 90%;
+}
+
 body > nav > ul {
     list-style: none;
     text-align: center;
@@ -44,6 +52,11 @@ body > nav > ul > li > a {
 @media only screen
         and (orientation: landscape)
         and (min-width: 768px) {
+
+    body > main > article, body > main > section, body > main > ul, body > main > form {
+        width: 60%;
+        max-width: 60%;
+    }
 
     .menu-text {
         position: static;
