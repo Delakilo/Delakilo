@@ -59,6 +59,12 @@ body > main > section > p > strong {
     font-weight: bold;
 }
 
+body > main > section > footer, body > main > section > footer > p {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
 body > main > section > footer > p {
     text-align: center;
     background-color: var(--moonstone);
