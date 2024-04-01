@@ -16,6 +16,7 @@ body > main > article > header > h2, body > main > section > header > h2 {
 
 body > main > section > header > img, body > main > article > header > img {
     width: 10%;
+    border-radius: 60%;
 }
 
 body > main > section > header > h2 > a, body > main > article > header > h2 > a  {

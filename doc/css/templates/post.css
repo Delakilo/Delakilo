@@ -25,6 +25,7 @@ body > main > article > figure > figcaption {
 body > main > article > aside > img {
     max-height: 40px;
     width: 3%;
+    border-radius: 60%;
 }
 
 body > main > article > aside > img, body > main > article > aside > p:first-of-type {

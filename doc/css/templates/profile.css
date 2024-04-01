@@ -16,6 +16,7 @@ body > main > section > div > img  {
     margin: 0;
     padding: 0;
     height: 250px;
+    border-radius: 60%;
 }
 
 body > main > section > div > ul {
