@@ -31,7 +31,7 @@ body > main > section > p {
     padding: 0;
 }
 
-body > main > section > p:not(:has(small)) {          /* The comment */ /* TODO: controllare se supportato da tutti i browser oppure fare questa cosa con javascript*/
+body > main > section > p:first-of-type {             /* The comment */
     color: black;
     padding: 8px;
     margin: 8px 8px 2px;
