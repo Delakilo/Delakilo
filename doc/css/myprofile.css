@@ -5,6 +5,7 @@
 @import url('templates/menu.css');
 @import url('templates/profile.css');
 @import url('templates/post.css');
+@import url('templates/headerpost.css');
 
 body > nav > ul > li#profile {
     background-color: var(--moonstone-opaque);

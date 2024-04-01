@@ -4,6 +4,7 @@
 @import url('templates/bars.css');
 @import url('templates/menu.css');
 @import url('templates/post.css');
+@import url('templates/headerpost.css');
 @import url('templates/forms.css');
 
 body > nav > ul > li#explore {

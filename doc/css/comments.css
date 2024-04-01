@@ -4,6 +4,7 @@
 @import url('templates/bars.css');
 @import url('templates/menu.css');
 @import url('templates/forms.css');
+@import url('templates/headerpost.css');
 
 body > nav > ul > li#home {
     background-color: var(--moonstone-opaque);
@@ -15,26 +16,6 @@ body > main {
 
 body > main > section {
     margin-bottom: 2%;
-}
-
-body > main > section > header > img, body > main > section > header > h2 {
-    display: inline-block;
-    vertical-align: middle;
-    text-align: left;
-}
-
-body > main > section > header > h2 {
-    margin: 0 0 0 1%;
-}
-
-body > main > section > header > img {
-    width: 10%;
-}
-
-body > main > section > header > h2 > a {
-    font-size: 120%;
-    font-weight: bold;
-    max-width: 20%;
 }
 
 body > main > section:last-child {

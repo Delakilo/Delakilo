@@ -5,6 +5,7 @@
 @import url('templates/menu.css');
 @import url('templates/forms.css');
 @import url('templates/post.css');
+@import url('templates/headerpost.css');
 @import url('templates/profile.css');
 
 body > nav > ul > li#home {

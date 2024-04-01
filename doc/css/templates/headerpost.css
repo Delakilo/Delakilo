@@ -1,0 +1,30 @@
+/* Francesco Filippini */
+
+@import url('global.css');
+
+body > main > article > header > img, body > main > section > header > img, body > main > article > header > h2, body > main > section > header > h2 {
+    display: inline-block;
+    vertical-align: middle;
+    text-align: left;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body > main > article > header > h2, body > main > section > header > h2 {
+    margin: 0 0 0 1%;
+}
+
+body > main > section > header > img, body > main > article > header > img {
+    width: 10%;
+}
+
+body > main > section > header > h2 > a, body > main > article > header > h2 > a  {
+    font-size: 120%;
+    font-weight: bold;
+    max-width: 20%;
+}
+
+body > main > article img, body > main > section img {
+    margin: 0;
+    padding: 0;
+}
