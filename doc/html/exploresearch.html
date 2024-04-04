@@ -18,9 +18,14 @@
             <section>
                 <form action="#" method="GET">
                     <ul>
-                        <li><label for="search_bar" hidden></label><input id="search_bar" type="text" name="SearchBar" autocomplete="on" placeholder="Search"/></li>
+                        <li><label for="search_bar" hidden></label><input id="search_bar" type="text" name="SearchBar" autocomplete="on" placeholder="Search" required list="mySearchOptions"/></li>
                         <li><label for="search_btn" hidden></label><input id="search_btn" type="submit" value="Search"/></li>
                     </ul>
+                    <datalist id="mySearchOptions">
+                        <option value="User 1">
+                        <option value="User 2">
+                        <option value="User 3">
+                    </datalist>
                 </form>
             </section>
         </main>
