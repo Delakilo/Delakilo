@@ -9,7 +9,6 @@ body > main form > h2 {
 
 body > main form > ul {
     list-style: none;
-    text-align: left;
 }
 
 body > main form > ul > li {
@@ -44,22 +43,4 @@ body > main form > ul > li > input[type="submit"], body > main form > ul > li > 
 
 body > main form > ul > li > input[type="submit"]:hover, body > main form > ul > li > input[type="button"]:hover {
     color: var(--grape);
-}
-
-body > main form:not([name="addComment"], [name="addPost"], [name="profileEdit"]) > ul > li {
-    display: inline;
-    margin: 0 !important;
-}
-
-body > main form:not([name="addComment"], [name="addPost"], [name="profileEdit"]) > ul > li > input {
-    width: auto;
-}
-
-body > main  form:not([name="addPost"], [name="profileEdit"]) > ul > li:not(:last-child) > label {
-    display: none;
-} */
-
-body > main > section > form:not([name="addPost"], [name="profileEdit"]) > ul > li > textarea {
-    width: 100%;
-    padding: 5px 0;
 }

@@ -3,16 +3,16 @@
 @import url('templates/global.css');
 @import url('templates/bars.css');
 @import url('templates/menu.css');
-@import url('templates/forms.css');
+@import url('templates/formspages.css');
 
 body > nav > ul > li#explore {
     background-color: var(--moonstone-opaque);
 }
 
 /* FORM */
-body > main > section > form {
+/* body > main > section > form {
     text-align: center;
 }
 body > main > section > form > ul > li {
     display: inline;
-}
+} */

@@ -3,7 +3,7 @@
 @import url('templates/global.css');
 @import url('templates/bars.css');
 @import url('templates/menu.css');
-@import url('templates/forms.css');
+@import url('templates/formspages.css');
 @import url('templates/post.css');
 @import url('templates/headerpost.css');
 @import url('templates/profile.css');
@@ -13,7 +13,7 @@ body > nav > ul > li#explore {
 }
 
 /* FORM */
-body > main > article > footer > form > ul {
+/* body > main > article > footer > form > ul {
     text-align: right;
 }
 body > main > article > footer > form > ul > li {
@@ -25,4 +25,4 @@ body > main > article > footer > form > ul > li > input {
 }
 body > main > article > footer > form > ul > li:not(:last-child) > label {
     display: none;
-}
+} */

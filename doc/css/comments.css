@@ -3,7 +3,7 @@
 @import url('templates/global.css');
 @import url('templates/bars.css');
 @import url('templates/menu.css');
-@import url('templates/forms.css');
+@import url('templates/formspages.css');
 @import url('templates/headerpost.css');
 
 body > nav > ul > li#home {
