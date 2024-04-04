@@ -8,11 +8,3 @@
 body > nav > ul > li#explore {
     background-color: var(--moonstone-opaque);
 }
-
-/* FORM */
-/* body > main > section > form {
-    text-align: center;
-}
-body > main > section > form > ul > li {
-    display: inline;
-} */
