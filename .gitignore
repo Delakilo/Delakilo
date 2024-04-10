@@ -11,3 +11,9 @@ tmp/
 
 # Built Visual Studio Code Extensions
 *.vsix
+
+## DB-MAIN ##
+
+# tmp files
+
+.~*.lun*
