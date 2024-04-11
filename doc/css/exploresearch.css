@@ -18,14 +18,16 @@ body > main > article > ul {
 body > main > article > ul > li {
     box-sizing: border-box;
     display: list-item;
-    border: black medium solid;
-    margin: 0 0 0.25%;
+    border-top: black medium solid;
+    border-right: black medium solid;
+    border-left: black medium solid;
     padding: 10px 0;
-    /* TODO: put font size in percentage, maybe this should be done globally... */
-    font-size: 13pt;
-    text-align: left;
-    color: black;
+    font-size: 100%;
     background-color: var(--reseda-green);
+}
+
+body > main > article > ul > li:last-child {
+    border-bottom: black medium solid;
 }
 
 body > main > article > ul > li:first-child {
