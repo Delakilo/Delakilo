@@ -1,0 +1,11 @@
+/* Enrico Marchionni */
+
+@import url('global.css');
+
+body > main > article, body > main > section {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    width: 90%;
+    max-width: 90%;
+}
