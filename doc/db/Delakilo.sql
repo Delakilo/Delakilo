@@ -151,7 +151,7 @@ ALTER TABLE `NOTIFICATION`
 
 delimiter //
 
-CREATE TRIGGER TRG_update_nfollowers_counter AFTER INSERT ON `FOLLOW`
+CREATE TRIGGER TRG_increase_nFollowers_counter AFTER INSERT ON `FOLLOW`
 FOR EACH ROW
 BEGIN
     UPDATE `USER`
@@ -159,7 +159,15 @@ BEGIN
     WHERE `Username` = NEW.`EkUserFollows`;
 END;//
 
-CREATE TRIGGER TRG_update_nfollowed_counter AFTER INSERT ON `FOLLOW`
+CREATE TRIGGER TRG_decrease_nFollowers_counter AFTER DELETE ON `FOLLOW`
+FOR EACH ROW
+BEGIN
+    UPDATE `USER`
+    SET `nFollowers` = `nFollowers` - 1
+    WHERE `Username` = OLD.`EkUserFollowed`;
+END;//
+
+CREATE TRIGGER TRG_increase_nFollowed_counter AFTER INSERT ON `FOLLOW`
 FOR EACH ROW
 BEGIN
     UPDATE `USER`
@@ -167,7 +175,15 @@ BEGIN
     WHERE `Username` = NEW.`EkUserFollowed`;
 END;//
 
-CREATE TRIGGER TRG_update_posts_counter AFTER INSERT ON `POST`
+CREATE TRIGGER TRG_decrease_nFollowed_counter AFTER DELETE ON `FOLLOW`
+FOR EACH ROW
+BEGIN
+    UPDATE `USER`
+    SET `nFollowed` = `nFollowed` - 1
+    WHERE `Username` = OLD.`EkUserFollows`;
+END;//
+
+CREATE TRIGGER TRG_increase_posts_counter AFTER INSERT ON `POST`
 FOR EACH ROW
 BEGIN
     UPDATE `USER`
@@ -175,12 +191,28 @@ BEGIN
     WHERE `Username` = NEW.`EkUser`;
 END;//
 
-CREATE TRIGGER TRG_update_like_counter AFTER INSERT ON `LIKE`
+CREATE TRIGGER TRG_decrease_posts_counter AFTER DELETE ON `POST`
+FOR EACH ROW
+BEGIN
+    UPDATE `USER`
+    SET `nPosts` = `nPosts` - 1
+    WHERE `Username` = OLD.`EkUser`;
+END;//
+
+CREATE TRIGGER TRG_increase_like_counter AFTER INSERT ON `LIKE`
 FOR EACH ROW
 BEGIN
     UPDATE `POST`
     SET `nLikes` = `nLikes` + 1
     WHERE `EkUser` = NEW.`EkUser`;
+END;//
+
+CREATE TRIGGER TRG_decrease_like_counter AFTER DELETE ON `LIKE`
+FOR EACH ROW
+BEGIN
+    UPDATE `POST`
+    SET `nLikes` = `nLikes` - 1
+    WHERE `EkUser` = OLD.`EkUser`;
 END;//
 
 delimiter ;
