@@ -11,3 +11,9 @@ body > nav > ul > li#explore {
     background-color: var(--moonstone-opaque);
 }
 
+body > main > form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
