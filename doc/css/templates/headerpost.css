@@ -2,7 +2,12 @@
 
 @import url('global.css');
 
-body > main > article > header > img, body > main > section > header > img, body > main > article > header > h2, body > main > section > header > h2 {
+body > main > article > header > img,
+body > main > article > header > h2,
+body > main > section > header > img,
+body > main > section > header > h2,
+body > main > article > ol > li > img,
+body > main > article > ol > li > h2 {
     display: inline-block;
     vertical-align: middle;
     text-align: left;
@@ -10,22 +15,41 @@ body > main > article > header > img, body > main > section > header > img, body
     box-sizing: border-box;
 }
 
-body > main > article > header > h2, body > main > section > header > h2 {
+body > main > article > header > h2,
+body > main > section > header > h2,
+body > main > article > ol > li > h2 {
     margin: 0 0 0 1%;
 }
 
-body > main > section > header > img, body > main > article > header > img {
-    width: 10%;
+body > main > section > header > img,
+body > main > article > header > img,
+body > main > article > ol > li > img {
+    width: 12vh;
     border-radius: 60%;
 }
 
-body > main > section > header > h2 > a, body > main > article > header > h2 > a  {
-    font-size: 120%;
+body > main > section > header > h2 > a,
+body > main > article > header > h2 > a,
+body > main > article > ol > li > h2 > a  {
+    font-size: 100%;
     font-weight: bold;
     max-width: 20%;
 }
 
-body > main > article img, body > main > section img {
+body > main > article img,
+body > main > section img,
+body > main > article > ol > li > img {
     margin: 0;
     padding: 0;
+}
+
+@media only screen
+        and (orientation: landscape)
+        and (min-width: 768px) {
+
+    body > main > section > header > img,
+    body > main > article > header > img,
+    body > main > article > ol > li > img {
+        width: 8vh;
+    }
 }

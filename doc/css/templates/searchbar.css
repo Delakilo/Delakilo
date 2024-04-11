@@ -1,0 +1,12 @@
+/* Enrico Marchionni */
+
+@import url('global.css');
+
+body > main > section > form > ul {
+    text-align: center;
+}
+
+/* TODO: probably to recalculate */
+body > main > section > form > ul > li > input[name="SearchBar"] {
+    width: 60%;
+}
