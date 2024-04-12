@@ -6,26 +6,8 @@
 @import url('templates/formspages.css');
 @import url('templates/headerpost.css');
 @import url('templates/searchbar.css');
+@import url('templates/lists.css');
 
 body > nav > ul > li#explore {
     background-color: var(--moonstone-opaque);
-}
-
-body > main > article > ol {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
-body > main > article > ol > li:first-child {
-    margin-top: 1%;
-}
-
-body > main > article > ol > li {
-    box-sizing: border-box;
-    display: list-item;
-    border: black medium solid;
-    margin: 0 0 0.25%;
-    padding: 10px 0;
-    background-color: var(--reseda-green);
 }

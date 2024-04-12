@@ -1,0 +1,27 @@
+/* Francesco Filippini */
+
+@import url('global.css');
+
+body > main > article > ol, body > main > article > ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+body > main > article > ol > li:first-child, body > main > article > ul > li:first-child {
+    margin-top: 1%;
+}
+
+body > main > article > ul > li, body > main > article > ol > li {
+    box-sizing: border-box;
+    display: list-item;
+    border: black medium solid;
+    margin: 0 0 0.25%;
+    padding: 10px 0;
+    /* TODO: put font size in percentage, maybe this should be done globally... */
+    font-size: 13pt;
+    text-align: left;
+    font-style: italic;
+    color: black;
+    background-color: var(--reseda-green);
+}
