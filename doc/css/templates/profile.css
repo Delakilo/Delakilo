@@ -12,10 +12,10 @@ body > main > section h2 {
     font-family: 'Courier New', Courier, monospace;
 }
 
-body > main > section > div > img  {
+body > main > section > div > img {
     margin: 0;
     padding: 0;
-    height: 250px;
+    width: 30%;
     border-radius: 60%;
 }
 

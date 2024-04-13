@@ -24,7 +24,7 @@ body > main > article > ol > li > h2 {
 body > main > section > header > img,
 body > main > article > header > img,
 body > main > article > ol > li > img {
-    width: 12vh;
+    width: 12%;
     border-radius: 60%;
 }
 
@@ -50,6 +50,6 @@ body > main > article > ol > li > img {
     body > main > section > header > img,
     body > main > article > header > img,
     body > main > article > ol > li > img {
-        width: 8vh;
+        width: 8%;
     }
 }

@@ -11,6 +11,19 @@ body > nav > ul > li#profile {
     background-color: var(--moonstone-opaque);
 }
 
-body > main > section > div > h2, body > main > section > div > p {
+body > main > section > header > h2,
+body > main > section > header > p,
+body > main > section > div > h2,
+body > main > section > div > p {
     display: inline-block;
+}
+
+body > main > section > header > h2,
+body > main > section > header > p {
+    vertical-align: bottom;
+}
+
+body > main > section > header > p > a > img {
+    width: 1.5em;
+    vertical-align: bottom;
 }
