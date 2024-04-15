@@ -4,6 +4,7 @@
 @import url('templates/bars.css');
 @import url('templates/menu.css');
 @import url('templates/forms.css');
+@import url('templates/headerpost.css');
 
 body > nav > ul > li#profile {
     background-color: var(--moonstone-opaque);
@@ -14,6 +15,6 @@ body > main > section {
 }
 
 body > main > section > img {
-    width: 10%;
+    width: 12%;
     border-radius: 60%;
 }

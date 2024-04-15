@@ -8,17 +8,9 @@ body > main form > ul {
     padding: 0;
 }
 
-body > main footer {
-    margin-top: 10px;
-}
-
-body > main form:not([name="addComment"]) > ul > li, body > main footer > a {
-    display: inline;
+body > main form > ul > li, body > main footer > a {
+    display: inline-block;
     margin: 0 !important;
-}
-
-body > main form:not([name="addComment"]) > ul > li > input {
-    width: auto;
 }
 
 body > main form > ul > li:not(:last-child) > label {

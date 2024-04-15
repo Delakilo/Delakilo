@@ -11,3 +11,15 @@
 body > nav > ul > li#explore {
     background-color: var(--moonstone-opaque);
 }
+
+/* FORM */
+body > main > section > form > ul > li {
+    text-align: center;
+    padding: 0;
+}
+
+body > main > section > form > ul > li > input[name="SearchBar"] {
+    box-sizing: border-box;
+    width: 100%;
+    text-align: center;
+}

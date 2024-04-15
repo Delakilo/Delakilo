@@ -48,3 +48,7 @@ body > main > section > p > small {                 /* The paragraph that descri
     font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
+/* FORM */
+body > main form > ul > li {
+    display: block;
+}
