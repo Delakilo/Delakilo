@@ -36,7 +36,8 @@ CREATE TABLE `USER` (
      `nFollowed` INT UNSIGNED NOT NULL DEFAULT 0,
      `nPosts` INT UNSIGNED NOT NULL DEFAULT 0,
      `timestamp` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-     PRIMARY KEY (`Username`)
+     PRIMARY KEY (`Username`),
+     CONSTRAINT `UsernameNotEmptyCheck` CHECK (`Username` <> '')
 ) ENGINE = InnoDB;
 
 CREATE TABLE `FOLLOW` (
