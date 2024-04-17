@@ -1,0 +1,12 @@
+/* Francesco Filippini */
+
+@import url('templates/global.css');
+@import url('templates/bars.css');
+@import url('templates/menu.css');
+@import url('templates/lists.css');
+@import url('templates/headerpost.css');
+
+
+body > nav > ul > li#profile {
+    background-color: var(--moonstone-opaque);
+}
