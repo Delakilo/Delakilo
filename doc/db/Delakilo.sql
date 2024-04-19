@@ -24,8 +24,8 @@ USE `Delakilo`;
 CREATE TABLE `USER` (
      `Username` VARCHAR(50) NOT NULL,
      -- `email` VARCHAR(50) UNIQUE DEFAULT NULL,
-     `passwordSalt` VARCHAR(256) NOT NULL,
-     `passwordHash` VARCHAR(128) NOT NULL,
+     `passwordSalt` CHAR(255) NOT NULL,
+     `passwordHash` CHAR(128) NOT NULL,
      `name` VARCHAR(50) NOT NULL DEFAULT '',
      `surname` VARCHAR(50) NOT NULL DEFAULT '',
      -- `birthday` DATE DEFAULT NULL,
@@ -78,7 +78,7 @@ CREATE TABLE `COMMENT` (
      `EkPost` INT UNSIGNED NOT NULL,
      -- `EkCommentParent` INT UNSIGNED DEFAULT NULL,
      `content` VARCHAR(1000) NOT NULL,
-     `nLikes` INT UNSIGNED NOT NULL DEFAULT 0,
+     -- `nLikes` INT UNSIGNED NOT NULL DEFAULT 0,
      `timestamp` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
      PRIMARY KEY (`IdComment`),
      CONSTRAINT `ContentNotEmptyAndHeadingTrailingSpacesCheck` CHECK (`content` <> ''
@@ -280,20 +280,20 @@ BEGIN
 END;//
 
 -- comment likes
-CREATE TRIGGER TRG_increase_comment_likes_counter AFTER INSERT ON `LIKE_COMMENT`
-FOR EACH ROW
-BEGIN
-    UPDATE `COMMENT`
-    SET `nLikes` = `nLikes` + 1
-    WHERE `IdComment` = NEW.`EkComment`;
-END;//
+-- CREATE TRIGGER TRG_increase_comment_likes_counter AFTER INSERT ON `LIKE_COMMENT`
+-- FOR EACH ROW
+-- BEGIN
+--     UPDATE `COMMENT`
+--     SET `nLikes` = `nLikes` + 1
+--     WHERE `IdComment` = NEW.`EkComment`;
+-- END;//
 
-CREATE TRIGGER TRG_decrease_comment_likes_counter AFTER DELETE ON `LIKE_COMMENT`
-FOR EACH ROW
-BEGIN
-    UPDATE `COMMENT`
-    SET `nLikes` = `nLikes` - 1
-    WHERE `IdComment` = OLD.`EkComment`;
-END;//
+-- CREATE TRIGGER TRG_decrease_comment_likes_counter AFTER DELETE ON `LIKE_COMMENT`
+-- FOR EACH ROW
+-- BEGIN
+--     UPDATE `COMMENT`
+--     SET `nLikes` = `nLikes` - 1
+--     WHERE `IdComment` = OLD.`EkComment`;
+-- END;//
 
 delimiter ;
