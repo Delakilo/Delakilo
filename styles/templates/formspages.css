@@ -8,7 +8,7 @@ body > main form > ul {
     padding: 0;
 }
 
-body > main form > ul > li, body > main footer > a {
+body > main form > ul > li {
     display: inline-block;
     margin: 0 !important;
 }

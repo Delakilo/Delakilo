@@ -52,3 +52,10 @@ body > main > section > p > small {                 /* The paragraph that descri
 body > main form > ul > li {
     display: block;
 }
+body > main > section > footer > form > ul > li {
+    display: inline-block;
+}
+body > main > section > footer > form > ul > li > input {
+    width: 2em;
+    vertical-align: bottom;
+}

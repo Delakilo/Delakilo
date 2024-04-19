@@ -16,7 +16,7 @@ body > main > article > figure {
 }
 
 body > main > article > figure > img {
-    max-height: 80vh;
+    max-height: 60vh;
     max-width: 100%;
     margin-top: 1%;
 }
@@ -58,5 +58,14 @@ body > main > article > aside > p > a, body > main > article > aside > p:last-of
     color: var(--dark-slate-gray-opaque);
     font-family: Georgia, 'Times New Roman', Times, serif;
     margin: 0;
-    padding: 10px;
+    padding: 0;
+}
+
+/* FORM */
+body > main > article > footer > form > ul > li {
+    display: inline-block;
+}
+body > main > article > footer > form > ul > li > input {
+    width: 2em;
+    vertical-align: bottom;
 }
