@@ -16,6 +16,8 @@ class DatabaseHelper {
         $this->conn->close();
     }
 
+
+    // USERS LOGIN
     private function checkBrute($username) {
         if ($stmt = $this->conn->prepare('SELECT `timestamp`
                                           FROM `LOGIN_ATTEMPTS`
@@ -38,7 +40,7 @@ class DatabaseHelper {
             $username = get_username();
             $user_browser = $_SERVER['HTTP_USER_AGENT'];
 
-            if ($stmt = $this->conn->prepare("SELECT `passwordHash` FROM `USER` WHERE `Username` = ? LIMIT 1")) { 
+            if ($stmt = $this->conn->prepare('SELECT `passwordHash` FROM `USER` WHERE `Username` = ? LIMIT 1;')) { 
                 $stmt->bind_param('s', $username);
                 $stmt->execute();
                 $stmt->store_result();
@@ -124,6 +126,215 @@ class DatabaseHelper {
 
         $rows = $result->fetch_all(MYSQLI_ASSOC);
         return count($rows) > 0;
+    }
+
+    // USERS MANAGEMENT
+    function usersGetNamesByBaseName($name) {
+        $stmt = $this->db->prepare('SELECT `Username`, `imageURL`
+                                    FROM `USER`
+                                    WHERE `Username` LIKE ?
+                                        OR `name` LIKE ?
+                                        OR `surname` LIKE ?;');
+        $pattern = '%'.$name.'%';
+        $stmt->bind_param('sss', $pattern, $pattern, $pattern);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+    function userGetInfoByName($username) {
+        $stmt = $this->db->prepare('SELECT `Username`, `name`, `surname`, `bio`, `imageURL`, `nFollowers`, `nFollowed`, `nPosts`
+                                    FROM `USER`
+                                    WHERE `Username` = ?;');
+        $username = get_username();
+        $stmt->bind_param('s', $username);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    function userGetFollowing($username) {
+        $stmt = $this->db->prepare('SELECT U.`Username`, U.`imageURL`
+                                    FROM `FOLLOW` F JOIN `USER` U ON (F.`EkUserFollowed` = U.`Username`)
+                                    WHERE F.`EkUserFollower` = ?
+                                    ORDER BY F.`timestamp` DESC;');
+        $stmt->bind_param('s', $username);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+    function userGetMyFollowing() {
+        $username = get_username();
+        return getFollowing($username);
+    }
+    function userGetFollowers($username) {
+        $stmt = $this->db->prepare('SELECT U.`Username`, U.`imageURL`
+                                    FROM `FOLLOW` F JOIN `USER` U ON (F.`EkUserFollower` = U.`Username`)
+                                    WHERE F.`EkUserFollowed` = ?
+                                    ORDER BY F.`timestamp` DESC;');
+        $stmt->bind_param('s', $username);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+    function userGetMyFollowers() {
+        $username = get_username();
+        return getFollowers($username);
+    }
+
+    function userFollow($username) {
+        $stmt = $this->db->prepare('INSERT INTO `FOLLOW` (`EkUserFollower`, `EkUserFollowed`)
+                                    VALUES (?, ?);');
+        $stmt->bind_param('ss', $username, $username);
+        $stmt->execute();
+    }
+    function userUnfollow($username) {
+        $stmt = $this->db->prepare('DELETE FROM `FOLLOW`
+                                    WHERE `EkUserFollower` = ?
+                                        AND `EkUserFollowed` = ?;');
+        $stmt->bind_param('ss', $username, $username);
+        $stmt->execute();
+    }
+
+    function userEditProfile($username, $name, $surname, $bio, $imageURL) {
+        $stmt = $this->db->prepare('UPDATE `USER`
+                                    SET `Username` = ?,
+                                        `name` = ?,
+                                        `surname` = ?,
+                                        `bio` = ?,
+                                        `imageURL` = ?
+                                    WHERE `Username` = ?;');
+        $oldUsername = get_username();
+        $stmt->bind_param('ssssss', $username, $name, $surname, $imageURL, $bio, $caption, $oldUsername);
+        $stmt->execute();
+
+        if ($stmt) {
+            register_logged_user($username);
+        }
+    }
+
+    // COMMENTS
+    function commentsGetByPost($postID) {
+        $stmt = $this->db->prepare('SELECT C.`EkUser`, C.`content`, C.`timestamp`, U.`imageURL`
+                                    FROM `COMMENT` C JOIN `USER` U ON (C.`EkUser` = U.`Username`)
+                                    WHERE C.`EkPost` = ?
+                                    ORDER BY C.`timestamp` DESC;');
+        $stmt->bind_param('s', $postID);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    function commentLike($commentID) {
+        $stmt = $this->db->prepare('INSERT INTO `LIKE_COMMENT` (`EkUser`, `EkComment`)
+                                    VALUES (?, ?);');
+        $username = get_username();
+        $stmt->bind_param('ss', $username, $postID);
+        $stmt->execute();
+    }
+    function commentUnlike($commentID) {
+        $stmt = $this->db->prepare('DELETE FROM `LIKE_COMMENT`
+                                    WHERE `EkUser` = ?
+                                        AND `EkComment` = ?;');
+        $username = get_username();
+        $stmt->bind_param('ss', $username, $postID);
+        $stmt->execute();
+    }
+    function commentPost($postID, $content) {
+        $stmt = $this->db->prepare('INSERT INTO `COMMENT` (`EkUser`, `EkPost`, `content`)
+                                    VALUES (?, ?, ?);');
+        $username = get_username();
+        $stmt->bind_param('ss', $username, $postID, $content);
+        $stmt->execute();
+    }
+
+    // NOTIFICATIONS
+    function notificationsGet() {
+        $stmt = $this->db->prepare('SELECT `EkUserSrc`, `content`, `timestamp`
+                                    FROM `NOTIFICATION`
+                                    WHERE `EkUserDst` = ?
+                                    ORDER BY `timestamp` DESC;');
+        $username = get_username();
+        $stmt->bind_param('s', $username);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    function notificationSend($postID, $content) {
+        $stmt = $this->db->prepare('DELETE FROM `COMMENT`
+                                    WHERE `EkUser` = ?
+                                        AND `EkPost` = ?
+                                        AND `content` = ?;');
+        $username = get_username();
+        $stmt->bind_param('sss', $username, $postID, $content);
+        $stmt->execute();
+    }
+
+    // POSTS
+    function postsGetFromFollowingUsers() {
+        $stmt = $this->db->prepare('SELECT P.`EkUser`, P.`imageURL`, P.`caption`, P.`nLikes`, P.`timestamp`
+                                    FROM `FOLLOW` F JOIN `POST` P ON (P.`EkUser` = F.`EkUserFollowed`)
+                                    WHERE F.`EkUserFollower` = ?
+                                    ORDER BY P.`timestamp` DESC;');
+        $username = get_username();
+        $stmt->bind_param('s', $username);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+    function postsGetAll() {
+        $stmt = $this->db->prepare('SELECT `EkUser`, `imageURL`, `caption`, `nLikes`, `timestamp`
+                                    FROM `POST`
+                                    ORDER BY RAND();');
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+    function postsGetFromUser($username) {
+        $stmt = $this->db->prepare('SELECT `EkUser`, `imageURL`, `caption`, `nLikes`, `timestamp`
+                                    FROM `POST`
+                                    WHERE `EkUser` = ?
+                                    ORDER BY `timestamp` DESC;');
+        $stmt->bind_param('s', $username);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+    function postsGetMy() {
+        $username = get_username();
+        return getUserPosts($username);
+    }
+
+    function postLike($postID) {
+        $stmt = $this->db->prepare('INSERT INTO `LIKE_POST` (`EkUser`, `EkUser`)
+                                    VALUES (?, ?);');
+        $username = get_username();
+        $stmt->bind_param('ss', $username, $postID);
+        $stmt->execute();
+    }
+    function postUnlike($postID) {
+        $stmt = $this->db->prepare('DELETE FROM `LIKE_POST`
+                                    WHERE `EkUser` = ?
+                                        AND `EkPost` = ?;');
+        $username = get_username();
+        $stmt->bind_param('ss', $username, $postID);
+        $stmt->execute();
+    }
+    function postAdd($imageURL, $caption = '') {
+        $stmt = $this->db->prepare('INSERT INTO `POST` (`EkUser`, `imageURL`, `caption`)
+                                    VALUES (?, ?, ?);');
+        $username = get_username();
+        $stmt->bind_param('ss', $username, $imageURL, $caption);
+        $stmt->execute();
     }
 }
 
