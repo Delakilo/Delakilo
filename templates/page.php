@@ -9,6 +9,6 @@
     if (isset($templateParams['subpage'])) {
         require($templateParams['subpage']);
     } else {
-        die('Unspecified .php page in body');
+        die('Unspecified PHP page in main tag');
     }
 ?>

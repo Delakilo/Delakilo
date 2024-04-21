@@ -21,7 +21,7 @@
             if (isset($templateParams['page'])) {
                 require($templateParams['page']);
             } else {
-                die('Unspecified .php page in body');
+                die('Unspecified PHP page in body tag');
             }
         ?>
     </body>
