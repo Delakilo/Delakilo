@@ -3,9 +3,9 @@
     require_once('config.php');
 
     // TODO: uncomment when implemented home.php
-    // if (is_user_logged()) {
-    //     header('Location: ./');
-    // }
+     if (is_user_logged()) {
+         header('Location: ./');
+    }
 
     if (isset($_POST['username'])) {
         if (isset($_POST['pwd'])) {
@@ -35,6 +35,8 @@
 
     if (is_user_logged()) {
         $GLOBALS['log']->logInfo(get_username().' welcome in home page, from login');
+        $templateParams['page'] = 'page.php';
+        $templateParams['subpage'] = 'home.php'; 
     }
 
     if (count($_GET) != 1

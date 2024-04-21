@@ -16,6 +16,17 @@
     define('LOGO', DEFAULT_PATH.'logo.svg');
     define('UPLOAD_DIR_PROFILES', UPLOAD_DIR.'profilePictures/');
     define('UPLOAD_DIR_POSTS', UPLOAD_DIR.'postPictures/');
+    define('UPLOAD_LIKECOMMENTADD', UPLOAD_DIR.'general/');
+    define('UPLOAD_LIKECOMMENTADD_UNLIKE', UPLOAD_LIKECOMMENTADD.'heart-empty.svg');
+    define('UPLOAD_LIKECOMMENTADD_LIKE', UPLOAD_LIKECOMMENTADD.'heart-red.svg');
+    define('UPLOAD_LIKECOMMENTADD_COMMENT', UPLOAD_LIKECOMMENTADD.'comment.svg');
+    define('UPLOAD_LIKECOMMENTADD_ADD', UPLOAD_LIKECOMMENTADD.'plus.svg');
+    define('UPLOAD_MENU', UPLOAD_DIR.'menu/');
+    define('UPLOAD_MENU_BELL', UPLOAD_MENU.'bell.svg');
+    define('UPLOAD_MENU_HOME', UPLOAD_MENU.'home.svg');
+    define('UPLOAD_MENU_SEARCH', UPLOAD_MENU.'search.svg');
+    define('UPLOAD_MENU_USER', UPLOAD_MENU.'user.svg');
+
 
     require_once('logging/Logger.php');
     $log = new Logger(UPLOAD_DIR.'logs/');
