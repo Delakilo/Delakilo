@@ -4,8 +4,9 @@
 
     if (is_user_logged()) {
         $GLOBALS['log']->logInfo(get_username().' welcome in home page, from index (his session in still active)');
+    } else {
+        $GLOBALS['log']->logInfo('Unknown welcome in login page, from index');
     }
 
-    $GLOBALS['log']->logInfo('Unknown welcome in login page, from index');
     header('Location: ./login.php?page=signin');
 ?>

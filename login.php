@@ -2,9 +2,10 @@
 <?php
     require_once('config.php');
 
-    if (is_user_logged()) {
-        header('Location: ./');
-    }
+    // TODO: uncomment when implemented home.php
+    // if (is_user_logged()) {
+    //     header('Location: ./');
+    // }
 
     if (isset($_POST['username'])) {
         if (isset($_POST['pwd'])) {

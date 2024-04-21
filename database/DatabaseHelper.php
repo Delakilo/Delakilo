@@ -11,26 +11,25 @@ class DatabaseHelper {
             die("Connection with MySQL failed: ".$this->conn->connect_error);
         }
     }
-
     function __destruct() {
         $this->conn->close();
     }
 
-
     // USERS LOGIN
     private function checkBrute($username) {
-        if ($stmt = $this->conn->prepare('SELECT `timestamp`
+        if ($stmt = $this->conn->prepare('SELECT *
                                           FROM `LOGIN_ATTEMPTS`
                                           WHERE `EkUser` = ?
-                                            AND `timestamp` > DATE_SUB(NOW(), INTERVAL '.LOGIN_HOURS_ATTEMPTS_VALIDITY.' HOUR)')) {
+                                            AND `timestamp` > DATE_SUB(NOW(), INTERVAL '.LOGIN_HOURS_ATTEMPTS_VALIDITY.' HOUR);')) {
+
             $stmt->bind_param('s', $username);
             $stmt->execute();
             $stmt->store_result();
+
             if ($stmt->num_rows > LOGIN_MAX_ATTEMPTS) {
                 return true;
-            } else {
-                return false;
             }
+            return false;
         }
     }
 
@@ -76,8 +75,8 @@ class DatabaseHelper {
             $stmt->fetch();
             $computedPasswordHash = sha512($salt.$password);
             if ($stmt->num_rows == 1) {
-                if($this->checkBrute($username, $this->conn) == true) {
-                    $GLOBALS['log']->logWarning('"'.$username.'" account was denied access because '.LOGIN_MAX_ATTEMPTS
+                if ($this->checkBrute($username, $this->conn)) {
+                    $GLOBALS['log']->logWarning($username.' account was denied access because '.LOGIN_MAX_ATTEMPTS
                         .' attempts of logins where reached in the last '.LOGIN_HOURS_ATTEMPTS_VALIDITY.' hours');
                     return false;
                 } else {
