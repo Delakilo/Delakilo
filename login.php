@@ -36,7 +36,8 @@
     if (is_user_logged()) {
         $GLOBALS['log']->logInfo(get_username().' welcome in home page, from login');
         $templateParams['page'] = 'page.php';
-        $templateParams['subpage'] = 'home.php'; 
+        $templateParams['subpage'] = 'home.php';
+        $templateParams['css'][1] = 'home.css';
     }
 
     if (count($_GET) != 1

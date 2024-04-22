@@ -7,7 +7,7 @@
 </header>
 <main>
     <img src="<?php echo LOGO; ?>" alt=""/>
-    <form action="#" method="POST" onsubmit="submitForm1Data()">
+    <form action="login.php" method="POST" onsubmit="submitForm1Data()">
         <h2>Login</h2>
         <ul>
             <li>
@@ -21,7 +21,7 @@
                     echo '<li><p style="color: red;">'.$templateParams['error'].'</p></li>';
                 }
             ?>
-            <li><label for="login" hidden>Login:</label><input id="login" type="submit" value="Login"/></li>
+            <li><label for="login" hidden>Login:</label><input id="login" type="submit" name="page" value="Login"/></li>
         </ul>
     </form>
 </main>

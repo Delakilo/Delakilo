@@ -6,7 +6,7 @@
             <h2><a href="homeprofile.html">User 2</a></h2>
         </header>
         <figure>
-            <img src="<?php echo UPLOAD_DIR_POSTS; ?>" alt=""/>
+            <img src="<?php echo UPLOAD_DIR_POSTS.'landscape.jpg'; ?>" alt=""/>
             <figcaption>Check out this photo I posted!</figcaption>
         </figure>
         <footer>
