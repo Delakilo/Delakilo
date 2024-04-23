@@ -7,7 +7,7 @@
 </header>
 <main>
     <img src="<?php echo LOGO; ?>" alt=""/>
-    <form action="utils/loginHandler.php" method="POST" onsubmit="submitForm1Data()">
+    <form action="#" method="POST" onsubmit="submitForm1Data()">
         <h2>Login</h2>
         <ul>
             <li>
