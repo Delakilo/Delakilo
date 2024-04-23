@@ -8,7 +8,7 @@ class Logger {
     }
 
     private function getFileName() {
-        return $this->directory.'./delakilo_'.date(DATE_FORMAT_SHORT).'.log';
+        return $this->directory.'delakilo_'.date(DATE_FORMAT_SHORT).'.log';
     }
 
     private function log($heading, $message) {
