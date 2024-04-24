@@ -1,4 +1,3 @@
-<!-- Enrico Marchionni & Francesco Filippini & Alessandro Verna -->
 <nav>
     <ul><li id="signin">Sign in</li><li id="signup"><a href="login.php?page=signup">Sign up</a></li></ul>
 </nav>
@@ -6,8 +5,8 @@
     <h1>Delakilo</h1>
 </header>
 <main>
-    <img src="<?php echo LOGO; ?>" alt=""/>
-    <form action="#" method="POST" onsubmit="submitForm1Data()">
+    <img src="<?php echo ICON_LOGO; ?>" alt=""/>
+    <form action="" method="POST" onsubmit="submitForm1Data()">
         <h2>Login</h2>
         <ul>
             <li>

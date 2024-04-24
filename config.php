@@ -1,35 +1,41 @@
-<!-- Enrico Marchionni -->
 <?php
     // DATES
     define('DATE_FORMAT_SHORT', 'Y-m-d');
     define('DATE_FORMAT_LONG', 'Y-m-d h:i:s A');
 
     // LOGIN
-    define('PASSWORD_MIN_LENGTH', 10);
     define('LOGIN_HOURS_ATTEMPTS_VALIDITY', 2);
     define('LOGIN_MAX_ATTEMPTS', 5);
 
     // DEFAULT PATHS
-    define('UPLOAD_DIR', './resources/');
-    define('DEFAULT_PATH', UPLOAD_DIR.'default/');
-    define('DEFAULT_PROFILE', DEFAULT_PATH.'defaultProfile.svg');
-    define('LOGO', DEFAULT_PATH.'logo.svg');
-    define('UPLOAD_DIR_PROFILES', UPLOAD_DIR.'profilePictures/');
-    define('UPLOAD_DIR_POSTS', UPLOAD_DIR.'postPictures/');
-    define('UPLOAD_LIKECOMMENTADD', UPLOAD_DIR.'general/');
-    define('UPLOAD_LIKECOMMENTADD_UNLIKE', UPLOAD_LIKECOMMENTADD.'heart-empty.svg');
-    define('UPLOAD_LIKECOMMENTADD_LIKE', UPLOAD_LIKECOMMENTADD.'heart-red.svg');
-    define('UPLOAD_LIKECOMMENTADD_COMMENT', UPLOAD_LIKECOMMENTADD.'comment.svg');
-    define('UPLOAD_LIKECOMMENTADD_ADD', UPLOAD_LIKECOMMENTADD.'plus.svg');
-    define('UPLOAD_MENU', UPLOAD_DIR.'menu/');
-    define('UPLOAD_MENU_BELL', UPLOAD_MENU.'bell.svg');
-    define('UPLOAD_MENU_HOME', UPLOAD_MENU.'home.svg');
-    define('UPLOAD_MENU_SEARCH', UPLOAD_MENU.'search.svg');
-    define('UPLOAD_MENU_USER', UPLOAD_MENU.'user.svg');
+    define('DIR_RESOURCES', './resources/');
 
+    // Icons
+    define('DIR_ICONS', DIR_RESOURCES.'icons/');
+    define('ICON_LOGO', DIR_ICONS.'logo.svg');
+
+    define('DIR_ICONS_PAGE_MENU', DIR_ICONS.'page_menu/');
+    define('ICON_BELL', DIR_ICONS_PAGE_MENU.'bell.svg');
+    define('ICON_HOME', DIR_ICONS_PAGE_MENU.'home.svg');
+    define('ICON_SEARCH', DIR_ICONS_PAGE_MENU.'search.svg');
+    define('ICON_USER', DIR_ICONS_PAGE_MENU.'user.svg');
+
+    define('DIR_ICONS_POST', DIR_ICONS.'post/');
+    define('ICON_COMMENT', DIR_ICONS_POST.'comment.svg');
+    define('ICON_HEART_EMPTY', DIR_ICONS_POST.'heart-empty.svg');
+    define('ICON_HEART_RED', DIR_ICONS_POST.'heart-red.svg');
+
+    define('DIR_ICONS_PROFILE', DIR_ICONS.'profile/');
+    define('ICON_PLUS', DIR_ICONS_PROFILE.'plus.svg');
+
+    // Images
+    define('DIR_IMAGES', DIR_RESOURCES.'images/');
+    define('UPLOAD_DIR_POSTS', DIR_IMAGES.'posts/');
+    define('UPLOAD_DIR_PROFILES', DIR_IMAGES.'profiles/');
+    define('IMG_DEFAULT_PROFILE', UPLOAD_DIR_PROFILES.'default.svg');
 
     require_once('logging/Logger.php');
-    $log = new Logger(UPLOAD_DIR.'logs/');
+    $log = new Logger(DIR_RESOURCES.'logs/');
 
     require_once('utils/functions.php');
 

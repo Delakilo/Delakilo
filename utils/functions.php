@@ -1,4 +1,3 @@
-<!-- Enrico Marchionni & Francesco Filippini & Alessandro Verna -->
 <?php
 
 function sec_session_start() {

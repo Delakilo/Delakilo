@@ -1,4 +1,3 @@
-<!-- Francesco Filippini -->
 <?php
     require_once('config.php');
 
@@ -7,7 +6,7 @@
         $templateParams['title'] = 'Home';
         $templateParams['page'] = 'page.php';
         $templateParams['subpage'] = 'homepage.php';
-        $templateParams['css'][1] = 'home.css';
+        $templateParams['css'][] = 'home.css';
     } else {
         header('Location: ./');
         exit;

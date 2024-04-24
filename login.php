@@ -1,4 +1,3 @@
-<!-- Enrico Marchionni -->
 <?php
     require_once('config.php');
 

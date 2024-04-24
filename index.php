@@ -1,4 +1,3 @@
-<!-- Enrico Marchionni & Francesco Filippini & Alessandro Verna -->
 <?php
     require_once('config.php');
 

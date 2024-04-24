@@ -1,4 +1,3 @@
-<!-- Enrico Marchionni -->
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -12,7 +11,7 @@
                 }
             }
         ?>
-        <link rel="icon" type="image/x-icon" href="<?php echo LOGO; ?>">
+        <link rel="icon" type="image/x-icon" href="<?php echo ICON_LOGO; ?>">
         <meta charset="UTF-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </head>
