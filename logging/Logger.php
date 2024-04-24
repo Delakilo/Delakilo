@@ -12,10 +12,10 @@ class Logger {
     }
 
     private function log($heading, $message) {
-        if (is_user_logged()) {
-            $message = '('.get_username().') '.$message;
+        if (isset($_SESSION['username'])) {
+            $message = '**'.get_username().'** '.$message;
         }
-        file_put_contents($this->getFileName(), '['.date(DATE_FORMAT_LONG).'] '.$heading.': '.$message.PHP_EOL, FILE_APPEND);
+        file_put_contents($this->getFileName(), '['.date(DATE_FORMAT_LONG).'] '.$heading.': '.$message.' (from '.$_SERVER['SCRIPT_NAME'].')'.PHP_EOL, FILE_APPEND);
     }
 
     public function logInfo($message) {
