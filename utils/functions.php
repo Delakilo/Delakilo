@@ -13,16 +13,21 @@ function sec_session_start() {
     session_regenerate_id();
 }
 
+function sec_session_end() {
+    // Clears session
+    $_SESSION = array();
+    $params = session_get_cookie_params();
+    // Clears cookies
+    setcookie(session_name(), '', time() - 42000, $params['path'], $params['domain'], $params['secure'], $params['httponly']);
+    session_destroy();
+}
+
+function get_user_id() {
+    return $_SESSION['user_id'];
+}
+
 function get_username() {
     return $_SESSION['username'];
-}
-
-function is_user_logged() {
-    return isset($_SESSION['username']) && !empty($_SESSION['username']);
-}
-
-function register_logged_user($user) {
-    $_SESSION['username'] = $user;
 }
 
 function sha512($value) {

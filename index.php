@@ -2,12 +2,12 @@
 <?php
     require_once('config.php');
 
-    if ($db->userLoginCheck()) {
-        $GLOBALS['log']->logInfo(get_username().' welcome in home page, from index (his session in still active)');
-        header('Location: ./loginHome.php');
+    if ($db->userIsAlreadyLogged()) {
+        $GLOBALS['log']->logInfo('Welcome in home page (his session in still active)');
+        header('Location: ./home.php');
     } else {
-        $GLOBALS['log']->logInfo('Unknown welcome in login page, from index');
+        $GLOBALS['log']->logInfo('Unknown welcome in login page');
+        header('Location: ./login.php?page=signin');
     }
-
-    header('Location: ./login.php?page=signin');
+    exit;
 ?>
