@@ -22,7 +22,8 @@ USE `Delakilo`;
 -- ______________
 
 CREATE TABLE `USER` (
-     `Username` VARCHAR(50) NOT NULL,
+     `IdUser` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+     `username` VARCHAR(50) NOT NULL,
      -- `email` VARCHAR(50) UNIQUE DEFAULT NULL,
      `passwordSalt` CHAR(255) NOT NULL,
      `passwordHash` CHAR(128) NOT NULL,
@@ -35,27 +36,28 @@ CREATE TABLE `USER` (
      `nFollowing` INT UNSIGNED NOT NULL DEFAULT 0,
      `nPosts` INT UNSIGNED NOT NULL DEFAULT 0,
      `timestamp` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-     PRIMARY KEY (`Username`)
-     -- CONSTRAINT `UsernameNotEmptyOrSpacesCheck` CHECK (`Username` <> ''
-     --      AND `Username` NOT LIKE '% %')
+     PRIMARY KEY (`IdUser`),
+     UNIQUE KEY `UniqueUsername` (`username`)
+     -- CONSTRAINT `UsernameNotEmptyOrSpacesCheck` CHECK (`username` <> ''
+     --      AND `username` NOT LIKE '% %')
 ) ENGINE = InnoDB;
 
 CREATE TABLE `LOGIN_ATTEMPTS` (
-     `EkUser` VARCHAR(50) NOT NULL,
+     `EkIdUser` INT UNSIGNED NOT NULL,
      `timestamp` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE = InnoDB;
 
 CREATE TABLE `FOLLOW` (
-     `EkUserFollower` VARCHAR(50) NOT NULL,
-     `EkUserFollowed` VARCHAR(50) NOT NULL,
+     `EkIdUserFollower` INT UNSIGNED NOT NULL,
+     `EkIdUserFollowed` INT UNSIGNED NOT NULL,
      `timestamp` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-     PRIMARY KEY (`EkUserFollower`, `EkUserFollowed`),
-     CONSTRAINT `FollowerNotFollowedCheck` CHECK (`EkUserFollower` <> `EkUserFollowed`)
+     PRIMARY KEY (`EkIdUserFollower`, `EkIdUserFollowed`),
+     CONSTRAINT `FollowerNotFollowedCheck` CHECK (`EkIdUserFollower` <> `EkIdUserFollowed`)
 ) ENGINE = InnoDB;
 
 CREATE TABLE `POST` (
      `IdPost` INT UNSIGNED NOT NULL AUTO_INCREMENT,
-     `EkUser` VARCHAR(50) NOT NULL,
+     `EkIdUser` INT UNSIGNED NOT NULL,
      `imageURL` VARCHAR(400) NOT NULL,
      `caption` VARCHAR(1000) NOT NULL DEFAULT '',
      `nLikes` INT UNSIGNED NOT NULL DEFAULT 0,
@@ -66,17 +68,17 @@ CREATE TABLE `POST` (
 ) ENGINE = InnoDB;
 
 CREATE TABLE `LIKE_POST` (
-     `EkUser` VARCHAR(50) NOT NULL,
-     `EkPost` INT UNSIGNED NOT NULL,
+     `EkIdUser` INT UNSIGNED NOT NULL,
+     `EkIdPost` INT UNSIGNED NOT NULL,
      `timestamp` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-     PRIMARY KEY (`EkUser`, `EkPost`)
+     PRIMARY KEY (`EkIdUser`, `EkIdPost`)
 ) ENGINE = InnoDB;
 
 CREATE TABLE `COMMENT` (
      `IdComment` INT UNSIGNED NOT NULL AUTO_INCREMENT,
-     `EkUser` VARCHAR(50) NOT NULL,
-     `EkPost` INT UNSIGNED NOT NULL,
-     -- `EkCommentParent` INT UNSIGNED DEFAULT NULL,
+     `EkIdUser` INT UNSIGNED NOT NULL,
+     `EkIdPost` INT UNSIGNED NOT NULL,
+     -- `EkIdCommentParent` INT UNSIGNED DEFAULT NULL,
      `content` VARCHAR(1000) NOT NULL,
      -- `nLikes` INT UNSIGNED NOT NULL DEFAULT 0,
      `timestamp` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -87,16 +89,16 @@ CREATE TABLE `COMMENT` (
 ) ENGINE = InnoDB;
 
 CREATE TABLE `LIKE_COMMENT` (
-     `EkUser` VARCHAR(50) NOT NULL,
-     `EkComment` INT UNSIGNED NOT NULL,
+     `EkIdUser` INT UNSIGNED NOT NULL,
+     `EkIdComment` INT UNSIGNED NOT NULL,
      `timestamp` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-     PRIMARY KEY (`EkUser`, `EkComment`)
+     PRIMARY KEY (`EkIdUser`, `EkIdComment`)
 ) ENGINE = InnoDB;
 
 CREATE TABLE `NOTIFICATION` (
      `IdMessage` INT UNSIGNED NOT NULL AUTO_INCREMENT,
-     `EkUserDst` VARCHAR(50) NOT NULL,
-     `EkUserSrc` VARCHAR(50) NOT NULL,
+     `EkIdUserDst` INT UNSIGNED NOT NULL,
+     `EkIdUserSrc` INT UNSIGNED NOT NULL,
      `message` VARCHAR(500) NOT NULL,
      `timestamp` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
      PRIMARY KEY (`IdMessage`),
@@ -111,76 +113,76 @@ CREATE TABLE `NOTIFICATION` (
 
 ALTER TABLE `FOLLOW`
      ADD CONSTRAINT `FK_Follow_UserFollowed`
-          FOREIGN KEY (`EkUserFollowed`)
-          REFERENCES `USER` (`Username`)
+          FOREIGN KEY (`EkIdUserFollowed`)
+          REFERENCES `USER` (`IdUser`)
           ON UPDATE CASCADE
           ON DELETE CASCADE,
      ADD CONSTRAINT `FK_Follow_UserFollows`
-          FOREIGN KEY (`EkUserFollower`)
-          REFERENCES `USER` (`Username`)
+          FOREIGN KEY (`EkIdUserFollower`)
+          REFERENCES `USER` (`IdUser`)
           ON UPDATE CASCADE
           ON DELETE CASCADE;
 
 ALTER TABLE `LOGIN_ATTEMPTS`
      ADD CONSTRAINT `FK_Login_User`
-          FOREIGN KEY (`EkUser`)
-          REFERENCES `USER` (`Username`)
+          FOREIGN KEY (`EkIdUser`)
+          REFERENCES `USER` (`IdUser`)
           ON UPDATE CASCADE
           ON DELETE CASCADE;
 
 ALTER TABLE `POST`
      ADD CONSTRAINT `FK_Post_User`
-          FOREIGN KEY (`EkUser`)
-          REFERENCES `USER` (`Username`)
+          FOREIGN KEY (`EkIdUser`)
+          REFERENCES `USER` (`IdUser`)
           ON UPDATE CASCADE
           ON DELETE CASCADE;
 
 ALTER TABLE `COMMENT`
      ADD CONSTRAINT `FK_Comment_Post`
-          FOREIGN KEY (`EkPost`)
+          FOREIGN KEY (`EkIdPost`)
           REFERENCES `POST` (`IdPost`)
           ON DELETE CASCADE,
      ADD CONSTRAINT `FK_Comment_User`
-          FOREIGN KEY (`EkUser`)
-          REFERENCES `USER` (`Username`)
+          FOREIGN KEY (`EkIdUser`)
+          REFERENCES `USER` (`IdUser`)
           ON UPDATE CASCADE
           ON DELETE CASCADE;
      -- ADD CONSTRAINT `FK_Comment_CommentParent`
-     --      FOREIGN KEY (`EkCommentParent`)
+     --      FOREIGN KEY (`EkIdCommentParent`)
      --      REFERENCES `COMMENT` (`IdComment`)
      --      ON DELETE CASCADE;
 
 ALTER TABLE `LIKE_POST`
      ADD CONSTRAINT `FK_LikePost_Post`
-          FOREIGN KEY (`EkPost`)
+          FOREIGN KEY (`EkIdPost`)
           REFERENCES `POST` (`IdPost`)
           ON DELETE CASCADE,
      ADD CONSTRAINT `FK_LikePost_User`
-          FOREIGN KEY (`EkUser`)
-          REFERENCES `USER` (`Username`)
+          FOREIGN KEY (`EkIdUser`)
+          REFERENCES `USER` (`IdUser`)
           ON UPDATE CASCADE
           ON DELETE CASCADE;
 
 ALTER TABLE `LIKE_COMMENT`
      ADD CONSTRAINT `FK_LikeComment_Comment`
-          FOREIGN KEY (`EkComment`)
+          FOREIGN KEY (`EkIdComment`)
           REFERENCES `COMMENT` (`IdComment`)
           ON DELETE CASCADE,
      ADD CONSTRAINT `FK_LikeComment_User`
-          FOREIGN KEY (`EkUser`)
-          REFERENCES `USER` (`Username`)
+          FOREIGN KEY (`EkIdUser`)
+          REFERENCES `USER` (`IdUser`)
           ON UPDATE CASCADE
           ON DELETE CASCADE;
 
 ALTER TABLE `NOTIFICATION`
      ADD CONSTRAINT `FK_Notification_UserDst`
-          FOREIGN KEY (`EkUserDst`)
-          REFERENCES `USER` (`Username`)
+          FOREIGN KEY (`EkIdUserDst`)
+          REFERENCES `USER` (`IdUser`)
           ON UPDATE CASCADE
           ON DELETE CASCADE,
      ADD CONSTRAINT `FK_Notification_UserSrc`
-          FOREIGN KEY (`EkUserSrc`)
-          REFERENCES `USER` (`Username`)
+          FOREIGN KEY (`EkIdUserSrc`)
+          REFERENCES `USER` (`IdUser`)
           ON UPDATE CASCADE
           ON DELETE CASCADE;
 
@@ -195,7 +197,7 @@ CREATE TRIGGER TRG_validate_username_before_insert
 BEFORE INSERT ON `USER`
 FOR EACH ROW
 BEGIN
-    IF NEW.`Username` NOT REGEXP BINARY '^[a-zA-Z][a-zA-Z0-9._-]*$' THEN
+    IF NEW.`username` NOT REGEXP BINARY '^[a-zA-Z][a-zA-Z0-9._-]*$' THEN
         SIGNAL SQLSTATE '45000'
         SET MESSAGE_TEXT = 'Invalid username format';
     END IF;
@@ -205,7 +207,7 @@ CREATE TRIGGER TRG_validate_username_before_update
 BEFORE UPDATE ON `USER`
 FOR EACH ROW
 BEGIN
-    IF NEW.`Username` NOT REGEXP BINARY '^[a-zA-Z][a-zA-Z0-9._-]*$' THEN
+    IF NEW.`username` NOT REGEXP BINARY '^[a-zA-Z][a-zA-Z0-9._-]*$' THEN
         SIGNAL SQLSTATE '45000'
         SET MESSAGE_TEXT = 'Invalid username format';
     END IF;
@@ -217,7 +219,7 @@ FOR EACH ROW
 BEGIN
     UPDATE `USER`
     SET `nFollowers` = `nFollowers` + 1
-    WHERE `Username` = NEW.`EkUserFollowed`;
+    WHERE `IdUser` = NEW.`EkIdUserFollowed`;
 END;//
 
 CREATE TRIGGER TRG_decrease_nFollowers_counter AFTER DELETE ON `FOLLOW`
@@ -225,7 +227,7 @@ FOR EACH ROW
 BEGIN
     UPDATE `USER`
     SET `nFollowers` = `nFollowers` - 1
-    WHERE `Username` = OLD.`EkUserFollowed`;
+    WHERE `IdUser` = OLD.`EkIdUserFollowed`;
 END;//
 
 -- following
@@ -234,7 +236,7 @@ FOR EACH ROW
 BEGIN
     UPDATE `USER`
     SET `nFollowing` = `nFollowing` + 1
-    WHERE `Username` = NEW.`EkUserFollower`;
+    WHERE `IdUser` = NEW.`EkIdUserFollower`;
 END;//
 
 CREATE TRIGGER TRG_decrease_nFollowing_counter AFTER DELETE ON `FOLLOW`
@@ -242,7 +244,7 @@ FOR EACH ROW
 BEGIN
     UPDATE `USER`
     SET `nFollowing` = `nFollowing` - 1
-    WHERE `Username` = OLD.`EkUserFollower`;
+    WHERE `IdUser` = OLD.`EkIdUserFollower`;
 END;//
 
 -- n posts
@@ -251,7 +253,7 @@ FOR EACH ROW
 BEGIN
     UPDATE `USER`
     SET `nPosts` = `nPosts` + 1
-    WHERE `Username` = NEW.`EkUser`;
+    WHERE `IdUser` = NEW.`EkIdUser`;
 END;//
 
 CREATE TRIGGER TRG_decrease_posts_counter AFTER DELETE ON `POST`
@@ -259,7 +261,7 @@ FOR EACH ROW
 BEGIN
     UPDATE `USER`
     SET `nPosts` = `nPosts` - 1
-    WHERE `Username` = OLD.`EkUser`;
+    WHERE `IdUser` = OLD.`EkIdUser`;
 END;//
 
 -- post likes
@@ -268,7 +270,7 @@ FOR EACH ROW
 BEGIN
     UPDATE `POST`
     SET `nLikes` = `nLikes` + 1
-    WHERE `IdPost` = NEW.`EkPost`;
+    WHERE `IdPost` = NEW.`EkIdPost`;
 END;//
 
 CREATE TRIGGER TRG_decrease_post_likes_counter AFTER DELETE ON `LIKE_POST`
@@ -276,7 +278,7 @@ FOR EACH ROW
 BEGIN
     UPDATE `POST`
     SET `nLikes` = `nLikes` - 1
-    WHERE `IdPost` = OLD.`EkPost`;
+    WHERE `IdPost` = OLD.`EkIdPost`;
 END;//
 
 -- comment likes
@@ -285,7 +287,7 @@ END;//
 -- BEGIN
 --     UPDATE `COMMENT`
 --     SET `nLikes` = `nLikes` + 1
---     WHERE `IdComment` = NEW.`EkComment`;
+--     WHERE `IdComment` = NEW.`EkIdComment`;
 -- END;//
 
 -- CREATE TRIGGER TRG_decrease_comment_likes_counter AFTER DELETE ON `LIKE_COMMENT`
@@ -293,7 +295,70 @@ END;//
 -- BEGIN
 --     UPDATE `COMMENT`
 --     SET `nLikes` = `nLikes` - 1
---     WHERE `IdComment` = OLD.`EkComment`;
+--     WHERE `IdComment` = OLD.`EkIdComment`;
 -- END;//
 
 delimiter ;
+
+-- Indexes Section
+-- _______________
+
+-- USER
+CREATE INDEX `IDX_User_username`
+     ON `USER` (`username`);
+CREATE INDEX `IDX_User_name`
+     ON `USER` (`name`);
+CREATE INDEX `IDX_User_surname`
+     ON `USER` (`surname`);
+CREATE INDEX `IDX_User_timestamp`
+     ON `USER` (`timestamp` DESC);
+
+-- LOGIN
+CREATE INDEX `IDX_LoginAttempts_user`
+     ON `LOGIN_ATTEMPTS` (`EkIdUser`);
+CREATE INDEX `IDX_LoginAttempts_timestamp`
+     ON `LOGIN_ATTEMPTS` (`timestamp` DESC);
+
+-- FOLLOW
+CREATE INDEX `IDX_Follow_follower`
+     ON `FOLLOW` (`EkIdUserFollower`);
+CREATE INDEX `IDX_Follow_followed`
+     ON `FOLLOW` (`EkIdUserFollowed`);
+CREATE INDEX `IDX_Follow_timestamp`
+     ON `FOLLOW` (`timestamp` DESC);
+
+-- POST
+CREATE INDEX `IDX_Post_user`
+     ON `POST` (`EkIdUser`);
+CREATE INDEX `IDX_Post_timestamp`
+     ON `POST` (`timestamp` DESC);
+
+-- LIKE POST
+CREATE INDEX `IDX_LikePost_user`
+     ON `LIKE_POST` (`EkIdUser`);
+CREATE INDEX `IDX_LikePost_post`
+     ON `LIKE_POST` (`EkIdPost`);
+CREATE INDEX `IDX_LikePost_timestamp`
+     ON `LIKE_POST` (`timestamp` DESC);
+
+-- COMMENT
+CREATE INDEX `IDX_Comment_user`
+     ON `COMMENT` (`EkIdUser`);
+CREATE INDEX `IDX_Comment_post`
+     ON `COMMENT` (`EkIdPost`);
+CREATE INDEX `IDX_Comment_timestamp`
+     ON `COMMENT` (`timestamp` DESC);
+
+-- LIKE COMMENT
+CREATE INDEX `IDX_LikeComment_user`
+     ON `LIKE_COMMENT` (`EkIdUser`);
+CREATE INDEX `IDX_LikeComment_comment`
+     ON `LIKE_COMMENT` (`EkIdComment`);
+CREATE INDEX `IDX_LikeComment_timestamp`
+     ON `LIKE_COMMENT` (`timestamp` DESC);
+
+-- NOTIFICATION
+CREATE INDEX `IDX_Notification_userdst`
+     ON `NOTIFICATION` (`EkIdUserDst`);
+CREATE INDEX `IDX_Notification_timestamp`
+     ON `NOTIFICATION` (`timestamp` DESC);
