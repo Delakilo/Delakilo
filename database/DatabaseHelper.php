@@ -100,7 +100,7 @@ class DatabaseHelper {
     }
 
     function userRegister($username, $password) {
-        $profileName = 'profile.svg';
+        $profileName = 'default.svg';
         $stmt = $this->conn->prepare('INSERT INTO `USER` (`username`, `passwordSalt`, `passwordHash`, `imageURL`)
                                       VALUES (?, ?, ?, \''.$profileName.'\');');
         $salt = generate_random_string(255);
