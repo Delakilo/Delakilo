@@ -31,7 +31,7 @@ CREATE TABLE `USER` (
      `surname` VARCHAR(50) NOT NULL DEFAULT '',
      -- `birthday` DATE DEFAULT NULL,
      `bio` VARCHAR(500) NOT NULL DEFAULT '',
-     `imageURL` VARCHAR(400) NOT NULL DEFAULT 'defaultProfile.svg',
+     `imageURL` VARCHAR(400) NOT NULL,
      `nFollowers` INT UNSIGNED NOT NULL DEFAULT 0,
      `nFollowing` INT UNSIGNED NOT NULL DEFAULT 0,
      `nPosts` INT UNSIGNED NOT NULL DEFAULT 0,

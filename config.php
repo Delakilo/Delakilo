@@ -30,9 +30,14 @@
 
     // Images
     define('DIR_IMAGES', DIR_RESOURCES.'images/');
-    define('UPLOAD_DIR_POSTS', DIR_IMAGES.'posts/');
-    define('UPLOAD_DIR_PROFILES', DIR_IMAGES.'profiles/');
-    define('IMG_DEFAULT_PROFILE', UPLOAD_DIR_PROFILES.'default.svg');
+    define('IMG_DEFAULT_PROFILE', DIR_IMAGES.'profiles/default.svg');
+
+    // Images
+    define('DIR_USERS', DIR_RESOURCES.'users/');
+
+    define('IMG_EXTENSIONS_ALLOWED', array("jpg", "jpeg", "png", "gif"));
+    define('IMG_MAX_SIZE_MB', 5);
+    define('IMG_MAX_SIZE_B', IMG_MAX_SIZE_MB * 1_024 * 1_024); // 5 MB
 
     require_once('logging/Logger.php');
     $log = new Logger(DIR_RESOURCES.'logs/');

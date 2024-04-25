@@ -42,4 +42,39 @@ function generate_random_string($length) {
     return $result;
 }
 
+// USERS management
+function get_users_dir_path($user_id) {
+    return DIR_USERS.$user_id.'/';
+}
+function get_current_users_dir_path() {
+    return get_users_dir_path($_SESSION['user_id']);
+}
+
+function get_user_dir_posts_path($user_id) {
+    return get_users_dir_path($user_id).'posts/';
+}
+function get_current_user_dir_posts_path() {
+    return get_user_dir_posts_path($_SESSION['user_id']);
+}
+
+function get_user_post_path($user_id, $imageName) {
+    return get_user_dir_posts_path($user_id).$imageName;
+}
+function get_current_user_post_path($imageName) {
+    return get_current_user_dir_posts_path().$imageName;
+}
+
+function get_user_profile($user_id, $imageName) {
+    return get_users_dir_path($user_id).$imageName;
+}
+function get_current_user_profile($imageName) {
+    return get_current_users_dir_path().$imageName;
+}
+
+function create_user_dirs($user_id, $imageName) {
+    return mkdir(get_users_dir_path($user_id))
+        && mkdir(get_user_dir_posts_path($user_id))
+        && copy(IMG_DEFAULT_PROFILE, get_users_dir_path($user_id).$imageName);
+}
+
 ?>

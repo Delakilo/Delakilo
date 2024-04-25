@@ -100,20 +100,24 @@ class DatabaseHelper {
     }
 
     function userRegister($username, $password) {
-        $stmt = $this->conn->prepare('INSERT INTO `USER` (`username`, `passwordSalt`, `passwordHash`)
-                                      VALUES (?, ?, ?);');
-
+        $profileName = 'profile.svg';
+        $stmt = $this->conn->prepare('INSERT INTO `USER` (`username`, `passwordSalt`, `passwordHash`, `imageURL`)
+                                      VALUES (?, ?, ?, \''.$profileName.'\');');
         $salt = generate_random_string(255);
         $passwordHash = sha512($salt.$password);
         $stmt->bind_param('sss', $username, $salt, $passwordHash);
-        $stmt->execute();
+
+        if ($stmt->execute()) {
+            $user_id = $this->conn->insert_id;
+            return create_user_dirs($user_id, $profileName);
+        }
+        return false;
     }
 
     function userExists($username) {
         $stmt = $this->conn->prepare('SELECT `username`
                                       FROM `USER`
                                       WHERE `username` = ?;');
-
         $stmt->bind_param('s', $username);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -129,7 +133,6 @@ class DatabaseHelper {
                                       WHERE `username` LIKE ?
                                         OR `name` LIKE ?
                                         OR `surname` LIKE ?;');
-
         $pattern = '%'.$name.'%';
         $stmt->bind_param('sss', $pattern, $pattern, $pattern);
         $stmt->execute();
@@ -141,7 +144,6 @@ class DatabaseHelper {
         $stmt = $this->conn->prepare('SELECT `username`, `name`, `surname`, `bio`, `imageURL`, `nFollowers`, `nFollowed`, `nPosts`
                                       FROM `USER`
                                       WHERE `username` = ?;');
-
         $username = get_username();
         $stmt->bind_param('s', $username);
         $stmt->execute();
@@ -205,9 +207,8 @@ class DatabaseHelper {
                                       WHERE `username` = ?;');
         $oldUsername = get_username();
         $stmt->bind_param('ssssss', $username, $name, $surname, $imageURL, $bio, $caption, $oldUsername);
-        $stmt->execute();
 
-        if ($stmt) {
+        if ($stmt->execute()) {
             $_SESSION['username'] = $username;
         }
     }
