@@ -1,7 +1,7 @@
 <article>
     <header>
         <img src="<?php echo IMG_DEFAULT_PROFILE; ?>" alt=""/>
-        <h2><a href="./homeprof.php">User 2</a></h2>
+        <h2><a href="./homeprofile.php">User 2</a></h2>
     </header>
     <figure>
         <img src="<?php echo 'doc/img/posts/landscape.jpg'; ?>" alt=""/>

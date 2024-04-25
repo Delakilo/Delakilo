@@ -251,12 +251,12 @@ class DatabaseHelper {
 
     // NOTIFICATIONS
     function notificationsGet() {
-        $stmt = $this->conn->prepare('SELECT `EkUserSrc`, `content`, `timestamp`
+        $stmt = $this->conn->prepare('SELECT `EkIdUserSrc`, `message`, `timestamp`
                                       FROM `NOTIFICATION`
-                                      WHERE `EkUserDst` = ?
+                                      WHERE `EkIdUserDst` = ?
                                       ORDER BY `timestamp` DESC;');
-        $username = get_username();
-        $stmt->bind_param('s', $username);
+        $user_id = get_user_id();
+        $stmt->bind_param('s', $user_id);
         $stmt->execute();
         $result = $stmt->get_result();
 
@@ -265,8 +265,8 @@ class DatabaseHelper {
 
     function notificationSend($postID, $content) {
         $stmt = $this->conn->prepare('DELETE FROM `COMMENT`
-                                      WHERE `EkUser` = ?
-                                        AND `EkPost` = ?
+                                      WHERE `EkIdUser` = ?
+                                        AND `EkIdPost` = ?
                                         AND `content` = ?;');
         $username = get_username();
         $stmt->bind_param('sss', $username, $postID, $content);
