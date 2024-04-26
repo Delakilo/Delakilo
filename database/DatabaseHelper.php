@@ -23,7 +23,7 @@ class DatabaseHelper {
                                           FROM `LOGIN_ATTEMPTS`
                                           WHERE `EkIdUser` = ?
                                             AND `timestamp` > DATE_SUB(NOW(), INTERVAL '.LOGIN_HOURS_ATTEMPTS_VALIDITY.' HOUR);')) {
-            $stmt->bind_param('s', $user_id);
+            $stmt->bind_param('i', $user_id);
             $stmt->execute();
             $stmt->store_result();
 
@@ -152,48 +152,48 @@ class DatabaseHelper {
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    function userGetFollowing($username) {
+    function userGetFollowing($user_id) {
         $stmt = $this->conn->prepare('SELECT U.`username`, U.`imageURL`
-                                      FROM `FOLLOW` F JOIN `USER` U ON (F.`EkUserFollowed` = U.`username`)
-                                      WHERE F.`EkUserFollower` = ?
+                                      FROM `FOLLOW` F JOIN `USER` U ON (F.`EkIdUserFollowed` = U.`IdUser`)
+                                      WHERE F.`EkIdUserFollower` = ?
                                       ORDER BY F.`timestamp` DESC;');
-        $stmt->bind_param('s', $username);
+        $stmt->bind_param('i', $user_id);
         $stmt->execute();
         $result = $stmt->get_result();
 
         return $result->fetch_all(MYSQLI_ASSOC);
     }
     function userGetMyFollowing() {
-        $username = get_username();
-        return $this->userGetFollowing($username);
+        $user_id = get_user_id();
+        return $this->userGetFollowing($user_id);
     }
-    function userGetFollowers($username) {
+    function userGetFollowers($user_id) {
         $stmt = $this->conn->prepare('SELECT U.`username`, U.`imageURL`
-                                      FROM `FOLLOW` F JOIN `USER` U ON (F.`EkUserFollower` = U.`username`)
-                                      WHERE F.`EkUserFollowed` = ?
+                                      FROM `FOLLOW` F JOIN `USER` U ON (F.`EkIdUserFollower` = U.`IdUser`)
+                                      WHERE F.`EkIdUserFollowed` = ?
                                       ORDER BY F.`timestamp` DESC;');
-        $stmt->bind_param('s', $username);
+        $stmt->bind_param('i', $user_id);
         $stmt->execute();
         $result = $stmt->get_result();
 
         return $result->fetch_all(MYSQLI_ASSOC);
     }
     function userGetMyFollowers() {
-        $username = get_username();
-        return $this->userGetFollowers($username);
+        $user_id = get_user_id();
+        return $this->userGetFollowers($user_id);
     }
 
-    function userFollow($username) {
-        $stmt = $this->conn->prepare('INSERT INTO `FOLLOW` (`EkUserFollower`, `EkUserFollowed`)
+    function userFollow($user_id) {
+        $stmt = $this->conn->prepare('INSERT INTO `FOLLOW` (`EkIdUserFollower`, `EkIdUserFollowed`)
                                       VALUES (?, ?);');
-        $stmt->bind_param('ss', $username, $username);
+        $stmt->bind_param('ii', $_SESSION['user_id'], $user_id);
         $stmt->execute();
     }
-    function userUnfollow($username) {
+    function userUnfollow($user_id) {
         $stmt = $this->conn->prepare('DELETE FROM `FOLLOW`
-                                      WHERE `EkUserFollower` = ?
-                                        AND `EkUserFollowed` = ?;');
-        $stmt->bind_param('ss', $username, $username);
+                                      WHERE `EkIdUserFollower` = ?
+                                        AND `EkIdUserFollowed` = ?;');
+        $stmt->bind_param('ii', $_SESSION['user_id'], $user_id);
         $stmt->execute();
     }
 
@@ -202,11 +202,12 @@ class DatabaseHelper {
                                       SET `username` = ?,
                                           `name` = ?,
                                           `surname` = ?,
+                                          `imageURL` = ?,
                                           `bio` = ?,
-                                          `imageURL` = ?
+                                          `caption` = ?,
                                       WHERE `username` = ?;');
         $oldUsername = get_username();
-        $stmt->bind_param('ssssss', $username, $name, $surname, $imageURL, $bio, $caption, $oldUsername);
+        $stmt->bind_param('sssssss', $username, $name, $surname, $imageURL, $bio, $caption, $oldUsername);
 
         if ($stmt->execute()) {
             $_SESSION['username'] = $username;
@@ -215,11 +216,11 @@ class DatabaseHelper {
 
     // COMMENTS
     function commentsGetByPost($postID) {
-        $stmt = $this->conn->prepare('SELECT C.`EkUser`, C.`content`, C.`timestamp`, U.`imageURL`
-                                      FROM `COMMENT` C JOIN `USER` U ON (C.`EkUser` = U.`username`)
-                                      WHERE C.`EkPost` = ?
+        $stmt = $this->conn->prepare('SELECT C.`EkIdUser`, C.`content`, C.`timestamp`, U.`imageURL`
+                                      FROM `COMMENT` C JOIN `USER` U ON (C.`EkIdUser` = U.`IdUser`)
+                                      WHERE C.`EkIdPost` = ?
                                       ORDER BY C.`timestamp` DESC;');
-        $stmt->bind_param('s', $postID);
+        $stmt->bind_param('i', $postID);
         $stmt->execute();
         $result = $stmt->get_result();
 
@@ -227,25 +228,25 @@ class DatabaseHelper {
     }
 
     function commentLike($commentID) {
-        $stmt = $this->conn->prepare('INSERT INTO `LIKE_COMMENT` (`EkUser`, `EkComment`)
+        $stmt = $this->conn->prepare('INSERT INTO `LIKE_COMMENT` (`EkIdUser`, `EkIdComment`)
                                       VALUES (?, ?);');
-        $username = get_username();
-        $stmt->bind_param('ss', $username, $postID);
+        $user_id = get_user_id();
+        $stmt->bind_param('ii', $user_id, $postID);
         $stmt->execute();
     }
     function commentUnlike($commentID) {
         $stmt = $this->conn->prepare('DELETE FROM `LIKE_COMMENT`
-                                      WHERE `EkUser` = ?
-                                        AND `EkComment` = ?;');
-        $username = get_username();
-        $stmt->bind_param('ss', $username, $postID);
+                                      WHERE `EkIdUser` = ?
+                                        AND `EkIdComment` = ?;');
+        $user_id = get_user_id();
+        $stmt->bind_param('ii', $user_id, $postID);
         $stmt->execute();
     }
     function commentPost($postID, $content) {
-        $stmt = $this->conn->prepare('INSERT INTO `COMMENT` (`EkUser`, `EkPost`, `content`)
+        $stmt = $this->conn->prepare('INSERT INTO `COMMENT` (`EkIdUser`, `EkIdPost`, `content`)
                                       VALUES (?, ?, ?);');
-        $username = get_username();
-        $stmt->bind_param('ss', $username, $postID, $content);
+        $user_id = get_user_id();
+        $stmt->bind_param('iis', $user_id, $postID, $content);
         $stmt->execute();
     }
 
@@ -256,7 +257,7 @@ class DatabaseHelper {
                                       WHERE `EkIdUserDst` = ?
                                       ORDER BY `timestamp` DESC;');
         $user_id = get_user_id();
-        $stmt->bind_param('s', $user_id);
+        $stmt->bind_param('i', $user_id);
         $stmt->execute();
         $result = $stmt->get_result();
 
@@ -268,19 +269,19 @@ class DatabaseHelper {
                                       WHERE `EkIdUser` = ?
                                         AND `EkIdPost` = ?
                                         AND `content` = ?;');
-        $username = get_username();
-        $stmt->bind_param('sss', $username, $postID, $content);
+        $username = get_user_id();
+        $stmt->bind_param('iis', $user_id, $postID, $content);
         $stmt->execute();
     }
 
     // POSTS
     function postsGetFromFollowingUsers() {
-        $stmt = $this->conn->prepare('SELECT P.`EkUser`, P.`imageURL`, P.`caption`, P.`nLikes`, P.`timestamp`
-                                      FROM `FOLLOW` F JOIN `POST` P ON (P.`EkUser` = F.`EkUserFollowed`)
-                                      WHERE F.`EkUserFollower` = ?
+        $stmt = $this->conn->prepare('SELECT P.`EkIdUser`, P.`imageURL`, P.`caption`, P.`nLikes`, P.`timestamp`
+                                      FROM `FOLLOW` F JOIN `POST` P ON (P.`EkIdUser` = F.`EkIdUserFollowed`)
+                                      WHERE F.`EkIdUserFollower` = ?
                                       ORDER BY P.`timestamp` DESC;');
-        $username = get_username();
-        $stmt->bind_param('s', $username);
+        $user_id = get_user_id();
+        $stmt->bind_param('i', $user_id);
         $stmt->execute();
         $result = $stmt->get_result();
 
@@ -295,42 +296,42 @@ class DatabaseHelper {
 
         return $result->fetch_all(MYSQLI_ASSOC);
     }
-    function postsGetFromUser($username) {
-        $stmt = $this->conn->prepare('SELECT `EkUser`, `imageURL`, `caption`, `nLikes`, `timestamp`
+    function postsGetFromUser($user_id) {
+        $stmt = $this->conn->prepare('SELECT `EkIdUser`, `imageURL`, `caption`, `nLikes`, `timestamp`
                                       FROM `POST`
-                                      WHERE `EkUser` = ?
+                                      WHERE `EkIdUser` = ?
                                       ORDER BY `timestamp` DESC;');
-        $stmt->bind_param('s', $username);
+        $stmt->bind_param('i', $user_id);
         $stmt->execute();
         $result = $stmt->get_result();
 
         return $result->fetch_all(MYSQLI_ASSOC);
     }
     function postsGetMy() {
-        $username = get_username();
-        return $this->postsGetFromUser($username);
+        $user_id = get_user_id();
+        return $this->postsGetFromUser($user_id);
     }
 
     function postLike($postID) {
-        $stmt = $this->conn->prepare('INSERT INTO `LIKE_POST` (`EkUser`, `EkUser`)
+        $stmt = $this->conn->prepare('INSERT INTO `LIKE_POST` (`EkIdUser`, `EkIdUser`)
                                       VALUES (?, ?);');
-        $username = get_username();
-        $stmt->bind_param('ss', $username, $postID);
+        $username = get_user_id();
+        $stmt->bind_param('ii', $user_id, $postID);
         $stmt->execute();
     }
     function postUnlike($postID) {
         $stmt = $this->conn->prepare('DELETE FROM `LIKE_POST`
-                                      WHERE `EkUser` = ?
-                                        AND `EkPost` = ?;');
-        $username = get_username();
-        $stmt->bind_param('ss', $username, $postID);
+                                      WHERE `EkIdUser` = ?
+                                        AND `EkIdPost` = ?;');
+        $username = get_user_id();
+        $stmt->bind_param('ii', $user_id, $postID);
         $stmt->execute();
     }
     function postAdd($imageURL, $caption = '') {
-        $stmt = $this->conn->prepare('INSERT INTO `POST` (`EkUser`, `imageURL`, `caption`)
+        $stmt = $this->conn->prepare('INSERT INTO `POST` (`EkIdUser`, `imageURL`, `caption`)
                                       VALUES (?, ?, ?);');
-        $username = get_username();
-        $stmt->bind_param('ss', $username, $imageURL, $caption);
+        $username = get_user_id();
+        $stmt->bind_param('iis', $user_id, $imageURL, $caption);
         $stmt->execute();
     }
 }

@@ -12,15 +12,18 @@
     <footer>
         <p><a href="">Follow</a></p>
     </footer>
-</section>
+</section>                                         <!--  TODO: devo mettere l'id non dell'utente 1 ma del profilo che visito -->
+<?php foreach($db->postsGetFromUser(1) as $post): ?>
 <article>
     <!-- TODO: Warning: article lacks heading  -->
     <figure>
-        <img src="../img/posts/post3.jpg" alt=""/>
-        <figcaption>Check out this photo I posted!</figcaption>
+        <?php 
+                echo '<img src='.get_user_post_path(1, $post["imageURL"]).' alt="" />';
+                echo "<figcaption>".$post["caption"]."</figcaption>";
+        ?>
     </figure>
     <footer>
-        <form action="#" method="POST">
+        <form action="" method="POST">
             <ul> 
                 <li><label for="like" hidden>Like:</label><input id="like" type="image" src="<?php echo ICON_HEART_EMPTY; ?>" alt="Like"/></li>
             </ul>
@@ -35,8 +38,9 @@
         <img src="<?php echo IMG_DEFAULT_PROFILE; ?>" alt=""/>
         <img src="<?php echo IMG_DEFAULT_PROFILE; ?>" alt=""/>
         <img src="<?php echo IMG_DEFAULT_PROFILE; ?>" alt=""/>
-        <p><small>Liked by n users</small></p>
+        <p><small><?php echo 'Liked by '.$post["nLikes"].' users' ?></small></p>
         <p><a href="">View all comments</a></p>
-        <p><small>4 hours ago</small></p>
+        <p><small><?php echo $post["timestamp"] ?></small></p>
     </aside>
 </article>
+<?php endforeach; ?>
