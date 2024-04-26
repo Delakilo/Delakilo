@@ -1,11 +1,17 @@
+<?php 
+    foreach($db->postsGetFromFollowingUsers() as $post):
+    foreach ($db->userGetInfoById($post["EkIdUser"]) as $info):
+?>
 <article>
     <header>
-        <img src="<?php echo IMG_DEFAULT_PROFILE; ?>" alt=""/>
-        <h2><a href="./homeprofile.php">User 2</a></h2>
+        <img src="<?php echo IMG_DEFAULT_PROFILE; ?>" alt=""/>     <!-- TODO: mettere  $info["imageURL"] ma se lo metto ora non si vede la default_image_profile-->
+        <h2><a href="./homeprofile.php"><?php echo $info["username"] ?></a></h2>
     </header>
     <figure>
-        <img src="<?php echo 'doc/img/posts/landscape.jpg'; ?>" alt=""/>
-        <figcaption>Check out this photo I posted!</figcaption>
+        <?php 
+            echo '<img src='.get_user_post_path($post["EkIdUser"], $post["imageURL"]).' alt="" />';
+            echo "<figcaption>".$post["caption"]."</figcaption>";
+        ?>
     </figure>
     <footer>
         <form action="" method="POST">
@@ -23,8 +29,10 @@
         <img src="<?php echo IMG_DEFAULT_PROFILE; ?>" alt=""/>
         <img src="<?php echo IMG_DEFAULT_PROFILE; ?>" alt=""/>
         <img src="<?php echo IMG_DEFAULT_PROFILE; ?>" alt=""/>
-        <p><small>Liked by n users</small></p>
+        <p><small><?php echo 'Liked by '.$post["nLikes"].' users' ?></small></p>
         <p><a href="">View all comments</a></p>
-        <p><small>4 hours ago</small></p>
+        <p><small><?php echo $post["timestamp"] ?></small></p>
     </aside>
 </article>
+<?php endforeach; ?>
+<?php endforeach; ?>

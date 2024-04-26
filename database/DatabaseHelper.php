@@ -140,12 +140,11 @@ class DatabaseHelper {
 
         return $result->fetch_all(MYSQLI_ASSOC);
     }
-    function userGetInfoByName($username) {
-        $stmt = $this->conn->prepare('SELECT `username`, `name`, `surname`, `bio`, `imageURL`, `nFollowers`, `nFollowed`, `nPosts`
+    function userGetInfoById($user_id) {
+        $stmt = $this->conn->prepare('SELECT `username`, `name`, `surname`, `bio`, `imageURL`, `nFollowers`, `nFollowing`, `nPosts`
                                       FROM `USER`
-                                      WHERE `username` = ?;');
-        $username = get_username();
-        $stmt->bind_param('s', $username);
+                                      WHERE `IdUser` = ?;');
+        $stmt->bind_param('i', $user_id);
         $stmt->execute();
         $result = $stmt->get_result();
 
