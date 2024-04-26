@@ -4,7 +4,7 @@
     <div>
         <img src="<?php echo IMG_DEFAULT_PROFILE; ?>" alt=""/>
         <ul>
-            <li><em>XX<br/>Posts</em></li><li><a href=""><em>XX<br/>Followers</em></a></li><li><a href=""><em>XX<br/>Following</em></a></li>
+            <li><em>XX<br/>Posts</em></li><li><a href="./followers.php"><em>XX<br/>Followers</em></a></li><li><a href="./following.php"><em>XX<br/>Following</em></a></li>
         </ul>
     </div>
     <p><strong>Name Surname</strong></p>
