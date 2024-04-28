@@ -275,9 +275,10 @@ class DatabaseHelper {
 
     // POSTS
     function postsGetFromFollowingUsers() {
-        $stmt = $this->conn->prepare('SELECT P.`EkIdUser`, P.`imageURL`, P.`caption`, P.`nLikes`, P.`timestamp`
-                                      FROM `FOLLOW` F JOIN `POST` P ON (P.`EkIdUser` = F.`EkIdUserFollowed`)
+        $stmt = $this->conn->prepare('SELECT U.`username`, U.`imageURL` AS imgProfile, P.`EkIdUser`, P.`imageURL` AS imgPost, P.`caption`, P.`nLikes`, P.`timestamp`
+                                      FROM `USER` U,`FOLLOW` F JOIN `POST` P ON (P.`EkIdUser` = F.`EkIdUserFollowed`)
                                       WHERE F.`EkIdUserFollower` = ?
+                                      AND U.`IdUser` = P.`EkIdUser`
                                       ORDER BY P.`timestamp` DESC;');
         $user_id = get_user_id();
         $stmt->bind_param('i', $user_id);
