@@ -19,8 +19,8 @@
 <article>
     <figure>
         <?php 
-                echo '<img src='.get_user_post_path($post['EkIdUser'], $post['imageURL']).' alt="" />';
-                echo "<figcaption>".$post['caption']."</figcaption>";
+            echo '<img src='.get_user_post_path($post['EkIdUser'], $post['imageURL']).' alt="" />';
+            echo "<figcaption>".$post['caption']."</figcaption>";
         ?>
     </figure>
     <footer>

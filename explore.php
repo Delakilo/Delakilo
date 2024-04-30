@@ -3,7 +3,7 @@
 
     if ($db->userIsAlreadyLogged()) {
         $templateParams['title'] = 'Explore';
-            $templateParams['page'] = 'page.php';
+        $templateParams['page'] = 'page.php';
         if (isset($_GET['user_id'])) {
             $GLOBALS['log']->logInfo('Welcome in explore_profile page');
             $templateParams['subpage'] = 'page_explore_profile.php';
