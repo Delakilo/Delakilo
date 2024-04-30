@@ -2,12 +2,12 @@
     require_once('config.php');
 
     if ($db->userIsAlreadyLogged()) {
-        $GLOBALS['log']->logInfo('Welcome in exploreprofile page');
-        $templateParams['title'] = 'Explore';
+        $GLOBALS['log']->logInfo('Welcome in homeprofile page');
+        $templateParams['title'] = 'Home';
         $templateParams['page'] = 'page.php';
-        $templateParams['subpage'] = 'exploreprof.php';
+        $templateParams['subpage'] = 'page_home_profile.php';
         $templateParams['user_id'] = $_GET['user_id'];
-        $templateParams['css'][] = 'exploreuserprofile.css';
+        $templateParams['css'][] = 'home.css';
     } else {
         header('Location: ./');
         exit;

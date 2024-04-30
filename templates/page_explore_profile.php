@@ -1,33 +1,35 @@
 <!-- Alessandro Verna -->
+<?php foreach($db->userGetInfoById($templateParams['user_id']) as $info): ?>
 <section>
-    <form action="exploresearch.php" method="GET">
+    <h2><?php echo $info['username']; ?></h2>
+    <div>
+        <img src="<?php echo get_user_profile($templateParams['user_id'], $info['imageURL']); ?>" alt=""/>
         <ul>
-            <li><label for="search_bar" hidden></label><input id="search_bar" type="text" name="SearchBar" autocomplete="on" placeholder="Search"/></li>
-            <li><label for="search_btn" hidden></label><input id="search_btn" type="submit" value="Search"/></li>
+            <li><em><?php echo $info['nPosts']; ?><br/>Posts</em></li><li><a href="./followers.php"><em><?php echo $info['nFollowers']; ?><br/>Followers</em></a></li><li><a href="./following.php"><em><?php echo $info['nFollowing']; ?><br/>Following</em></a></li>
         </ul>
-    </form>
+    </div>
+    <p><strong><?php echo $info['name'].$info['surname']; ?></strong></p>
+    <p><small><?php echo $info['bio']; ?></small></p>
+    <footer>
+        <p><a href="">Follow</a></p>
+    </footer>
 </section>
-<?php 
-    foreach($db->postsGetAll() as $post):
-?>
+<?php endforeach; ?>
+<?php foreach($db->postsGetFromUser($templateParams['user_id']) as $post): ?>
 <article>
-    <header>
-        <img src="<?php echo get_user_profile($post['EkIdUser'], $post['imgProfile']); ?>" alt=""/>
-        <h2><a href="./exploreprofile.php?user_id=<?php echo $post['EkIdUser']; ?>"><?php echo $post['username'] ?></a></h2>
-    </header>
     <figure>
         <?php 
-            echo '<img src='.get_user_post_path($post['EkIdUser'], $post['imgPost']).' alt="" />';
+            echo '<img src='.get_user_post_path($post['EkIdUser'], $post['imageURL']).' alt="" />';
             echo "<figcaption>".$post['caption']."</figcaption>";
         ?>
     </figure>
     <footer>
-        <form action="#" method="POST">
+        <form action="" method="POST">
             <ul> 
                 <li><label for="like" hidden>Like:</label><input id="like" type="image" src="<?php echo ICON_HEART_EMPTY; ?>" alt="Like"/></li>
             </ul>
         </form>
-        <form action="#" method="GET">
+        <form action="" method="GET">
             <ul> 
                 <li><label for="comment" hidden>Comment:</label><input id="comment" type="image" src="<?php echo ICON_COMMENT; ?>" alt="Comment"/></li>
             </ul>

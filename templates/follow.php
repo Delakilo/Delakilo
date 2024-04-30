@@ -4,7 +4,7 @@
     <ol>
         <li>
             <img src="<?php echo IMG_DEFAULT_PROFILE; ?>" alt=""/>
-            <h2><a href="./homeprofile.php"><?php echo $follow['username'] ?></a></h2>
+            <h2><a href="./home_profile.php"><?php echo $follow['username'] ?></a></h2>
         </li>
     </ol>
 </article>

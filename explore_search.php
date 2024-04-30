@@ -5,7 +5,7 @@
         $GLOBALS['log']->logInfo('Welcome in exploreprofile page');
         $templateParams['title'] = 'Explore';
         $templateParams['page'] = 'page.php';
-        $templateParams['subpage'] = 'exploresearchresults.php';
+        $templateParams['subpage'] = 'page_explore_search.php';
         $templateParams['css'][] = 'exploresearch.css';
     } else {
         header('Location: ./');

@@ -5,7 +5,7 @@
         $GLOBALS['log']->logInfo('Welcome in notifications page');
         $templateParams['title'] = 'Notifications';
         $templateParams['page'] = 'page.php';
-        $templateParams['subpage'] = 'notifications.php';
+        $templateParams['subpage'] = 'page_notifications.php';
         $templateParams['css'][] = 'notifications.css';
     } else {
         header('Location: ./');
