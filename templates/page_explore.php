@@ -1,22 +1,22 @@
 <!-- Alessandro Verna -->
 <section>
-    <form action="explore_search.php" method="GET">
+    <form action="" method="GET">
         <ul>
             <li><label for="search_bar" hidden></label><input id="search_bar" type="text" name="search" autocomplete="on" placeholder="Search"/></li>
             <li><label for="search_btn" hidden></label><input id="search_btn" type="submit" value="Search"/></li>
         </ul>
     </form>
 </section>
-<?php 
+<?php
     foreach($db->postsGetAll() as $post):
 ?>
 <article>
     <header>
         <img src="<?php echo get_user_profile($post['EkIdUser'], $post['imgProfile']); ?>" alt=""/>
-        <h2><a href="./explore_profile.php?user_id=<?php echo $post['EkIdUser']; ?>"><?php echo $post['username'] ?></a></h2>
+        <h2><a href="./explore.php?user_id=<?php echo $post['EkIdUser']; ?>"><?php echo $post['username'] ?></a></h2>
     </header>
     <figure>
-        <?php 
+        <?php
             echo '<img src='.get_user_post_path($post['EkIdUser'], $post['imgPost']).' alt="" />';
             echo "<figcaption>".$post['caption']."</figcaption>";
         ?>
