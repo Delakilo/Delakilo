@@ -152,7 +152,7 @@ class DatabaseHelper {
     }
 
     function userGetFollowing($user_id) {
-        $stmt = $this->conn->prepare('SELECT U.`username`, U.`imageURL`
+        $stmt = $this->conn->prepare('SELECT U.`IdUser`, U.`username`, U.`imageURL`
                                       FROM `FOLLOW` F JOIN `USER` U ON (F.`EkIdUserFollowed` = U.`IdUser`)
                                       WHERE F.`EkIdUserFollower` = ?
                                       ORDER BY F.`timestamp` DESC;');
@@ -167,7 +167,7 @@ class DatabaseHelper {
         return $this->userGetFollowing($user_id);
     }
     function userGetFollowers($user_id) {
-        $stmt = $this->conn->prepare('SELECT U.`username`, U.`imageURL`
+        $stmt = $this->conn->prepare('SELECT U.`IdUser`, U.`username`, U.`imageURL`
                                       FROM `FOLLOW` F JOIN `USER` U ON (F.`EkIdUserFollower` = U.`IdUser`)
                                       WHERE F.`EkIdUserFollowed` = ?
                                       ORDER BY F.`timestamp` DESC;');
