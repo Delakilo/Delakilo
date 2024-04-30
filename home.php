@@ -5,7 +5,7 @@
         $GLOBALS['log']->logInfo('Welcome in home page');
         $templateParams['title'] = 'Home';
         $templateParams['page'] = 'page.php';
-        $templateParams['subpage'] = 'homepage.php';
+        $templateParams['subpage'] = 'page_home.php';
         $templateParams['css'][] = 'home.css';
     } else {
         header('Location: ./');

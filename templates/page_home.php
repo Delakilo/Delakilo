@@ -1,15 +1,13 @@
-<?php 
-    foreach($db->postsGetFromFollowingUsers() as $post):
-?>
+<?php foreach($db->postsGetFromFollowingUsers() as $post): ?>
 <article>
     <header>
-        <img src="<?php echo DIR_USERS.$post["EkIdUser"].$post["imgProfile"]; ?>" alt=""/>
-        <h2><a href="./homeprofile.php?user_id=<?php echo $post["EkIdUser"]; ?>"><?php echo $post["username"] ?></a></h2>
+        <img src="<?php echo get_user_profile($post['EkIdUser'], $post['imgProfile']); ?>" alt=""/>
+        <h2><a href="./home_profile.php?user_id=<?php echo $post['EkIdUser']; ?>"><?php echo $post['username'] ?></a></h2>
     </header>
     <figure>
-        <?php 
-            echo '<img src='.get_user_post_path($post["EkIdUser"], $post["imgPost"]).' alt="" />';
-            echo "<figcaption>".$post["caption"]."</figcaption>";
+        <?php
+            echo '<img src='.get_user_post_path($post['EkIdUser'], $post['imgPost']).' alt="" />';
+            echo "<figcaption>".$post['caption']."</figcaption>";
         ?>
     </figure>
     <footer>
@@ -28,9 +26,9 @@
         <img src="<?php echo IMG_DEFAULT_PROFILE; ?>" alt=""/>
         <img src="<?php echo IMG_DEFAULT_PROFILE; ?>" alt=""/>
         <img src="<?php echo IMG_DEFAULT_PROFILE; ?>" alt=""/>
-        <p><small><?php echo 'Liked by '.$post["nLikes"].' users' ?></small></p>
+        <p><small><?php echo 'Liked by '.$post['nLikes'].' users' ?></small></p>
         <p><a href="">View all comments</a></p>
-        <p><small><?php echo $post["timestamp"] ?></small></p>
+        <p><small><?php echo $post['timestamp'] ?></small></p>
     </aside>
 </article>
 <?php endforeach; ?>

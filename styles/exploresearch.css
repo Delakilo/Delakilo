@@ -18,7 +18,7 @@ body > main > section > form > ul > li {
     padding: 0;
 }
 
-body > main > section > form > ul > li > input[name="SearchBar"] {
+body > main > section > form > ul > li > input[name="search"] {
     box-sizing: border-box;
     width: 100%;
     text-align: center;

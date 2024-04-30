@@ -1,4 +1,5 @@
-<?php foreach($db->userGetFollowing(1) as $follow): ?> <!-- TODO: usare l'id vero dello user cliccato + decidere quando invece usare userGetFollowers($user_id) -->
+<!-- TODO: usare l'id vero dello user cliccato + decidere quando invece usare userGetFollowers($user_id) -->
+<?php foreach($db->userGetFollowing(1) as $follow): ?>
 <article>
     <ol>
         <li>

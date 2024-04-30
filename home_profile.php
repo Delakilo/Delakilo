@@ -5,7 +5,7 @@
         $GLOBALS['log']->logInfo('Welcome in homeprofile page');
         $templateParams['title'] = 'Home';
         $templateParams['page'] = 'page.php';
-        $templateParams['subpage'] = 'homeprof.php';
+        $templateParams['subpage'] = 'page_home_profile.php';
         $templateParams['user_id'] = $_GET['user_id'];
         $templateParams['css'][] = 'home.css';
     } else {

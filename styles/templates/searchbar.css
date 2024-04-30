@@ -7,6 +7,6 @@ body > main > section > form > ul {
 }
 
 /* TODO: probably to recalculate */
-body > main > section > form > ul > li > input[name="SearchBar"] {
+body > main > section > form > ul > li > input[name="search"] {
     width: 60%;
 }
