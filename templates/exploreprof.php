@@ -1,29 +1,27 @@
 <!-- Alessandro Verna -->
-<?php 
-    foreach($db->userGetInfoById($templateParams["user_id"]) as $info):
-?>
+<?php foreach($db->userGetInfoById($templateParams['user_id']) as $info): ?>
 <section>
-    <h2><?php echo $info["username"]; ?></h2>
+    <h2><?php echo $info['username']; ?></h2>
     <div>
-        <img src="<?php echo DIR_USERS.$templateParams["user_id"].$info["imageURL"]; ?>" alt=""/>
+        <img src="<?php echo get_user_profile($templateParams['user_id'], $info['imageURL']); ?>" alt=""/>
         <ul>
-            <li><em><?php echo $info["nPosts"]; ?><br/>Posts</em></li><li><a href="./followers.php"><em><?php echo $info["nFollowers"]; ?><br/>Followers</em></a></li><li><a href="./following.php"><em><?php echo $info["nFollowing"]; ?><br/>Following</em></a></li>
+            <li><em><?php echo $info['nPosts']; ?><br/>Posts</em></li><li><a href="./followers.php"><em><?php echo $info['nFollowers']; ?><br/>Followers</em></a></li><li><a href="./following.php"><em><?php echo $info['nFollowing']; ?><br/>Following</em></a></li>
         </ul>
     </div>
-    <p><strong><?php echo $info["name"].$info["surname"]; ?></strong></p>
-    <p><small><?php echo $info["bio"]; ?></small></p>
+    <p><strong><?php echo $info['name'].$info['surname']; ?></strong></p>
+    <p><small><?php echo $info['bio']; ?></small></p>
     <footer>
         <p><a href="">Follow</a></p>
     </footer>
 </section>
 <?php endforeach; ?>
-<?php foreach($db->postsGetFromUser($templateParams["user_id"]) as $post): ?>
+<?php foreach($db->postsGetFromUser($templateParams['user_id']) as $post): ?>
 <article>
     <!-- TODO: Warning: article lacks heading  -->
     <figure>
         <?php 
-                echo '<img src='.get_user_post_path($post["EkIdUser"], $post["imageURL"]).' alt="" />';
-                echo "<figcaption>".$post["caption"]."</figcaption>";
+            echo '<img src='.get_user_post_path($post['EkIdUser'], $post['imageURL']).' alt="" />';
+            echo "<figcaption>".$post['caption']."</figcaption>";
         ?>
     </figure>
     <footer>
@@ -42,9 +40,9 @@
         <img src="<?php echo IMG_DEFAULT_PROFILE; ?>" alt=""/>
         <img src="<?php echo IMG_DEFAULT_PROFILE; ?>" alt=""/>
         <img src="<?php echo IMG_DEFAULT_PROFILE; ?>" alt=""/>
-        <p><small><?php echo 'Liked by '.$post["nLikes"].' users' ?></small></p>
+        <p><small><?php echo 'Liked by '.$post['nLikes'].' users' ?></small></p>
         <p><a href="">View all comments</a></p>
-        <p><small><?php echo $post["timestamp"] ?></small></p>
+        <p><small><?php echo $post['timestamp'] ?></small></p>
     </aside>
 </article>
 <?php endforeach; ?>

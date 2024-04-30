@@ -1,10 +1,9 @@
 <!-- Francesco Filippini -->
-<article>       <!-- TODO: Warning: article lacks heading  -->
+<article>
     <ul>
-    <?php
-        foreach ($db->notificationsGet() as $notification):
-            echo "<li>".$notification["message"]."</li>";  //TODO $notification["EkIdUserSrc"] potrei usarlo per linkare al profilo di chi ha inviato la notifica
-        endforeach;
-    ?>
+        <!-- TODO $notification["EkIdUserSrc"] potrei usarlo per linkare al profilo di chi ha inviato la notifica -->
+        <?php foreach ($db->notificationsGet() as $notification): ?>
+        <li><?php echo $notification['message'] ?></li>
+        <?php endforeach; ?>
     </ul>
 </article>

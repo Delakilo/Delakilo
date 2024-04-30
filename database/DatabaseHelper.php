@@ -127,8 +127,8 @@ class DatabaseHelper {
     }
 
     // USERS MANAGEMENT
-    function usersGetNamesByBaseName($name) {
-        $stmt = $this->conn->prepare('SELECT `username`, `imageURL`
+    function usersGetByBaseName($name) {
+        $stmt = $this->conn->prepare('SELECT `IdUser`, `username`, `imageURL`
                                       FROM `USER`
                                       WHERE `username` LIKE ?
                                         OR `name` LIKE ?
@@ -275,7 +275,7 @@ class DatabaseHelper {
 
     // POSTS
     function postsGetFromFollowingUsers() {
-        $stmt = $this->conn->prepare('SELECT U.`username`, U.`imageURL` AS imgProfile, P.`EkIdUser`, P.`imageURL` AS imgPost, P.`caption`, P.`nLikes`, P.`timestamp`
+        $stmt = $this->conn->prepare('SELECT U.`username`, U.`imageURL` AS `imgProfile`, P.`EkIdUser`, P.`imageURL` AS `imgPost`, P.`caption`, P.`nLikes`, P.`timestamp`
                                       FROM `USER` U,`FOLLOW` F JOIN `POST` P ON (P.`EkIdUser` = F.`EkIdUserFollowed`)
                                       WHERE F.`EkIdUserFollower` = ?
                                       AND U.`IdUser` = P.`EkIdUser`
@@ -288,7 +288,7 @@ class DatabaseHelper {
         return $result->fetch_all(MYSQLI_ASSOC);
     }
     function postsGetAll() {
-        $stmt = $this->conn->prepare('SELECT U.`username`, U.`imageURL` AS imgProfile, P.`EkIdUser`, P.`imageURL` AS imgPost, P.`caption`, P.`nLikes`, P.`timestamp`
+        $stmt = $this->conn->prepare('SELECT U.`username`, U.`imageURL` AS `imgProfile`, P.`EkIdUser`, P.`imageURL` AS `imgPost`, P.`caption`, P.`nLikes`, P.`timestamp`
                                       FROM `POST` P JOIN `USER` U ON (U.`IdUser` = P.`EkIdUser`)
                                       ORDER BY RAND();');
         $stmt->execute();
