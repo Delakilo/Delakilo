@@ -5,8 +5,8 @@
         $templateParams['title'] = 'Explore';
         $templateParams['page'] = 'page.php';
         if (isset($_GET['user_id'])) {
-            $GLOBALS['log']->logInfo('Welcome in explore_profile page');
-            $templateParams['subpage'] = 'page_explore_profile.php';
+            $GLOBALS['log']->logInfo('Welcome in page_profile page');
+            $templateParams['subpage'] = 'page_profile.php';
             $templateParams['user_id'] = $_GET['user_id'];
             $templateParams['css'][] = 'exploreuserprofile.css';
         } else if (isset($_GET['search'])) {

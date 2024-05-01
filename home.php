@@ -8,8 +8,8 @@
         $templateParams['js'][] = 'https://code.jquery.com/jquery-3.6.4.min.js';
         $templateParams['js'][] = 'js/post.js';
         if (isset($_GET['user_id'])) {
-            $GLOBALS['log']->logInfo('Welcome in homeprofile page');
-            $templateParams['subpage'] = 'page_home_profile.php';
+            $GLOBALS['log']->logInfo('Welcome in page_profile page');
+            $templateParams['subpage'] = 'page_profile.php';
             $templateParams['user_id'] = $_GET['user_id'];
         } else {
             $GLOBALS['log']->logInfo('Welcome in home page');
