@@ -52,9 +52,13 @@ body a {
     color: black;
     text-decoration: none;
 }
-body a:visited {
+/* TODO: check why doesn't work with SVG images */
+body a:visited /*, body button > img:visited*/ {
     color: var(--dark-grey);
 }
-body a:hover {
+body a:hover /*, body button > img:hover*/ {
     color: var(--grape-opaque);
+}
+body a:active /*, body button > img:active*/ {
+    color: var(--dark-slate-gray);
 }

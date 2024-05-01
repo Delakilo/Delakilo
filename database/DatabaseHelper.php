@@ -268,14 +268,14 @@ class DatabaseHelper {
                                       WHERE `EkIdUser` = ?
                                         AND `EkIdPost` = ?
                                         AND `content` = ?;');
-        $username = get_user_id();
+        $user_id = get_user_id();
         $stmt->bind_param('iis', $user_id, $postID, $content);
         $stmt->execute();
     }
 
     // POSTS
     function postsGetFromFollowingUsers() {
-        $stmt = $this->conn->prepare('SELECT U.`username`, U.`imageURL` AS `imgProfile`, P.`EkIdUser`, P.`imageURL` AS `imgPost`, P.`caption`, P.`nLikes`, P.`timestamp`
+        $stmt = $this->conn->prepare('SELECT U.`username`, U.`imageURL` AS `imgProfile`, P.`IdPost`, P.`EkIdUser`, P.`imageURL` AS `imgPost`, P.`caption`, P.`nLikes`, P.`timestamp`
                                       FROM `USER` U,`FOLLOW` F JOIN `POST` P ON (P.`EkIdUser` = F.`EkIdUserFollowed`)
                                       WHERE F.`EkIdUserFollower` = ?
                                       AND U.`IdUser` = P.`EkIdUser`
@@ -312,10 +312,22 @@ class DatabaseHelper {
         return $this->postsGetFromUser($user_id);
     }
 
+    function postIsLiked($postID) {
+        $stmt = $this->conn->prepare('SELECT *
+                                      FROM `POST` P JOIN `LIKE_POST` LP ON (P.`IdPost` = LP.`EkIdPost`)
+                                      WHERE LP.`EkIdUser` = ?
+                                        AND P.`IdPost` = ?;');
+        $user_id = get_user_id();
+        $stmt->bind_param('ii', $user_id, $postID);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return count($result->fetch_all(MYSQLI_ASSOC)) > 0;
+    }
+
     function postLike($postID) {
-        $stmt = $this->conn->prepare('INSERT INTO `LIKE_POST` (`EkIdUser`, `EkIdUser`)
+        $stmt = $this->conn->prepare('INSERT INTO `LIKE_POST` (`EkIdUser`, `EkIdPost`)
                                       VALUES (?, ?);');
-        $username = get_user_id();
+        $user_id = get_user_id();
         $stmt->bind_param('ii', $user_id, $postID);
         $stmt->execute();
     }
@@ -323,14 +335,14 @@ class DatabaseHelper {
         $stmt = $this->conn->prepare('DELETE FROM `LIKE_POST`
                                       WHERE `EkIdUser` = ?
                                         AND `EkIdPost` = ?;');
-        $username = get_user_id();
+        $user_id = get_user_id();
         $stmt->bind_param('ii', $user_id, $postID);
         $stmt->execute();
     }
     function postAdd($imageURL, $caption = '') {
         $stmt = $this->conn->prepare('INSERT INTO `POST` (`EkIdUser`, `imageURL`, `caption`)
                                       VALUES (?, ?, ?);');
-        $username = get_user_id();
+        $user_id = get_user_id();
         $stmt->bind_param('iis', $user_id, $imageURL, $caption);
         $stmt->execute();
     }

@@ -27,5 +27,3 @@
 <footer>
     <p>©Delakilo</p>
 </footer>
-<script type="text/javascript" src="js/sha512.js"></script>
-<script type="text/javascript" src="js/login.js"></script>

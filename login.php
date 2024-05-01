@@ -42,13 +42,15 @@
         exit;
     }
 
+    $templateParams['js'][] = 'js/sha512.js';
+    $templateParams['js'][] = 'js/login.js';
     if ($_GET['page'] === 'signin') {
         $templateParams['title'] = 'Sign In';
-        $templateParams['css'][0] = 'signin.css';
+        $templateParams['css'][] = 'signin.css';
         $templateParams['page'] = 'signin.php';
     } else /* if ($_GET['page'] === 'signup') */ {
         $templateParams['title'] = 'Sign Up';
-        $templateParams['css'][0] = 'signup.css';
+        $templateParams['css'][] = 'signup.css';
         $templateParams['page'] = 'signup.php';
     }
 
