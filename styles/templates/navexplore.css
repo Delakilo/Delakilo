@@ -1,0 +1,5 @@
+/* Francesco Filippini */
+
+body > nav > ul > li#explore {
+    background-color: var(--moonstone-opaque);
+}

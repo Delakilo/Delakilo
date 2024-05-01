@@ -4,7 +4,4 @@
 @import url('templates/bars.css');
 @import url('templates/menu.css');
 @import url('templates/forms.css');
-
-body > nav > ul > li#profile {
-    background-color: var(--moonstone-opaque);
-}
+@import url('templates/navprofile.css');

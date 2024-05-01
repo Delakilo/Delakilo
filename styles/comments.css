@@ -5,10 +5,8 @@
 @import url('templates/menu.css');
 @import url('templates/formspages.css');
 @import url('templates/headerpost.css');
+@import url('templates/navhome.css');
 
-body > nav > ul > li#home {
-    background-color: var(--moonstone-opaque);
-}
 
 body > main {
     box-sizing: border-box;

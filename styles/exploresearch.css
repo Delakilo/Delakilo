@@ -7,10 +7,8 @@
 @import url('templates/headerpost.css');
 @import url('templates/searchbar.css');
 @import url('templates/lists.css');
+@import url('templates/navexplore.css');
 
-body > nav > ul > li#explore {
-    background-color: var(--moonstone-opaque);
-}
 
 /* FORM */
 body > main > section > form > ul > li {

@@ -7,7 +7,4 @@
 @import url('templates/post.css');
 @import url('templates/headerpost.css');
 @import url('templates/profile.css');
-
-body > nav > ul > li#home {
-    background-color: var(--moonstone-opaque);
-}
+@import url('templates/navhome.css');

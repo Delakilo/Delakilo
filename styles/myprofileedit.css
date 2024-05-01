@@ -5,10 +5,8 @@
 @import url('templates/menu.css');
 @import url('templates/forms.css');
 @import url('templates/headerpost.css');
+@import url('templates/navprofile.css');
 
-body > nav > ul > li#profile {
-    background-color: var(--moonstone-opaque);
-}
 
 body > main > section {
     text-align: center;
