@@ -288,7 +288,7 @@ class DatabaseHelper {
         return $result->fetch_all(MYSQLI_ASSOC);
     }
     function postsGetAll() {
-        $stmt = $this->conn->prepare('SELECT U.`username`, U.`imageURL` AS `imgProfile`, P.`EkIdUser`, P.`imageURL` AS `imgPost`, P.`caption`, P.`nLikes`, P.`timestamp`
+        $stmt = $this->conn->prepare('SELECT U.`username`, U.`imageURL` AS `imgProfile`, P.`IdPost`, P.`EkIdUser`, P.`imageURL` AS `imgPost`, P.`caption`, P.`nLikes`, P.`timestamp`
                                       FROM `POST` P JOIN `USER` U ON (U.`IdUser` = P.`EkIdUser`)
                                       ORDER BY RAND();');
         $stmt->execute();
@@ -297,10 +297,10 @@ class DatabaseHelper {
         return $result->fetch_all(MYSQLI_ASSOC);
     }
     function postsGetFromUser($user_id) {
-        $stmt = $this->conn->prepare('SELECT `EkIdUser`, `imageURL`, `caption`, `nLikes`, `timestamp`
-                                      FROM `POST`
-                                      WHERE `EkIdUser` = ?
-                                      ORDER BY `timestamp` DESC;');
+        $stmt = $this->conn->prepare('SELECT P.`IdPost`, P.`EkIdUser`, P.`imageURL` AS `imgPost`, P.`caption`, P.`nLikes`, P.`timestamp`
+                                      FROM `POST` P
+                                      WHERE P.`EkIdUser` = ?
+                                      ORDER BY P.`timestamp` DESC;');
         $stmt->bind_param('i', $user_id);
         $stmt->execute();
         $result = $stmt->get_result();

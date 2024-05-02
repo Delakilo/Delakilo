@@ -10,14 +10,18 @@
                 $GLOBALS['log']->logWarning($templateParams['page'].' has no style sheet');
             } else {
                 foreach ($templateParams['css'] as $key => $value) {
-                    echo '<link href="./styles/'.$value.'" rel="stylesheet" type="text/css"/>'.PHP_EOL;
+                    ?>
+                    <link href="./styles/<?php echo $value ?>" rel="stylesheet" type="text/css"/>
+                    <?php
                 }
             }
         ?>
         <?php
             if (isset($templateParams['js'])) {
                 foreach ($templateParams['js'] as $key => $value) {
-                    ?><script type="text/javascript" src="<?php echo $value ?>"></script><?php
+                    ?>
+                    <script type="text/javascript" src="<?php echo $value ?>"></script>
+                    <?php
                 }
             }
         ?>
