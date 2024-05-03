@@ -7,13 +7,7 @@
         </ul>
     </form>
 </section>
-<article>
-    <ol>
-        <?php foreach($db->usersGetByBaseName($_GET['search']) as $username): ?>
-        <li>
-            <img src="<?php echo get_user_profile($username['IdUser'], $username['imageURL']); ?>" alt="profile"/>
-            <h2><a href="./explore.php?user_id=<?php echo $username['IdUser']; ?>"><?php echo $username['username']; ?></a></h2>
-        </li>
-        <?php endforeach; ?>
-    </ol>
-</article>
+<?php
+    $users = $db->usersGetByBaseName($_GET['search']);
+    require('templates/list_users.php');
+?>

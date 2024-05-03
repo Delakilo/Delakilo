@@ -1,5 +1,5 @@
 <nav>
-    <ul><li id="signin">Sign in</li><li id="signup"><a href="login.php?page=signup">Sign up</a></li></ul>
+    <ul><li id="signin">Sign in</li><li id="signup"><a href="<?php echo $_SERVER['PHP_SELF']; ?>?page=signup">Sign up</a></li></ul>
 </nav>
 <header>
     <h1>Delakilo</h1>
