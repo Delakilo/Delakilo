@@ -17,6 +17,28 @@ class DatabaseHelper {
         $this->conn->close();
     }
 
+    // NOTIFICATIONS
+    private function notificationSend($user, $message) {
+        $stmt = $this->conn->prepare('INSERT INTO `NOTIFICATION` (`EkIdUserSrc`, `EkIdUserDst`, `message`)
+                                      VALUES (?, ?, ?);');
+        $user_id = get_user_id();
+        $stmt->bind_param('iis', $user_id, $user, $message);
+        $stmt->execute();
+    }
+
+    function notificationsGet() {
+        $stmt = $this->conn->prepare('SELECT U.`username`, N.`message`, N.`timestamp`
+                                      FROM `NOTIFICATION` N JOIN `USER` U ON (N.`EkIdUserSrc` = U.`IdUser`)
+                                      WHERE N.`EkIdUserDst` = ?
+                                      ORDER BY N.`timestamp` DESC;');
+        $user_id = get_user_id();
+        $stmt->bind_param('i', $user_id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
     // USERS LOGIN
     private function checkBrute($user_id) {
         if ($stmt = $this->conn->prepare('SELECT *
@@ -186,14 +208,22 @@ class DatabaseHelper {
         $stmt = $this->conn->prepare('INSERT INTO `FOLLOW` (`EkIdUserFollower`, `EkIdUserFollowed`)
                                       VALUES (?, ?);');
         $stmt->bind_param('ii', $_SESSION['user_id'], $user_id);
-        $stmt->execute();
+        if ($stmt->execute()) {
+            $this->notificationSend($user_id, 'started following you');
+            return true;
+        }
+        return false;
     }
     function userUnfollow($user_id) {
         $stmt = $this->conn->prepare('DELETE FROM `FOLLOW`
                                       WHERE `EkIdUserFollower` = ?
                                         AND `EkIdUserFollowed` = ?;');
         $stmt->bind_param('ii', $_SESSION['user_id'], $user_id);
-        $stmt->execute();
+        if ($stmt->execute()) {
+            $this->notificationSend($user_id, 'unfollowed you');
+            return true;
+        }
+        return false;
     }
 
     function userIsFollowed($user_id) {
@@ -260,30 +290,6 @@ class DatabaseHelper {
         $stmt->execute();
     }
 
-    // NOTIFICATIONS
-    function notificationsGet() {
-        $stmt = $this->conn->prepare('SELECT `EkIdUserSrc`, `message`, `timestamp`
-                                      FROM `NOTIFICATION`
-                                      WHERE `EkIdUserDst` = ?
-                                      ORDER BY `timestamp` DESC;');
-        $user_id = get_user_id();
-        $stmt->bind_param('i', $user_id);
-        $stmt->execute();
-        $result = $stmt->get_result();
-
-        return $result->fetch_all(MYSQLI_ASSOC);
-    }
-
-    function notificationSend($postID, $content) {
-        $stmt = $this->conn->prepare('DELETE FROM `COMMENT`
-                                      WHERE `EkIdUser` = ?
-                                        AND `EkIdPost` = ?
-                                        AND `content` = ?;');
-        $user_id = get_user_id();
-        $stmt->bind_param('iis', $user_id, $postID, $content);
-        $stmt->execute();
-    }
-
     // POSTS
     function postsGetFromFollowingUsers() {
         $stmt = $this->conn->prepare('SELECT U.`username`, U.`imageURL` AS `imgProfile`, P.`IdPost`, P.`EkIdUser`, P.`imageURL` AS `imgPost`, P.`caption`, P.`nLikes`, P.`timestamp`
@@ -335,12 +341,27 @@ class DatabaseHelper {
         return count($result->fetch_all(MYSQLI_ASSOC)) > 0;
     }
 
+    private function userGetFromPost($idPost) {
+        $stmt = $this->conn->prepare('SELECT `EkIdUser`
+                                      FROM `POST`
+                                      WHERE `IdPost` = ?;');
+        $stmt->bind_param('i', $postID);
+        $stmt->execute();
+        $stmt->store_result();
+        $stmt->bind_result($idUser);
+        $stmt->fetch();
+
+        return $idUser;
+    }
+
     function postLike($postID) {
         $stmt = $this->conn->prepare('INSERT INTO `LIKE_POST` (`EkIdUser`, `EkIdPost`)
                                       VALUES (?, ?);');
         $user_id = get_user_id();
         $stmt->bind_param('ii', $user_id, $postID);
-        $stmt->execute();
+        if ($stmt->execute()) {
+            $this->notificationSend($this->userGetFromPost($postID), 'liked your post');
+        }
     }
     function postUnlike($postID) {
         $stmt = $this->conn->prepare('DELETE FROM `LIKE_POST`
@@ -348,7 +369,9 @@ class DatabaseHelper {
                                         AND `EkIdPost` = ?;');
         $user_id = get_user_id();
         $stmt->bind_param('ii', $user_id, $postID);
-        $stmt->execute();
+        if ($stmt->execute()) {
+            $this->notificationSend($this->userGetFromPost($postID), 'unliked your post');
+        }
     }
     function postAdd($imageURL, $caption = '') {
         $stmt = $this->conn->prepare('INSERT INTO `POST` (`EkIdUser`, `imageURL`, `caption`)
