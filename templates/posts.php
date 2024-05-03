@@ -13,7 +13,7 @@
     <?php if (isset($post['username'])): ?>
     <header>
         <img src="<?php echo get_user_profile($post['EkIdUser'], $post['imgProfile']); ?>" alt=""/>
-        <h2><a href="./home.php?user_id=<?php echo $post['EkIdUser']; ?>"><?php echo $post['username'] ?></a></h2>
+        <h2><a href="<?php echo $_SERVER['PHP_SELF']; ?>?user_id=<?php echo $post['EkIdUser']; ?>"><?php echo $post['username'] ?></a></h2>
     </header>
     <?php endif; ?>
     <figure>
