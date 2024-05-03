@@ -53,12 +53,12 @@ body a {
     text-decoration: none;
 }
 /* TODO: check why doesn't work with SVG images */
-body a:visited /*, body button > img:visited*/ {
+body a:visited, body button:visited {
     color: var(--dark-grey);
 }
-body a:hover /*, body button > img:hover*/ {
+body a:hover, body button:hover {
     color: var(--grape-opaque);
 }
-body a:active /*, body button > img:active*/ {
-    color: var(--dark-slate-gray);
+body a:active, body button:active {
+    color: magenta;
 }

@@ -53,13 +53,13 @@ body > main > section > p > strong {
     font-weight: bold;
 }
 
-body > main > section > footer, body > main > section > footer > p {
+body > main > section > footer > button {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
-body > main > section > footer > p {
+body > main > section > footer > button {
     text-align: center;
     background-color: var(--moonstone);
     box-shadow: 5px 3px 3px black;
@@ -71,6 +71,6 @@ body > main > section > footer > p {
     width: 100%;
 }
 
-body > main > section > footer > p > a {
+body > main > section > footer > button {
     width: 100%;
 }

@@ -25,6 +25,7 @@
                 $templateParams['css'][] = 'exploreuserprofile.css';
                 $templateParams['js'][] = 'https://code.jquery.com/jquery-3.6.4.min.js';
                 $templateParams['js'][] = 'js/post.js';
+                $templateParams['js'][] = 'js/userprofile.js';
             }
         } else if (isset($_GET['search'])) {
             $templateParams['title'] .= ' Search';

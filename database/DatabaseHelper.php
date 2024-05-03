@@ -196,6 +196,17 @@ class DatabaseHelper {
         $stmt->execute();
     }
 
+    function userIsFollowed($user_id) {
+        $stmt = $this->conn->prepare('SELECT *
+                                      FROM `FOLLOW`
+                                      WHERE `EkIdUserFollower` = ?
+                                        AND `EkIdUserFollowed` = ?;');
+        $stmt->bind_param('ii', $_SESSION['user_id'], $user_id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return count($result->fetch_all(MYSQLI_ASSOC)) > 0;
+    }
+
     function userEditProfile($username, $name, $surname, $bio, $imageURL) {
         $stmt = $this->conn->prepare('UPDATE `USER`
                                       SET `username` = ?,

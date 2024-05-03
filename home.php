@@ -23,8 +23,9 @@
                 $templateParams['subpage'] = 'page_profile.php';
                 $templateParams['css'][] = 'home.css';
                 $templateParams['user_id'] = $_GET['user_id'];
-            $templateParams['js'][] = 'https://code.jquery.com/jquery-3.6.4.min.js';
-            $templateParams['js'][] = 'js/post.js';
+                $templateParams['js'][] = 'https://code.jquery.com/jquery-3.6.4.min.js';
+                $templateParams['js'][] = 'js/post.js';
+                $templateParams['js'][] = 'js/userprofile.js';
             }
         } else {
             $GLOBALS['log']->logInfo('Welcome in home page');
