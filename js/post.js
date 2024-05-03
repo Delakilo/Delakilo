@@ -13,10 +13,12 @@ function togglePostLike(idPost) {
             if (response.status == 'OK') {
                 document.getElementById(idPost).src = newImage;
                 document.getElementById(idPost).alt = nextAction;
+            } else {
+                console.warn(response.status);
             }
         },
         error: function (error) {
-            console.log(error);
+            console.error(error);
         }
     });
 }

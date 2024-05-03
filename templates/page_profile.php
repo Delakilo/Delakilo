@@ -1,12 +1,5 @@
 <!-- Francesco Filippini -->
 <?php foreach($db->userGetInfoById($templateParams['user_id']) as $info): ?>
-<?php
-    if ($db->userIsFollowed($templateParams['user_id'])) {
-        $text = 'Unfollow';
-    } else {
-        $text = 'Follow';
-    }
-?>
 <section>
     <h2><?php echo $info['username']; ?></h2>
     <div>
@@ -21,9 +14,18 @@
     <?php if ($info['bio'] != ''): ?>
     <p><small><?php echo $info['bio']; ?></small></p>
     <?php endif; ?>
+    <?php if ($_SESSION['user_id'] !== $templateParams['user_id']): ?>
     <footer>
+        <?php
+            if ($db->userIsFollowed($templateParams['user_id'])) {
+                $text = 'Unfollow';
+            } else {
+                $text = 'Follow';
+            }
+        ?>
         <button id="<?php echo $templateParams['user_id']; ?>" type="button" onclick="toggleFollow(<?php echo $templateParams['user_id']; ?>)"><?php echo $text; ?></button>
     </footer>
+    <?php endif; ?>
 </section>
 <?php endforeach; ?>
 <?php
