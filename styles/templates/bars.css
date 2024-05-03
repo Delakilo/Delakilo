@@ -2,7 +2,14 @@
 
 @import url('global.css');
 
-body > header, body > footer {
+body > div {
+    box-sizing: border-box;
+    background-color: var(--wheat);
+}
+
+body > header,
+body > div > header,
+body > footer {
     background: linear-gradient(to top right, var(--dark-slate-gray-opaque), var(--mahogany-opaque), var(--grape-opaque));
 
     color: white;
@@ -10,9 +17,11 @@ body > header, body > footer {
     box-sizing: border-box;
     width: 100%;
     padding: 0.5%;
+    z-index: 9999;
 }
 
-body > header {
+body > header,
+body > div > header {
     text-align: center;
     font-size: x-large;
 
@@ -21,12 +30,15 @@ body > header {
     border-bottom: medium solid;
 }
 
-body > header > h1, body > header > a {
+body > header,
+body > div > header > h1,
+body > div > header > a {
     padding: 0;
     margin: 0;
 }
 
-body > header > a {
+body > header,
+body > div > header > a {
     color: white;
     font-size: medium;
 }

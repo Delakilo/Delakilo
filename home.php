@@ -4,6 +4,7 @@
     if ($db->userIsAlreadyLogged()) {
         $templateParams['title'] = 'Home';
         $templateParams['page'] = 'page.php';
+        $templateParams['js'][] = 'js/sticky_menu.js';
         if (isset($_GET['user_id'])) {
             if (isset($_GET['followers'])) {
                 $templateParams['title'] .= ' Followers';
@@ -25,7 +26,7 @@
                 $templateParams['user_id'] = $_GET['user_id'];
                 $templateParams['js'][] = 'https://code.jquery.com/jquery-3.6.4.min.js';
                 $templateParams['js'][] = 'js/post.js';
-                $templateParams['js'][] = 'js/userprofile.js';
+                $templateParams['js'][] = 'js/user_profile.js';
             }
         } else {
             $GLOBALS['log']->logInfo('Welcome in home page');

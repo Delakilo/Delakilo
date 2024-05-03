@@ -3,7 +3,11 @@
 @import url('global.css');
 @import url('maincontent.css');
 
-body > nav > ul {
+body > div > nav {
+    z-index: 9999;
+}
+
+body > div > nav > ul {
     list-style: none;
     text-align: center;
     /* It's important to put margin and padding to 0 to avoid unexpected browser behavior */
@@ -11,7 +15,7 @@ body > nav > ul {
     padding: 0;
 }
 
-body > nav > ul > li {
+body > div > nav > ul > li {
     display: inline-block;
     box-sizing: border-box;
     border: black medium solid;
@@ -20,11 +24,11 @@ body > nav > ul > li {
     background-color: var(--chamoisee-opaque);
 }
 
-body > nav > ul > li:not(:last-child) {
+body > div > nav > ul > li:not(:last-child) {
     margin-right: 1%;
 }
 
-body > nav > ul > li > a > img {
+body > div > nav > ul > li > a > img {
     width: 30%;
     height: 30%;
     max-width: 100%;
@@ -32,7 +36,7 @@ body > nav > ul > li > a > img {
     object-fit: cover;
 }
 
-body > nav > ul > li > a {
+body > div > nav > ul > li > a {
     display: block;
     font-size: 110%;
     padding: 5px 0;
@@ -41,6 +45,12 @@ body > nav > ul > li > a {
 .menu-text {
     position: absolute;
     left: -9999px;
+}
+
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
 }
 
 @media only screen
@@ -57,7 +67,7 @@ body > nav > ul > li > a {
         left: 0;
     }
 
-    body > nav > ul > li {
+    body > div > nav > ul > li {
         display: inline-block;
         box-sizing: border-box;
         border: black medium solid;
@@ -68,19 +78,19 @@ body > nav > ul > li > a {
         padding: 5px 0;
     }
 
-    body > nav {
+    body > div > nav {
         position: static;
     }
 
-    body > nav > ul > li:not(:last-child) {
+    body > div > nav > ul > li:not(:last-child) {
         margin-right: 2%;
     }
 
-    body > nav > ul > li > a > img {
+    body > div > nav > ul > li > a > img {
         display: none;
     }
 
-    body > nav > ul > li > a {
+    body > div > nav > ul > li > a {
         display: inline;
     }
 }

@@ -7,6 +7,7 @@
         $templateParams['page'] = 'page.php';
         $templateParams['subpage'] = 'page_notifications.php';
         $templateParams['css'][] = 'notifications.css';
+        $templateParams['js'][] = 'js/sticky_menu.js';
     } else {
         header('Location: ./');
         exit;

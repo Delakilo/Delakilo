@@ -5,6 +5,6 @@
 @import url('templates/menu.css');
 @import url('templates/lists.css');
 
-body > nav > ul > li#notifications {
+body > div > nav > ul > li#notifications {
     background-color: var(--moonstone-opaque);
 }

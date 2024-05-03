@@ -1,5 +1,5 @@
 /* Francesco Filippini */
 
-body > nav > ul > li#profile {
+body > div > nav > ul > li#profile {
     background-color: var(--moonstone-opaque);
 }
