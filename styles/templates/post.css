@@ -29,8 +29,8 @@ body > main > article > figure > figcaption {
 }
 
 body > main > article > aside > img {
-    max-height: 40px;
-    width: 3%;
+    width: 2em;
+    height: 2em;
     border-radius: 60%;
 }
 
@@ -42,7 +42,7 @@ body > main > article > aside > img, body > main > article > aside > p:first-of-
 
 body > main > article > aside > p {
     color: black;
-    font-size: 120%;
+    font-size: larger;
     font-family: 'Times New Roman', Times, serif;
     margin: 1% 0;
     padding: 0;
@@ -61,7 +61,13 @@ body > main > article > aside > p > a, body > main > article > aside > p:last-of
     padding: 0;
 }
 
-/* FORM */
+body > main > article > aside > p > small {
+   font-size: small;
+}
+
+body > main > article > footer {
+    text-align: right;
+}
 body > main > article > footer > button {
     display: inline-block;
 }
@@ -71,7 +77,7 @@ body > main > article > footer > button {
     border: none;
 }
 body > main > article > footer > button > img {
-    width: 2em;
-    height: 2em;
+    width: 3em;
+    height: 3em;
     vertical-align: bottom;
 }

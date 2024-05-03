@@ -1,5 +1,6 @@
 <header>
     <h1>Delakilo</h1>
+    <a href="./logout.php">Logout</a>
 </header>
 <nav>
     <ul>

@@ -25,9 +25,13 @@ body > main form > ul > li:not(:last-child) {
     text-align: left;
 }
 
-body > main form > ul > li:not(:last-child) > input, body > main form > ul > li:not(:last-child) > label {
-    display: inline-block;
-    width: 45%;
+body > main form > ul > li > label {
+    display: none;
+}
+
+body > main form > ul > li:not(:last-child) > input {
+    display: block;
+    width: 100%;
 }
 
 body > main form > ul > li:last-child {
@@ -47,4 +51,14 @@ body > main form > ul > li > input[type="submit"] {
 
 body > main form > ul > li > input[type="submit"]:hover {
     color: var(--grape);
+}
+
+@media only screen
+        and (orientation: landscape)
+        and (min-width: 768px) {
+
+    body > main form > ul > li:not(:last-child) > input, body > main form > ul > li:not(:last-child) > label {
+        display: inline-block;
+        width: 45%;
+    }
 }
