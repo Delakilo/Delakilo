@@ -48,16 +48,26 @@ body > main > section > footer > button > img {
     vertical-align: bottom;
 }
 
+body > main > section:nth-last-child(2) {
+    margin-bottom: 15%;
+}
+
 body > main > section:last-of-type {
     position: fixed;
     bottom: 0;
     width: 100%;
     left: 5%;
-    margin: 0 0 1%;
+    margin: 0;
     padding: 0;
     border: black medium dotted;
     background-color: var(--reseda-green);
+    max-height: 30%;
 }
+
+body > main > section:last-of-type textarea {
+    resize: none;
+}
+
 
 @media only screen
   and (orientation: landscape)
@@ -66,4 +76,5 @@ body > main > section:last-of-type {
     body > main > section:last-of-type {
         left: 20%;
     }
+
 }
