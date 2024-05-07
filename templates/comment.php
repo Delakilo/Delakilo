@@ -1,28 +1,31 @@
-<!-- Francesco Filippini TODO: da implementare con php-->
+<!-- Francesco Filippini -->
+<?php foreach($db->commentsGetByPost($templateParams['id_post']) as $comments): ?>
+<?php
+    if ($db->commentIsLiked($comments['IdComment'])) {
+        $image = ICON_HEART_RED;
+        $alt = "UnlikeComment";
+    } else {
+        $image = ICON_HEART_EMPTY;
+        $alt = "LikeComment";
+    }
+?>
 <section>
     <header>
-        <img src="../../resources/images/profiles/default.svg" alt=""/>
-        <h2><a href="homeprofile.html">User 2</a></h2>
+        <img src="<?php echo get_user_profile($comments['EkIdUser'], $comments['imageURL']); ?>" alt=""/>
+        <h2><a href="home.php?user_id=<?php echo $comments['EkIdUser']; ?>"><?php echo $comments['username'] ?></a></h2>
     </header>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-    <p><small>4 hours ago</small></p>
+    <p><?php echo $comments['content'] ?></p>
+    <p><small><?php echo $comments['timestamp'] ?></small></p>
     <footer>
-        <form action="#" method="POST">
-            <ul> 
-                <li><label for="like" hidden>Like:</label><input id="like" type="image" src="../../resources/icons/post/heart-empty.svg" alt="Like"/></li>
-            </ul>
-        </form>
-        <form action="#" method="GET">
-            <ul> 
-                <li><label for="comment" hidden>Comment:</label><input id="comment" type="image" src="../../resources/icons/post/comment.svg" alt="Comment"/></li>
-            </ul>
-        </form>
+        <button type="button" onclick="toggleCommentLike(<?php echo $comments['IdComment']; ?>)"><img id="<?php echo $comments['IdComment']; ?>" src="<?php echo $image; ?>" alt="<?php echo $alt; ?>"/></button>
+        <button type="button" onclick="commentPost()"><img src="<?php echo ICON_COMMENT; ?>" alt="Comment"/></button>
     </footer>
 </section>
+<?php endforeach; ?>
 <section>
     <header>
-        <img src="../../resources/images/profiles/default.svg" alt=""/>
-        <h2><a href="myprofile.html">User1</a></h2>
+        <img src="<?php echo get_current_user_profile($db->userGetMyImageProfile()); ?>" alt=""/>
+        <h2><a href=""><?php echo get_username(); ?></a></h2>
     </header>
     <form action="#" method="POST">
         <h2>Comment</h2>

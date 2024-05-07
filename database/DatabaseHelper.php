@@ -13,6 +13,7 @@ class DatabaseHelper {
             die("Connection with MySQL failed: ".$error);
         }
     }
+
     function __destruct() {
         $this->conn->close();
     }
@@ -149,6 +150,7 @@ class DatabaseHelper {
     }
 
     // USERS MANAGEMENT
+
     function usersGetByBaseName($name) {
         $stmt = $this->conn->prepare('SELECT `IdUser`, `username`, `imageURL`
                                       FROM `USER`
@@ -162,6 +164,7 @@ class DatabaseHelper {
 
         return $result->fetch_all(MYSQLI_ASSOC);
     }
+
     function userGetInfoById($user_id) {
         $stmt = $this->conn->prepare('SELECT `username`, `name`, `surname`, `bio`, `imageURL`, `nFollowers`, `nFollowing`, `nPosts`
                                       FROM `USER`
@@ -171,6 +174,12 @@ class DatabaseHelper {
         $result = $stmt->get_result();
 
         return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    function userGetMyImageProfile() {
+        $user_id = get_user_id();
+        $info = $this->userGetInfoById($user_id);
+        return $info[0]["imageURL"];
     }
 
     function userGetFollowing($user_id) {
@@ -184,10 +193,12 @@ class DatabaseHelper {
 
         return $result->fetch_all(MYSQLI_ASSOC);
     }
+
     function userGetMyFollowing() {
         $user_id = get_user_id();
         return $this->userGetFollowing($user_id);
     }
+
     function userGetFollowers($user_id) {
         $stmt = $this->conn->prepare('SELECT U.`IdUser`, U.`username`, U.`imageURL`
                                       FROM `FOLLOW` F JOIN `USER` U ON (F.`EkIdUserFollower` = U.`IdUser`)
@@ -199,6 +210,7 @@ class DatabaseHelper {
 
         return $result->fetch_all(MYSQLI_ASSOC);
     }
+
     function userGetMyFollowers() {
         $user_id = get_user_id();
         return $this->userGetFollowers($user_id);
@@ -256,7 +268,7 @@ class DatabaseHelper {
 
     // COMMENTS
     function commentsGetByPost($postID) {
-        $stmt = $this->conn->prepare('SELECT C.`EkIdUser`, C.`content`, C.`timestamp`, U.`imageURL`
+        $stmt = $this->conn->prepare('SELECT C.`EkIdUser`, C.`content`, C.`timestamp`, U.`imageURL`, U.`username`, C.`IdComment`
                                       FROM `COMMENT` C JOIN `USER` U ON (C.`EkIdUser` = U.`IdUser`)
                                       WHERE C.`EkIdPost` = ?
                                       ORDER BY C.`timestamp` DESC;');
@@ -267,21 +279,35 @@ class DatabaseHelper {
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    function commentIsLiked($commentID) {
+        $stmt = $this->conn->prepare('SELECT *
+                                      FROM `COMMENT` C JOIN `LIKE_COMMENT` LC ON (C.`IdComment` = LC.`EkIdComment`)
+                                      WHERE LC.`EkIdUser` = ?
+                                        AND C.`IdComment` = ?;');
+        $user_id = get_user_id();
+        $stmt->bind_param('ii', $user_id, $commentID);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return count($result->fetch_all(MYSQLI_ASSOC)) > 0;
+    }
+
     function commentLike($commentID) {
         $stmt = $this->conn->prepare('INSERT INTO `LIKE_COMMENT` (`EkIdUser`, `EkIdComment`)
                                       VALUES (?, ?);');
         $user_id = get_user_id();
-        $stmt->bind_param('ii', $user_id, $postID);
+        $stmt->bind_param('ii', $user_id, $commentID);
         $stmt->execute();
     }
+
     function commentUnlike($commentID) {
         $stmt = $this->conn->prepare('DELETE FROM `LIKE_COMMENT`
                                       WHERE `EkIdUser` = ?
                                         AND `EkIdComment` = ?;');
         $user_id = get_user_id();
-        $stmt->bind_param('ii', $user_id, $postID);
+        $stmt->bind_param('ii', $user_id, $commentID);
         $stmt->execute();
     }
+
     function commentPost($postID, $content) {
         $stmt = $this->conn->prepare('INSERT INTO `COMMENT` (`EkIdUser`, `EkIdPost`, `content`)
                                       VALUES (?, ?, ?);');
@@ -304,6 +330,7 @@ class DatabaseHelper {
 
         return $result->fetch_all(MYSQLI_ASSOC);
     }
+
     function postsGetAll() {
         $stmt = $this->conn->prepare('SELECT U.`username`, U.`imageURL` AS `imgProfile`, P.`IdPost`, P.`EkIdUser`, P.`imageURL` AS `imgPost`, P.`caption`, P.`nLikes`, P.`timestamp`
                                       FROM `POST` P JOIN `USER` U ON (U.`IdUser` = P.`EkIdUser`)
@@ -313,6 +340,7 @@ class DatabaseHelper {
 
         return $result->fetch_all(MYSQLI_ASSOC);
     }
+
     function postsGetFromUser($user_id) {
         $stmt = $this->conn->prepare('SELECT P.`IdPost`, P.`EkIdUser`, P.`imageURL` AS `imgPost`, P.`caption`, P.`nLikes`, P.`timestamp`
                                       FROM `POST` P
@@ -324,6 +352,7 @@ class DatabaseHelper {
 
         return $result->fetch_all(MYSQLI_ASSOC);
     }
+
     function postsGetMy() {
         $user_id = get_user_id();
         return $this->postsGetFromUser($user_id);
@@ -363,6 +392,7 @@ class DatabaseHelper {
             $this->notificationSend($this->userGetFromPost($postID), 'liked your post');
         }
     }
+
     function postUnlike($postID) {
         $stmt = $this->conn->prepare('DELETE FROM `LIKE_POST`
                                       WHERE `EkIdUser` = ?
@@ -373,6 +403,7 @@ class DatabaseHelper {
             $this->notificationSend($this->userGetFromPost($postID), 'unliked your post');
         }
     }
+
     function postAdd($imageURL, $caption = '') {
         $stmt = $this->conn->prepare('INSERT INTO `POST` (`EkIdUser`, `imageURL`, `caption`)
                                       VALUES (?, ?, ?);');

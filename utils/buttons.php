@@ -33,6 +33,18 @@
                 header('Content-Type: application/json');
                 echo json_encode($response);
                 break;
+            case 'LikeComment':
+                $db->commentLike($_POST['comment_id']);
+                $response = array('status' => 'OK');
+                header('Content-Type: application/json');
+                echo json_encode($response);
+                break;
+            case 'UnlikeComment':
+                $db->commentUnlike($_POST['comment_id']);
+                $response = array('status' => 'OK');
+                header('Content-Type: application/json');
+                echo json_encode($response);
+                break;
         }
     } else {
         // TODO: error code to find
