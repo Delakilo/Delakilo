@@ -5,7 +5,15 @@
         $templateParams['title'] = 'Explore';
         $templateParams['page'] = 'page.php';
         $templateParams['js'][] = 'js/sticky_menu.js';
-        if (isset($_GET['user_id'])) {
+        if (isset($_GET['id_post'])) {
+            $templateParams['title'] = ' Comments';
+            $templateParams['subpage'] = 'comment.php';
+            $templateParams['css'][] = 'comments.css';
+            $templateParams['css'][] = 'templates/navexplore.css';
+            $templateParams['id_post'] = $_GET['id_post'];
+            $templateParams['js'][] = 'https://code.jquery.com/jquery-3.6.4.min.js';
+            $templateParams['js'][] = 'js/comments.js';
+        } else if (isset($_GET['user_id'])) {
             if (isset($_GET['followers'])) {
                 $templateParams['title'] .= ' Followers';
                 $templateParams['subpage'] = 'page_followers.php';

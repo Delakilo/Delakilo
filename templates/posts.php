@@ -29,7 +29,7 @@
         <img src="<?php echo IMG_DEFAULT_PROFILE; ?>" alt=""/>
         <img src="<?php echo IMG_DEFAULT_PROFILE; ?>" alt=""/>
         <p><small>Liked by <?php echo $post['nLikes']; ?> users</small></p>
-        <p><a href="comments.php?id_post=<?php echo $post['IdPost']; ?>">View all comments</a></p>
+        <p><a href="<?php echo $_SERVER['PHP_SELF']; ?>?id_post=<?php echo $post['IdPost']; ?>">View all comments</a></p>
         <p><small><?php echo $post['timestamp'] ?></small></p>
     </aside>
 </article>
