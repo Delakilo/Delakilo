@@ -22,24 +22,27 @@ body > footer {
 
 body > header,
 body > div > header {
-    text-align: center;
     font-size: x-large;
-
     margin: 0.5% 0 1% 0;
+    padding: 0.5% 0;
 
     border-bottom: medium solid;
+    text-align: center;
 }
 
-body > header,
+body > header > h1,
 body > div > header > h1,
-body > div > header > a {
+body > div > header > p {
     padding: 0;
     margin: 0;
 }
 
 body > header,
-body > div > header > a {
+body > div > header > p > a {
     color: white;
+}
+
+body > div > header > p > a {
     font-size: medium;
 }
 

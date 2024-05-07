@@ -7,15 +7,22 @@ body > div > nav {
     z-index: 9999;
 }
 
+body > div > nav.general_menu {
+    text-align: left;
+}
+
 body > div > nav > ul {
     list-style: none;
-    text-align: center;
     /* It's important to put margin and padding to 0 to avoid unexpected browser behavior */
     margin: 1% 0;
     padding: 0;
 }
 
-body > div > nav > ul > li {
+body > div > nav.page_menu > ul {
+    text-align: center;
+}  
+
+body > div > nav.page_menu > ul > li {
     display: inline-block;
     box-sizing: border-box;
     border: black medium solid;
@@ -24,11 +31,11 @@ body > div > nav > ul > li {
     background-color: var(--chamoisee-opaque);
 }
 
-body > div > nav > ul > li:not(:last-child) {
+body > div > nav.page_menu > ul > li:not(:last-child) {
     margin-right: 1%;
 }
 
-body > div > nav > ul > li > a > img {
+body > div > nav.page_menu > ul > li > a > img {
     width: 30%;
     height: 30%;
     max-width: 100%;
@@ -36,7 +43,7 @@ body > div > nav > ul > li > a > img {
     object-fit: cover;
 }
 
-body > div > nav > ul > li > a {
+body > div > nav.page_menu > ul > li > a {
     display: block;
     font-size: 110%;
     padding: 5px 0;
@@ -67,7 +74,7 @@ body > div > nav > ul > li > a {
         left: 0;
     }
 
-    body > div > nav > ul > li {
+    body > div > nav.page_menu > ul > li {
         display: inline-block;
         box-sizing: border-box;
         border: black medium solid;
@@ -78,19 +85,19 @@ body > div > nav > ul > li > a {
         padding: 5px 0;
     }
 
-    body > div > nav {
+    body > div > nav.page_menu {
         position: static;
     }
 
-    body > div > nav > ul > li:not(:last-child) {
+    body > div > nav.page_menu > ul > li:not(:last-child) {
         margin-right: 2%;
     }
 
-    body > div > nav > ul > li > a > img {
+    body > div > nav.page_menu > ul > li > a > img {
         display: none;
     }
 
-    body > div > nav > ul > li > a {
+    body > div > nav.page_menu > ul > li > a {
         display: inline;
     }
 }
