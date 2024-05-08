@@ -68,14 +68,17 @@ body > main > article > aside > p > small {
 body > main > article > footer {
     text-align: right;
 }
+
 body > main > article > footer > button {
     display: inline-block;
 }
+
 body > main > article > footer > button {
     /* outline: none; */
     background: none;
     border: none;
 }
+
 body > main > article > footer > button > img {
     width: 3em;
     height: 3em;
