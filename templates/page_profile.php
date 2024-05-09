@@ -23,7 +23,7 @@
                 $text = 'Follow';
             }
         ?>
-        <button id="<?php echo $templateParams['user_id']; ?>" type="button" onclick="toggleFollow(<?php echo $templateParams['user_id']; ?>)"><?php echo $text; ?></button>
+        <button id="<?php echo $templateParams['user_id']; ?>" type="button" onclick="toggleFollow(<?php echo $templateParams['user_id']; ?>)" class="text"><?php echo $text; ?></button>
     </footer>
     <?php endif; ?>
 </section>

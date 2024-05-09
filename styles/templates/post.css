@@ -2,6 +2,7 @@
 
 @import url('global.css');
 @import url('headerpost.css');
+@import url('imagebuttons.css');
 
 body > main > article {
     margin-top: 1%;
@@ -63,24 +64,4 @@ body > main > article > aside > p > a, body > main > article > aside > p:last-of
 
 body > main > article > aside > p > small {
    font-size: small;
-}
-
-body > main > article > footer {
-    text-align: right;
-}
-
-body > main > article > footer > button {
-    display: inline-block;
-}
-
-body > main > article > footer > button {
-    /* outline: none; */
-    background: none;
-    border: none;
-}
-
-body > main > article > footer > button > img {
-    width: 3em;
-    height: 3em;
-    vertical-align: bottom;
 }

@@ -5,7 +5,7 @@
 @import url('templates/menu.css');
 @import url('templates/formspages.css');
 @import url('templates/headerpost.css');
-
+@import url('templates/imagebuttons.css');
 
 body > main {
     box-sizing: border-box;
@@ -39,18 +39,6 @@ body > main > section > p > small {                 /* The paragraph that descri
     font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
-body > main > section > footer > button {
-    display: inline-block;
-    background: none;
-    border: none;
-}
-
-body > main > section > footer > button > img {
-    width: 3em;
-    height: 3em;
-    vertical-align: bottom;
-}
-
 body > main > section:nth-last-child(2) {
     margin-bottom: 15%;
 }
@@ -71,7 +59,6 @@ body > main > section:last-of-type textarea {
     resize: none;
 }
 
-
 @media only screen
   and (orientation: landscape)
   and (min-width: 768px) {
@@ -79,5 +66,4 @@ body > main > section:last-of-type textarea {
     body > main > section:last-of-type {
         left: 20%;
     }
-
 }

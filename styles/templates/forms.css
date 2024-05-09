@@ -40,17 +40,8 @@ body > main form > ul > li:last-child {
 }
 
 body > main form > ul > li > input[type="submit"] {
-    background-color: var(--moonstone-opaque);
-    box-shadow: 2px 2px 3px black;
     font-size: 100%;
     padding: 5px 8px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-body > main form > ul > li > input[type="submit"]:hover {
-    color: var(--grape);
 }
 
 @media only screen

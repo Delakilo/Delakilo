@@ -21,8 +21,8 @@
         <figcaption><?php echo $post['caption'];?></figcaption>
     </figure>
     <footer>
-        <button type="button" onclick="togglePostLike(<?php echo $post['IdPost']; ?>)"><img id="<?php echo $post['IdPost']; ?>" src="<?php echo $image; ?>" alt="<?php echo $alt; ?>"/></button>
-        <button type="button" onclick="commentPost()"><img src="<?php echo ICON_COMMENT; ?>" alt="Comment"/></button>
+        <button type="button" onclick="togglePostLike(<?php echo $post['IdPost']; ?>)" class="img"><img id="<?php echo $post['IdPost']; ?>" src="<?php echo $image; ?>" alt="<?php echo $alt; ?>"/></button>
+        <button type="button" onclick="commentPost()" class="img"><img src="<?php echo ICON_COMMENT; ?>" alt="Comment"/></button>
     </footer>
     <aside>
         <img src="<?php echo IMG_DEFAULT_PROFILE; ?>" alt=""/>

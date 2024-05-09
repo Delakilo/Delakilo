@@ -1,0 +1,25 @@
+/* Enrico Marchionni */
+
+@import url('global.css');
+
+body > main > article > footer,
+body > main > section > footer {
+    text-align: right;
+}
+
+body button.img {
+    display: inline-block;
+    box-shadow: none;
+    background: none;
+    border: none;
+}
+
+body button.img:active {
+    background: none !important;
+}
+
+body button.img > img {
+    width: 3em;
+    height: 3em;
+    vertical-align: bottom;
+}

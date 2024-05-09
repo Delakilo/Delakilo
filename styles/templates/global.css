@@ -1,5 +1,8 @@
 /* Enrico Marchionni */
 
+@import url('textbuttons.css');
+@import url('links.css');
+
 /* DEFINITIONS */
 :root {
     /* COLORS */
@@ -30,6 +33,7 @@ body, html {
     padding: 0;
     height: 99%;
 }
+
 body {
     background-color: var(--wheat);
 
@@ -41,24 +45,9 @@ body {
     min-height: 99%;
     margin: 0.5%;
 }
+
 body > main {
     /* Allows main to occupy space left over */
     flex: 1;
     margin: 1%;
-}
-
-/* LINKS */
-body a {
-    color: black;
-    text-decoration: none;
-}
-/* TODO: check why doesn't work with SVG images */
-body a:visited, body button:visited {
-    color: var(--dark-grey);
-}
-body a:hover, body button:hover {
-    color: var(--grape-opaque);
-}
-body a:active, body button:active {
-    color: magenta;
 }

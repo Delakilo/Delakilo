@@ -15,10 +15,10 @@
         <h2><a href="home.php?user_id=<?php echo $comments['EkIdUser']; ?>"><?php echo $comments['username'] ?></a></h2>
     </header>
     <p><?php echo $comments['content'] ?></p>
-    <p><small><?php echo $comments['timestamp'] ?></small></p>
     <footer>
-        <button type="button" onclick="toggleCommentLike(<?php echo $comments['IdComment']; ?>)"><img id="<?php echo $comments['IdComment']; ?>" src="<?php echo $image; ?>" alt="<?php echo $alt; ?>"/></button>
+        <button type="button" onclick="toggleCommentLike(<?php echo $comments['IdComment']; ?>)" class="img"><img id="<?php echo $comments['IdComment']; ?>" src="<?php echo $image; ?>" alt="<?php echo $alt; ?>"/></button>
     </footer>
+    <p><small><?php echo $comments['timestamp'] ?></small></p>
 </section>
 <?php endforeach; ?>
 <section>

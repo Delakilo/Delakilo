@@ -1,0 +1,19 @@
+/* Enrico Marchionni */
+
+body a {
+    color: black;
+    text-decoration: none;
+}
+
+/* TODO: check why doesn't work with SVG images */
+body a:visited {
+    color: var(--dark-grey);
+}
+
+body a:hover {
+    color: var(--grape);
+}
+
+body a:active {
+    color: magenta;
+}

@@ -6,6 +6,6 @@
     <p><?php echo $comment['content'] ?></p>
     <p><small><?php echo $comment['timestamp'] ?></small></p>
     <footer>
-        <button type="button" onclick="toggleCommentLike(<?php echo $comment['IdComment']; ?>)"><img id="<?php echo $comment['IdComment']; ?>" src="../resources/icons/post/heart-empty.svg" alt="Like"/></button>
+        <button type="button" onclick="toggleCommentLike(<?php echo $comment['IdComment']; ?>)" class="img"><img id="<?php echo $comment['IdComment']; ?>" src="../resources/icons/post/heart-empty.svg" alt="Like"/></button>
     </footer>
 </section>

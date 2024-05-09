@@ -1,0 +1,21 @@
+/* Enrico Marchionni */
+
+body > main form input[type="submit"],
+body button.text {
+    box-shadow: 5px 3px 3px black;
+    background-color: var(--moonstone);
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+body > main form input[type="submit"]:hover,
+body button.text:hover {
+    color: var(--grape);
+    border-radius: 10px;
+}
+
+body > main form input[type="submit"]:active,
+body button.text:active {
+    background-color: var(--moonstone-opaque);
+}
