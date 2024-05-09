@@ -6,7 +6,7 @@
         $templateParams['page'] = 'page.php';
         $templateParams['js'][] = 'js/sticky_menu.js';
         if (isset($_GET['id_post'])) {
-            $templateParams['title'] = ' Comments';
+            $templateParams['title'] .= ' Comments';
             $templateParams['subpage'] = 'comments.php';
             $templateParams['css'][] = 'comments.css';
             $templateParams['css'][] = 'templates/navhome.css';

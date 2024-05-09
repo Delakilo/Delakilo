@@ -1,7 +1,14 @@
 <!-- Francesco Filippini -->
 <?php foreach($db->userGetInfoById($templateParams['user_id']) as $info): ?>
 <section>
+    <?php if ($_SESSION['user_id'] !== $templateParams['user_id']): ?>
     <h2><?php echo $info['username']; ?></h2>
+    <?php else: ?>
+    <header>
+        <h2><?php echo $info['username']; ?></h2>
+        <p><a href=""><img src="<?php echo ICON_PLUS; ?>" alt="Add"/></a></p>
+    </header>
+    <?php endif; ?>
     <div>
         <img src="<?php echo get_user_profile($templateParams['user_id'], $info['imageURL']); ?>" alt=""/>
         <ul>
@@ -14,8 +21,8 @@
     <?php if ($info['bio'] != ''): ?>
     <p><small><?php echo $info['bio']; ?></small></p>
     <?php endif; ?>
-    <?php if ($_SESSION['user_id'] !== $templateParams['user_id']): ?>
     <footer>
+    <?php if ($_SESSION['user_id'] !== $templateParams['user_id']): ?>
         <?php
             if ($db->userIsFollowed($templateParams['user_id'])) {
                 $text = 'Unfollow';
@@ -24,8 +31,10 @@
             }
         ?>
         <button id="<?php echo $templateParams['user_id']; ?>" type="button" onclick="toggleFollow(<?php echo $templateParams['user_id']; ?>)" class="text"><?php echo $text; ?></button>
-    </footer>
+    <?php else: ?>
+        <button id="<?php echo $templateParams['user_id']; ?>" type="button" onclick="location.href='<?php echo $_SERVER['PHP_SELF']; ?>?edit'" class="text">Edit profile</button>
     <?php endif; ?>
+    </footer>
 </section>
 <?php endforeach; ?>
 <?php
