@@ -279,6 +279,17 @@ class DatabaseHelper {
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    function commentsGetById($commentId) {
+        $stmt = $this->conn->prepare('SELECT C.`EkIdUser`, C.`content`, C.`timestamp`, U.`imageURL`, U.`username`, C.`IdComment`
+                                      FROM `COMMENT` C JOIN `USER` U ON (C.`EkIdUser` = U.`IdUser`)
+                                      WHERE C.`IdComment` = ?;');
+        $stmt->bind_param('i', $commentId);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return ($result->fetch_all(MYSQLI_ASSOC))[0];
+    }
+
     function commentIsLiked($commentID) {
         $stmt = $this->conn->prepare('SELECT *
                                       FROM `COMMENT` C JOIN `LIKE_COMMENT` LC ON (C.`IdComment` = LC.`EkIdComment`)
@@ -314,6 +325,7 @@ class DatabaseHelper {
         $user_id = get_user_id();
         $stmt->bind_param('iis', $user_id, $postID, $content);
         $stmt->execute();
+        return $this->conn->insert_id;
     }
 
     // POSTS

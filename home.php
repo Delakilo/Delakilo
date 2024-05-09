@@ -7,12 +7,13 @@
         $templateParams['js'][] = 'js/sticky_menu.js';
         if (isset($_GET['id_post'])) {
             $templateParams['title'] = ' Comments';
-            $templateParams['subpage'] = 'comment.php';
+            $templateParams['subpage'] = 'comments.php';
             $templateParams['css'][] = 'comments.css';
             $templateParams['css'][] = 'templates/navhome.css';
             $templateParams['id_post'] = $_GET['id_post'];
             $templateParams['js'][] = 'https://code.jquery.com/jquery-3.6.4.min.js';
             $templateParams['js'][] = 'js/comments.js';
+            $templateParams['js'][] = 'js/submit_comment.js';
         } else if (isset($_GET['user_id'])) {
             if (isset($_GET['followers'])) {
                 $templateParams['title'] .= ' Followers';
