@@ -19,7 +19,6 @@ function Scroll() {
     if (window.scrollY >= offsetTop) {
         stickyBar.classList.add('sticky')
         mainTag.style.paddingTop = stickyBar.offsetHeight + 'px'
-        console.log(mainTag.style.paddingTop)
         stickyBar.style.width = '99%'
     } else {
         stickyBar.classList.remove('sticky')
