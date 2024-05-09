@@ -1,11 +1,20 @@
+<?php
+    if ($db->commentIsLiked($comment['IdComment'])) {
+        $image = ICON_HEART_RED;
+        $alt = "UnlikeComment";
+    } else {
+        $image = ICON_HEART_EMPTY;
+        $alt = "LikeComment";
+    }
+?>
 <section>
     <header>
-        <img src="<?php echo get_current_user_profile($db->userGetMyImageProfile()); ?>" alt=""/>
-        <h2><a href="home.php?user_id=<?php echo get_user_id(); ?>"><?php echo get_username() ?></a></h2>
+        <img src="<?php echo get_user_profile($comment['EkIdUser'], $comment['imageURL']); ?>" alt=""/>
+        <h2><a href="home.php?user_id=<?php echo $comment['EkIdUser']; ?>"><?php echo $comment['username'] ?></a></h2>
     </header>
     <p><?php echo $comment['content'] ?></p>
-    <p><small><?php echo $comment['timestamp'] ?></small></p>
     <footer>
-        <button type="button" onclick="toggleCommentLike(<?php echo $comment['IdComment']; ?>)" class="img"><img id="<?php echo $comment['IdComment']; ?>" src="../resources/icons/post/heart-empty.svg" alt="Like"/></button>
+        <button type="button" onclick="toggleCommentLike(<?php echo $comment['IdComment']; ?>)" class="img"><img id="<?php echo $comment['IdComment']; ?>" src="<?php echo $image; ?>" alt="<?php echo $alt; ?>"/></button>
     </footer>
+    <p><small><?php echo $comment['timestamp'] ?></small></p>
 </section>

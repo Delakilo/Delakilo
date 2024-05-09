@@ -13,7 +13,6 @@
             $templateParams['id_post'] = $_GET['id_post'];
             $templateParams['js'][] = 'https://code.jquery.com/jquery-3.6.4.min.js';
             $templateParams['js'][] = 'js/comments.js';
-            $templateParams['js'][] = 'js/submit_comment.js';
         } else if (isset($_GET['user_id'])) {
             if (isset($_GET['followers'])) {
                 $templateParams['title'] .= ' Followers';

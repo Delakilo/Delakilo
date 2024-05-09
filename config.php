@@ -1,4 +1,6 @@
 <?php
+    require_once('utils/functions.php');
+
     // DATES
     define('DATE_FORMAT_SHORT', 'Y-m-d');
     define('DATE_FORMAT_LONG', 'Y-m-d h:i:s A');
@@ -8,7 +10,8 @@
     define('LOGIN_MAX_ATTEMPTS', 5);
 
     // DEFAULT PATHS
-    define('DIR_RESOURCES', './resources/');
+    // TODO: check if there is another way to refer to current project root path without writing explicitly '/Delakilo' dir name in config file
+    define('DIR_RESOURCES', get_relative_path(dirname($_SERVER['PHP_SELF']), '/Delakilo/resources/'));
 
     // Icons
     define('DIR_ICONS', DIR_RESOURCES.'icons/');
@@ -32,17 +35,16 @@
     define('DIR_IMAGES', DIR_RESOURCES.'images/');
     define('IMG_DEFAULT_PROFILE', DIR_IMAGES.'profiles/default.svg');
 
-    // Images
+    // Users
     define('DIR_USERS', DIR_RESOURCES.'users/');
 
+    // Uploaded img size
     define('IMG_EXTENSIONS_ALLOWED', array("jpg", "jpeg", "png", "gif"));
     define('IMG_MAX_SIZE_MB', 5);
     define('IMG_MAX_SIZE_B', IMG_MAX_SIZE_MB * 1_024 * 1_024); // 5 MB
 
     require_once('logging/Logger.php');
     $log = new Logger(DIR_RESOURCES.'logs/');
-
-    require_once('utils/functions.php');
 
     require_once('database/DatabaseHelper.php');
     $db = new DatabaseHelper('localhost', 'root', '', 'Delakilo', 3306);
