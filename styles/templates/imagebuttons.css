@@ -12,6 +12,7 @@ body button.img {
     box-shadow: none;
     background: none;
     border: none;
+    cursor: pointer;
 }
 
 body button.img:active {
