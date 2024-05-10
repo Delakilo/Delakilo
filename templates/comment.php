@@ -10,7 +10,7 @@
 <section>
     <header>
         <img src="<?php echo get_user_profile($comment['EkIdUser'], $comment['imageURL']); ?>" alt=""/>
-        <h2><a href="home.php?user_id=<?php echo $comment['EkIdUser']; ?>"><?php echo $comment['username'] ?></a></h2>
+        <h2><a href="<?php echo $_SERVER['PHP_SELF']; ?>?user_id=<?php echo $comment['EkIdUser']; ?>"><?php echo $comment['username'] ?></a></h2>
     </header>
     <p><?php echo $comment['content'] ?></p>
     <footer>
