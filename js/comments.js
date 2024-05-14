@@ -37,9 +37,12 @@ function submitComment(event, idPost) {
         success: function(response) {
             let firstSection = document.querySelector('body > main > section:first-of-type')
             firstSection.insertAdjacentHTML('beforebegin', response.comment)
+            let textArea = document.querySelector('body > main > section > form > ul > li > textarea')
+            textArea.value = '';
         },
         error: function (error) {
             console.error(error)
         }
     });
 }
+
