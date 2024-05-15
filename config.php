@@ -11,7 +11,8 @@
 
     // DEFAULT PATHS
     // TODO: check if there is another way to refer to current project root path without writing explicitly '/Delakilo' dir name in config file
-    define('DIR_RESOURCES', get_relative_path(dirname($_SERVER['PHP_SELF']), '/Delakilo/resources/'));
+    define('DIR_BASE', '/Delakilo/');
+    define('DIR_RESOURCES', get_relative_path(dirname($_SERVER['PHP_SELF']), DIR_BASE.'resources/'));
 
     // Icons
     define('DIR_ICONS', DIR_RESOURCES.'icons/');

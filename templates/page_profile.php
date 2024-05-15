@@ -1,7 +1,7 @@
 <!-- Francesco Filippini -->
 <?php $info = $db->userGetInfoById($templateParams['user_id']); ?>
-<section>
-    <?php if ($_SESSION['user_id'] !== $templateParams['user_id']): ?>
+<section id="user_<?php echo $templateParams['user_id']; ?>">
+    <?php if ($_SESSION['user_id'] !== $templateParams['user_id'] || $_SERVER['PHP_SELF'] != DIR_BASE.'profile.php'): ?>
     <h2><?php echo $info['username']; ?></h2>
     <?php else: ?>
     <header>
@@ -30,9 +30,9 @@
                 $text = 'Follow';
             }
         ?>
-        <button id="<?php echo $templateParams['user_id']; ?>" type="button" onclick="toggleFollow(<?php echo $templateParams['user_id']; ?>)" class="text"><?php echo $text; ?></button>
-    <?php else: ?>
-        <button id="<?php echo $templateParams['user_id']; ?>" type="button" onclick="location.href='<?php echo $_SERVER['PHP_SELF']; ?>?edit'" class="text">Edit profile</button>
+        <button type="button" onclick="toggleFollow(<?php echo $templateParams['user_id']; ?>)" class="text"><?php echo $text; ?></button>
+    <?php elseif ($_SERVER['PHP_SELF'] == DIR_BASE.'profile.php'): ?>
+        <button type="button" onclick="location.href='<?php echo $_SERVER['PHP_SELF']; ?>?edit'" class="text">Edit profile</button>
     <?php endif; ?>
     </footer>
 </section>

@@ -8,7 +8,7 @@
         $alt = "LikePost";
     }
 ?>
-<article id="<?php echo $post['IdPost']; ?>">
+<article id="post_<?php echo $post['IdPost']; ?>">
     <?php if (isset($post['username'])): ?>
     <header>
         <img src="<?php echo get_user_profile($post['EkIdUser'], $post['imgProfile']); ?>" alt=""/>

@@ -36,13 +36,18 @@
                 $templateParams['user_id'] = $_GET['user_id'];
             } else {
                 $templateParams['subpage'] = 'templates/page_profile.php';
+                $templateParams['js'][] = 'https://code.jquery.com/jquery-3.6.4.min.js';
                 $templateParams['js'][] = 'js/sticky_menu.js';
+                $templateParams['js'][] = 'js/post.js';
+                $templateParams['js'][] = 'js/user_profile.js';
                 $templateParams['css'][] = 'myprofile.css';
                 $templateParams['user_id'] = $_GET['user_id'];
             }
     } else {
         $templateParams['subpage'] = 'templates/page_profile.php';
+        $templateParams['js'][] = 'https://code.jquery.com/jquery-3.6.4.min.js';
         $templateParams['js'][] = 'js/sticky_menu.js';
+        $templateParams['js'][] = 'js/post.js';
         $templateParams['css'][] = 'myprofile.css';
     }
 

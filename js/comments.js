@@ -1,5 +1,7 @@
 function toggleCommentLike(idComment) {
-    action = document.getElementById(idComment).alt
+    let sectionComment = document.getElementById('comment_' + idComment)
+    let imgCommentLike = sectionComment.querySelector('footer > button > img')
+    let action = imgCommentLike.alt
     let nextAction = action === 'LikeComment' ? 'UnlikeComment': 'LikeComment'
     let newImage = action === 'LikeComment' ?  './resources/icons/post/heart-red.svg': './resources/icons/post/heart-empty.svg'
     $.ajax({
@@ -11,8 +13,8 @@ function toggleCommentLike(idComment) {
         },
         success: function (response) {
             if (response.status == 'OK') {
-                document.getElementById(idComment).src = newImage
-                document.getElementById(idComment).alt = nextAction
+                imgCommentLike.src = newImage
+                imgCommentLike.alt = nextAction
             } else {
                 console.error(response.status)
             }
@@ -38,7 +40,7 @@ function submitComment(event, idPost) {
             let firstSection = document.querySelector('body > main > section:first-of-type')
             firstSection.insertAdjacentHTML('beforebegin', response.comment)
             let textArea = document.querySelector('body > main > section > form > ul > li > textarea')
-            textArea.value = '';
+            textArea.value = ''
         },
         error: function (error) {
             console.error(error)
