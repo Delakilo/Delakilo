@@ -1,5 +1,5 @@
 <!-- Francesco Filippini -->
-<?php foreach($db->userGetInfoById($templateParams['user_id']) as $info): ?>
+<?php $info = $db->userGetInfoById($templateParams['user_id']); ?>
 <section>
     <?php if ($_SESSION['user_id'] !== $templateParams['user_id']): ?>
     <h2><?php echo $info['username']; ?></h2>
@@ -36,7 +36,6 @@
     <?php endif; ?>
     </footer>
 </section>
-<?php endforeach; ?>
 <?php
     $posts = $db->postsGetFromUser($templateParams['user_id']);
     require('templates/posts.php');

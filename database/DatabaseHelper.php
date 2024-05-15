@@ -173,13 +173,13 @@ class DatabaseHelper {
         $stmt->execute();
         $result = $stmt->get_result();
 
-        return $result->fetch_all(MYSQLI_ASSOC);
+        return ($result->fetch_all(MYSQLI_ASSOC))[0];
     }
 
     function userGetMyImageProfile() {
         $user_id = get_user_id();
         $info = $this->userGetInfoById($user_id);
-        return $info[0]["imageURL"];
+        return $info["imageURL"];
     }
 
     function userGetFollowing($user_id) {

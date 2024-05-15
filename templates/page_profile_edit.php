@@ -1,4 +1,4 @@
-<?php foreach($db->userGetInfoById($templateParams['user_id']) as $info): ?>
+<?php $info = $db->userGetInfoById($templateParams['user_id']); ?>
 <section>
     <img src="<?php echo get_user_profile($templateParams['user_id'], $info['imageURL']); ?>" alt=""/>
     <form action="" method="POST">
@@ -13,4 +13,3 @@
         </ul>
     </form>
 </section>
-<?php endforeach; ?>
