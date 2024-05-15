@@ -8,8 +8,7 @@
         $alt = "LikePost";
     }
 ?>
-<article>
-    <!-- HEADER should not be displayed in profile mode -->
+<article id="<?php echo $post['IdPost']; ?>">
     <?php if (isset($post['username'])): ?>
     <header>
         <img src="<?php echo get_user_profile($post['EkIdUser'], $post['imgProfile']); ?>" alt=""/>
@@ -21,8 +20,8 @@
         <figcaption><?php echo $post['caption'];?></figcaption>
     </figure>
     <footer>
-        <button type="button" onclick="togglePostLike(<?php echo $post['IdPost']; ?>)" class="img"><img id="<?php echo $post['IdPost']; ?>" src="<?php echo $image; ?>" alt="<?php echo $alt; ?>"/></button>
-        <button type="button" onclick="commentPost()" class="img"><img src="<?php echo ICON_COMMENT; ?>" alt="Comment"/></button>
+        <button type="button" onclick="togglePostLike(<?php echo $post['IdPost']; ?>)" class="img"><img src="<?php echo $image; ?>" alt="<?php echo $alt; ?>"/></button>
+        <button type="button" onclick="location.href='<?php echo $_SERVER['PHP_SELF']; ?>?id_post=<?php echo $post['IdPost']; ?>'" class="img"><img src="<?php echo ICON_COMMENT; ?>" alt="Comment"/></button>
     </footer>
     <aside>
         <img src="<?php echo IMG_DEFAULT_PROFILE; ?>" alt=""/>
