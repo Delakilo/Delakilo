@@ -8,9 +8,11 @@
         $comment_id = $db->commentPost($post_id, $comment_text);
         ob_start();
         $comment = $db->commentsGetById($comment_id);
-        include '../templates/comment.php';
-        $response = array('comment' =>  ob_get_clean());
+        require('../templates/comment.php');
+        $response = array('comment' => ob_get_clean());
         header('Content-Type: application/json');
         echo json_encode($response);
+    } else {
+        $log->logFatalError('Script called without POST method');
     }
 ?>

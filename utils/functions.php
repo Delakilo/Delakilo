@@ -77,9 +77,7 @@ function create_user_dirs($user_id, $imageName) {
         && copy(IMG_DEFAULT_PROFILE, get_users_dir_path($user_id).$imageName);
 }
 
-// A way to find relative path from absolute given path
 function get_relative_path($from, $to) {
-    // some compatibility fixes for Windows paths
     $from = is_dir($from) ? rtrim($from, '\/') . '/' : $from;
     $to   = is_dir($to)   ? rtrim($to, '\/') . '/'   : $to;
     $from = str_replace('\\', '/', $from);
@@ -89,22 +87,23 @@ function get_relative_path($from, $to) {
     $to       = explode('/', $to);
     $relPath  = $to;
 
-    foreach($from as $depth => $dir) {
-        // find first non-matching dir
-        if($dir === $to[$depth]) {
-            // ignore this directory
+    $to_length = count($to);
+    foreach ($from as $depth => $dir) {
+        if ($to_length > $depth &&  $dir === $to[$depth]) {
             array_shift($relPath);
         } else {
-            // get number of remaining dirs to $from
             $remaining = count($from) - $depth;
-            if($remaining > 1) {
-                // add traversals up to first matching dir
-                $padLength = (count($relPath) + $remaining - 1) * -1;
-                $relPath = array_pad($relPath, $padLength, '..');
-                break;
-            } else {
-                $relPath[0] = './' . $relPath[0];
+            if (end($from) === '') {
+                $remaining = $remaining - 1;
             }
+            if ($remaining > 0) {
+                for ($counter = $remaining; $counter > 0; $counter--) {
+                    array_unshift($relPath, '..');
+                }
+            } else {
+                array_unshift($relPath, '.');
+            }
+            break;
         }
     }
     return implode('/', $relPath);

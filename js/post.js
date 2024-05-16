@@ -5,7 +5,7 @@ function togglePostLike(idPost) {
     let nextAction = action === 'LikePost' ? 'UnlikePost': 'LikePost'
     let newImage = action === 'LikePost' ?  './resources/icons/post/heart-red.svg': './resources/icons/post/heart-empty.svg'
     $.ajax({
-        url: 'utils/buttons.php',
+        url: 'submits/buttons.php',
         type: 'POST',
         data: {
             post_id: idPost,

@@ -5,7 +5,7 @@ function toggleCommentLike(idComment) {
     let nextAction = action === 'LikeComment' ? 'UnlikeComment': 'LikeComment'
     let newImage = action === 'LikeComment' ?  './resources/icons/post/heart-red.svg': './resources/icons/post/heart-empty.svg'
     $.ajax({
-        url: 'utils/buttons.php',
+        url: 'submits/buttons.php',
         type: 'POST',
         data: {
             comment_id: idComment,
@@ -31,7 +31,7 @@ function submitComment(event, idPost) {
     let comment = document.getElementById('add_comment').value
     $.ajax({
         type: 'POST',
-        url: 'utils/submitComment.php',
+        url: 'submits/submitComment.php',
         data: {
             post_id: idPost,
             comment: comment

@@ -29,6 +29,10 @@ class Logger {
     public function logError($message) {
         $this->log('ERROR', $message);
     }
+
+    public function logFatalError($message) {
+        $this->log('FATAL ERROR', $message);
+    }
 }
 
 ?>

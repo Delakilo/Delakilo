@@ -124,7 +124,7 @@ class DatabaseHelper {
 
     function userRegister($username, $password) {
         $profileName = 'default.svg';
-        $stmt = $this->conn->prepare('INSERT INTO `USER` (`username`, `passwordSalt`, `passwordHash`, `imageURL`)
+        $stmt = $this->conn->prepare('INSERT INTO `USER` (`username`, `passwordSalt`, `passwordHash`, `userImageName`)
                                       VALUES (?, ?, ?, \''.$profileName.'\');');
         $salt = generate_random_string(255);
         $passwordHash = sha512($salt.$password);
@@ -150,9 +150,8 @@ class DatabaseHelper {
     }
 
     // USERS MANAGEMENT
-
     function usersGetByBaseName($name) {
-        $stmt = $this->conn->prepare('SELECT `IdUser`, `username`, `imageURL`
+        $stmt = $this->conn->prepare('SELECT `IdUser`, `username`, `userImageName`
                                       FROM `USER`
                                       WHERE `username` LIKE ?
                                         OR `name` LIKE ?
@@ -166,7 +165,7 @@ class DatabaseHelper {
     }
 
     function userGetInfoById($user_id) {
-        $stmt = $this->conn->prepare('SELECT `username`, `name`, `surname`, `bio`, `imageURL`, `nFollowers`, `nFollowing`, `nPosts`
+        $stmt = $this->conn->prepare('SELECT `username`, `name`, `surname`, `bio`, `userImageName`, `nFollowers`, `nFollowing`, `nPosts`
                                       FROM `USER`
                                       WHERE `IdUser` = ?;');
         $stmt->bind_param('i', $user_id);
@@ -179,11 +178,11 @@ class DatabaseHelper {
     function userGetMyImageProfile() {
         $user_id = get_user_id();
         $info = $this->userGetInfoById($user_id);
-        return $info["imageURL"];
+        return $info['userImageName'];
     }
 
     function userGetFollowing($user_id) {
-        $stmt = $this->conn->prepare('SELECT U.`IdUser`, U.`username`, U.`imageURL`
+        $stmt = $this->conn->prepare('SELECT U.`IdUser`, U.`username`, U.`userImageName`
                                       FROM `FOLLOW` F JOIN `USER` U ON (F.`EkIdUserFollowed` = U.`IdUser`)
                                       WHERE F.`EkIdUserFollower` = ?
                                       ORDER BY F.`timestamp` DESC;');
@@ -194,13 +193,8 @@ class DatabaseHelper {
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    function userGetMyFollowing() {
-        $user_id = get_user_id();
-        return $this->userGetFollowing($user_id);
-    }
-
     function userGetFollowers($user_id) {
-        $stmt = $this->conn->prepare('SELECT U.`IdUser`, U.`username`, U.`imageURL`
+        $stmt = $this->conn->prepare('SELECT U.`IdUser`, U.`username`, U.`userImageName`
                                       FROM `FOLLOW` F JOIN `USER` U ON (F.`EkIdUserFollower` = U.`IdUser`)
                                       WHERE F.`EkIdUserFollowed` = ?
                                       ORDER BY F.`timestamp` DESC;');
@@ -209,11 +203,6 @@ class DatabaseHelper {
         $result = $stmt->get_result();
 
         return $result->fetch_all(MYSQLI_ASSOC);
-    }
-
-    function userGetMyFollowers() {
-        $user_id = get_user_id();
-        return $this->userGetFollowers($user_id);
     }
 
     function userFollow($user_id) {
@@ -249,17 +238,18 @@ class DatabaseHelper {
         return count($result->fetch_all(MYSQLI_ASSOC)) > 0;
     }
 
-    function userEditProfile($username, $name, $surname, $bio, $imageURL) {
+    // TODO: non ancora usato
+    function userEditProfile($username, $name, $surname, $bio, $userImageName) {
         $stmt = $this->conn->prepare('UPDATE `USER`
                                       SET `username` = ?,
                                           `name` = ?,
                                           `surname` = ?,
-                                          `imageURL` = ?,
+                                          `userImageName` = ?,
                                           `bio` = ?,
                                           `caption` = ?,
                                       WHERE `username` = ?;');
         $oldUsername = get_username();
-        $stmt->bind_param('sssssss', $username, $name, $surname, $imageURL, $bio, $caption, $oldUsername);
+        $stmt->bind_param('sssssss', $username, $name, $surname, $userImageName, $bio, $caption, $oldUsername);
 
         if ($stmt->execute()) {
             $_SESSION['username'] = $username;
@@ -267,12 +257,12 @@ class DatabaseHelper {
     }
 
     // COMMENTS
-    function commentsGetByPost($postID) {
-        $stmt = $this->conn->prepare('SELECT C.`EkIdUser`, C.`content`, C.`timestamp`, U.`imageURL`, U.`username`, C.`IdComment`
+    function commentsGetByPostId($post_id) {
+        $stmt = $this->conn->prepare('SELECT C.`EkIdUser`, C.`content`, C.`timestamp`, U.`userImageName`, U.`username`, C.`IdComment`
                                       FROM `COMMENT` C JOIN `USER` U ON (C.`EkIdUser` = U.`IdUser`)
                                       WHERE C.`EkIdPost` = ?
                                       ORDER BY C.`timestamp` DESC;');
-        $stmt->bind_param('i', $postID);
+        $stmt->bind_param('i', $post_id);
         $stmt->execute();
         $result = $stmt->get_result();
 
@@ -280,7 +270,7 @@ class DatabaseHelper {
     }
 
     function commentsGetById($commentId) {
-        $stmt = $this->conn->prepare('SELECT C.`EkIdUser`, C.`content`, C.`timestamp`, U.`imageURL`, U.`username`, C.`IdComment`
+        $stmt = $this->conn->prepare('SELECT C.`EkIdUser`, C.`content`, C.`timestamp`, U.`userImageName`, U.`username`, C.`IdComment`
                                       FROM `COMMENT` C JOIN `USER` U ON (C.`EkIdUser` = U.`IdUser`)
                                       WHERE C.`IdComment` = ?;');
         $stmt->bind_param('i', $commentId);
@@ -330,7 +320,7 @@ class DatabaseHelper {
 
     // POSTS
     function postsGetFromFollowingUsers() {
-        $stmt = $this->conn->prepare('SELECT U.`username`, U.`imageURL` AS `imgProfile`, P.`IdPost`, P.`EkIdUser`, P.`imageURL` AS `imgPost`, P.`caption`, P.`nLikes`, P.`timestamp`
+        $stmt = $this->conn->prepare('SELECT U.`username`, U.`userImageName`, P.`IdPost`, P.`EkIdUser`, P.`postImageExtension`, P.`caption`, P.`nLikes`, P.`timestamp`
                                       FROM `USER` U,`FOLLOW` F JOIN `POST` P ON (P.`EkIdUser` = F.`EkIdUserFollowed`)
                                       WHERE F.`EkIdUserFollower` = ?
                                       AND U.`IdUser` = P.`EkIdUser`
@@ -344,7 +334,7 @@ class DatabaseHelper {
     }
 
     function postsGetAll() {
-        $stmt = $this->conn->prepare('SELECT U.`username`, U.`imageURL` AS `imgProfile`, P.`IdPost`, P.`EkIdUser`, P.`imageURL` AS `imgPost`, P.`caption`, P.`nLikes`, P.`timestamp`
+        $stmt = $this->conn->prepare('SELECT U.`username`, U.`userImageName`, P.`IdPost`, P.`EkIdUser`, P.`postImageExtension`, P.`caption`, P.`nLikes`, P.`timestamp`
                                       FROM `POST` P JOIN `USER` U ON (U.`IdUser` = P.`EkIdUser`)
                                       ORDER BY RAND();');
         $stmt->execute();
@@ -354,7 +344,7 @@ class DatabaseHelper {
     }
 
     function postsGetFromUser($user_id) {
-        $stmt = $this->conn->prepare('SELECT P.`IdPost`, P.`EkIdUser`, P.`imageURL` AS `imgPost`, P.`caption`, P.`nLikes`, P.`timestamp`
+        $stmt = $this->conn->prepare('SELECT P.`IdPost`, P.`EkIdUser`, P.`postImageExtension`, P.`caption`, P.`nLikes`, P.`timestamp`
                                       FROM `POST` P
                                       WHERE P.`EkIdUser` = ?
                                       ORDER BY P.`timestamp` DESC;');
@@ -363,11 +353,6 @@ class DatabaseHelper {
         $result = $stmt->get_result();
 
         return $result->fetch_all(MYSQLI_ASSOC);
-    }
-
-    function postsGetMy() {
-        $user_id = get_user_id();
-        return $this->postsGetFromUser($user_id);
     }
 
     function postIsLiked($postID) {
@@ -382,7 +367,7 @@ class DatabaseHelper {
         return count($result->fetch_all(MYSQLI_ASSOC)) > 0;
     }
 
-    private function userGetFromPost($idPost) {
+    private function userGetFromPost($postID) {
         $stmt = $this->conn->prepare('SELECT `EkIdUser`
                                       FROM `POST`
                                       WHERE `IdPost` = ?;');
@@ -416,12 +401,13 @@ class DatabaseHelper {
         }
     }
 
-    function postAdd($imageURL, $caption = '') {
-        $stmt = $this->conn->prepare('INSERT INTO `POST` (`EkIdUser`, `imageURL`, `caption`)
+    function postAdd($imageExtension, $caption) {
+        $stmt = $this->conn->prepare('INSERT INTO `POST` (`EkIdUser`, `postImageExtension`, `caption`)
                                       VALUES (?, ?, ?);');
         $user_id = get_user_id();
-        $stmt->bind_param('iis', $user_id, $imageURL, $caption);
+        $stmt->bind_param('iss', $user_id, $imageExtension, $caption);
         $stmt->execute();
+        return $this->conn->insert_id;
     }
 }
 

@@ -47,7 +47,6 @@
                 break;
         }
     } else {
-        // TODO: error code to find
-        // http_response_code(##);
+        $log->logFatalError('Script called without POST method');
     }
 ?>

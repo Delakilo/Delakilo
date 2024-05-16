@@ -10,9 +10,8 @@
     define('LOGIN_MAX_ATTEMPTS', 5);
 
     // DEFAULT PATHS
-    // TODO: check if there is another way to refer to current project root path without writing explicitly '/Delakilo' dir name in config file
-    define('DIR_BASE', '/Delakilo/');
-    define('DIR_RESOURCES', get_relative_path(dirname($_SERVER['PHP_SELF']), DIR_BASE.'resources/'));
+    define('DIR_BASE', str_replace($_SERVER['DOCUMENT_ROOT'], '', dirname(str_replace('\\', '/', __FILE__))).'/');
+    define('DIR_RESOURCES', 'resources/');
 
     // Icons
     define('DIR_ICONS', DIR_RESOURCES.'icons/');
@@ -40,15 +39,22 @@
     define('DIR_USERS', DIR_RESOURCES.'users/');
 
     // Uploaded img size
-    define('IMG_EXTENSIONS_ALLOWED', array("jpg", "jpeg", "png", "gif"));
+    define('IMG_MIME_TYPES_ALLOWED', array('image/jpeg', 'image/png', 'image/gif'));
+    define('IMG_EXTENSIONS_ALLOWED', array("jpg", "jpeg", "png"));
     define('IMG_MAX_SIZE_MB', 5);
     define('IMG_MAX_SIZE_B', IMG_MAX_SIZE_MB * 1_024 * 1_024); // 5 MB
 
     require_once('logging/Logger.php');
-    $log = new Logger(DIR_RESOURCES.'logs/');
+    $log = new Logger(get_relative_path(dirname($_SERVER['PHP_SELF']), DIR_BASE.'resources/').'logs/');
 
     require_once('database/DatabaseHelper.php');
     $db = new DatabaseHelper('localhost', 'root', '', 'Delakilo', 3306);
 
     sec_session_start();
+
+    // TODO: controlla se da tenere
+    // if (!$db->userIsAlreadyLogged()) {
+    //     header('Location: ../');
+    //     exit;
+    // }
 ?>

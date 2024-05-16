@@ -9,6 +9,7 @@
     $templateParams['title'] = 'Profile';
     $templateParams['page'] = 'page.php';
     $templateParams['user_id'] = $_SESSION['user_id'];
+
     if (isset($_GET['edit'])) {
         $templateParams['title'] .= ' Edit';
         $templateParams['subpage'] = 'templates/page_profile_edit.php';
@@ -43,6 +44,12 @@
                 $templateParams['css'][] = 'myprofile.css';
                 $templateParams['user_id'] = $_GET['user_id'];
             }
+    } else if (isset($_GET['add_post'])) {
+        $templateParams['subpage'] = 'templates/page_profile_add_post.php';
+        $templateParams['css'][] = 'myprofileaddpost.css';
+        if (isset($_GET['error_message'])) {
+            $templateParams['error'] = urldecode($_GET['error_message']);
+        }
     } else {
         $templateParams['subpage'] = 'templates/page_profile.php';
         $templateParams['js'][] = 'https://code.jquery.com/jquery-3.6.4.min.js';

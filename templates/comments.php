@@ -1,6 +1,6 @@
 <!-- Francesco Filippini -->
 <?php
-    foreach($db->commentsGetByPost($templateParams['id_post']) as $comment):
+    foreach($db->commentsGetByPostId($templateParams['id_post']) as $comment):
         require('comment.php');
     endforeach;
 ?>

@@ -4,7 +4,7 @@ function toggleFollow(idUser) {
     let action = button.innerText
     let nextAction = button.innerText === 'Follow' ? 'Unfollow' : 'Follow'
     $.ajax({
-        url: 'utils/buttons.php',
+        url: 'submits/buttons.php',
         type: 'POST',
         data: {
             user_id: idUser,

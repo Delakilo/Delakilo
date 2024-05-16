@@ -11,12 +11,12 @@
 <article id="post_<?php echo $post['IdPost']; ?>">
     <?php if (isset($post['username'])): ?>
     <header>
-        <img src="<?php echo get_user_profile($post['EkIdUser'], $post['imgProfile']); ?>" alt=""/>
+        <img src="<?php echo get_user_profile($post['EkIdUser'], $post['userImageName']); ?>" alt=""/>
         <h2><a href="<?php echo $_SERVER['PHP_SELF']; ?>?user_id=<?php echo $post['EkIdUser']; ?>"><?php echo $post['username'] ?></a></h2>
     </header>
     <?php endif; ?>
     <figure>
-        <img src="<?php echo get_user_post_path($post['EkIdUser'], $post['imgPost']) ?>" alt=""/>
+        <img src="<?php echo get_user_post_path($post['EkIdUser'], $post['IdPost'].$post['postImageExtension']) ?>" alt=""/>
         <figcaption><?php echo $post['caption'];?></figcaption>
     </figure>
     <footer>

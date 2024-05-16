@@ -6,11 +6,11 @@
     <?php else: ?>
     <header>
         <h2><?php echo $info['username']; ?></h2>
-        <p><a href=""><img src="<?php echo ICON_PLUS; ?>" alt="Add"/></a></p>
+        <p><a href="<?php echo $_SERVER['PHP_SELF']; ?>?add_post"><img src="<?php echo ICON_PLUS; ?>" alt="Add"/></a></p>
     </header>
     <?php endif; ?>
     <div>
-        <img src="<?php echo get_user_profile($templateParams['user_id'], $info['imageURL']); ?>" alt=""/>
+        <img src="<?php echo get_user_profile($templateParams['user_id'], $info['userImageName']); ?>" alt=""/>
         <ul>
             <li><?php echo $info['nPosts']; ?><br/>Posts</li><li><a href="<?php echo $_SERVER['PHP_SELF']; ?>?user_id=<?php echo $templateParams['user_id']; ?>&followers"><?php echo $info['nFollowers']; ?><br/>Followers</a></li><li><a href="<?php echo $_SERVER['PHP_SELF']; ?>?user_id=<?php echo $templateParams['user_id']; ?>&following"><?php echo $info['nFollowing']; ?><br/>Following</a></li>
         </ul>
