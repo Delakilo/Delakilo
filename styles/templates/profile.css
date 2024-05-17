@@ -16,7 +16,9 @@ body > main > section > div > img {
     margin: 0;
     padding: 0;
     width: 25%;
-    border-radius: 60%;
+    border-radius: 100%;
+    height: auto;
+    object-fit: contain;
 }
 
 body > main > section > div > ul {
