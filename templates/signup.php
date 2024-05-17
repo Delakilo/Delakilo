@@ -20,7 +20,7 @@
                 <input id="pwd2" type="password" name="pwd2" placeholder="Password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]+$" title="it has to contain at least one lowercase letter, it has to contain at least one uppercase letter, it has to contain at least one digit, it has to contain at least one special character from the set [!@#$%^&*]" minlength="10" maxlength="100" required/></li>
             <?php
                 if (isset($templateParams['error'])) {
-                    echo '<li><p style="color: red;">'.$templateParams['error'].'</p></li>';
+                    echo '<li><p>'.$templateParams['error'].'</p></li>';
                 }
             ?>
             <li><label for="register" hidden>Register:</label><input id="register" type="submit" value="Register" onclick="return validatePasswords()"/></li>

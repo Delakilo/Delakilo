@@ -45,7 +45,7 @@ body > main form > ul > li > input[type="submit"] {
 }
 
 /* Errors */
-body > main form > ul > li > p {
+body > main form ul > li > p {
     color: red;
 }
 

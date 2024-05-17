@@ -6,7 +6,7 @@
             <li><label for="caption">Caption:</label><textarea id="caption" name="caption" placeholder="Caption" maxlength="1000"></textarea></li>
             <?php
                 if (isset($templateParams['error'])) {
-                    echo '<li><p style="color: red;">'.$templateParams['error'].'</p></li>';
+                    echo '<li><p>'.$templateParams['error'].'</p></li>';
                 }
             ?>
             <li><label for="post" hidden>Post:</label><input id="post" type="submit" value="Post"/></li>

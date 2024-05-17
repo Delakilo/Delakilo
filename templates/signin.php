@@ -17,7 +17,7 @@
                 <input id="pwd" type="password" name="pwd" placeholder="Password" minlength="4" maxlength="100" required/></li>
             <?php
                 if (isset($templateParams['error'])) {
-                    echo '<li><p style="color: red;">'.$templateParams['error'].'</p></li>';
+                    echo '<li><p>'.$templateParams['error'].'</p></li>';
                 }
             ?>
             <li><label for="login" hidden>Login:</label><input id="login" type="submit" name="page" value="Login"/></li>
