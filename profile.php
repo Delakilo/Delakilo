@@ -9,6 +9,9 @@
         $templateParams['title'] .= ' Edit';
         $templateParams['subpage'] = 'templates/page_profile_edit.php';
         $templateParams['css'][] = 'myprofileedit.css';
+        if (isset($_GET['error_message'])) {
+            $templateParams['error'] = urldecode($_GET['error_message']);
+        }
     } else if (isset($_GET['id_post'])) {
             $templateParams['title'] .= ' Comments';
             $templateParams['subpage'] = 'comments.php';

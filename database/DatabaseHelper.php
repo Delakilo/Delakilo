@@ -238,18 +238,31 @@ class DatabaseHelper {
         return count($result->fetch_all(MYSQLI_ASSOC)) > 0;
     }
 
-    // TODO: non ancora usato
-    function userEditProfile($username, $name, $surname, $bio, $userImageName) {
+    function userEditProfileWithImage($username, $name, $surname, $bio, $userImageName) {
         $stmt = $this->conn->prepare('UPDATE `USER`
                                       SET `username` = ?,
                                           `name` = ?,
                                           `surname` = ?,
                                           `userImageName` = ?,
-                                          `bio` = ?,
-                                          `caption` = ?,
+                                          `bio` = ?
                                       WHERE `username` = ?;');
         $oldUsername = get_username();
-        $stmt->bind_param('sssssss', $username, $name, $surname, $userImageName, $bio, $caption, $oldUsername);
+        $stmt->bind_param('ssssss', $username, $name, $surname, $userImageName, $bio, $oldUsername);
+
+        if ($stmt->execute()) {
+            $_SESSION['username'] = $username;
+        }
+    }
+
+    function userEditProfile($username, $name, $surname, $bio) {
+        $stmt = $this->conn->prepare('UPDATE `USER`
+                                      SET `username` = ?,
+                                          `name` = ?,
+                                          `surname` = ?,
+                                          `bio` = ?
+                                      WHERE `username` = ?;');
+        $oldUsername = get_username();
+        $stmt->bind_param('sssss', $username, $name, $surname, $bio, $oldUsername);
 
         if ($stmt->execute()) {
             $_SESSION['username'] = $username;

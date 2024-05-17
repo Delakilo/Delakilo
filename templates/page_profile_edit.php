@@ -1,7 +1,7 @@
 <?php $info = $db->userGetInfoById($templateParams['user_id']); ?>
 <section>
     <img src="<?php echo get_user_profile($templateParams['user_id'], $info['userImageName']); ?>" alt=""/>
-    <form action="" method="POST" enctype="multipart/form-data">
+    <form action="submits/edit_profile.php" method="POST" enctype="multipart/form-data">
         <h2>Edit profile</h2>
         <ul>
             <li><label for="image">Image:</label><input id="image" type="file" name="image" accept=".jpg,.jpeg,.png"/></li>
