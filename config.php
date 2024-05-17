@@ -1,6 +1,4 @@
 <?php
-    require_once('utils/functions.php');
-
     // DATES
     define('DATE_FORMAT_SHORT', 'Y-m-d');
     define('DATE_FORMAT_LONG', 'Y-m-d h:i:s A');
@@ -44,6 +42,8 @@
     define('IMG_MAX_SIZE_MB', 5);
     define('IMG_MAX_SIZE_B', IMG_MAX_SIZE_MB * 1_024 * 1_024); // 5 MB
 
+    require_once('utils/functions.php');
+
     require_once('logging/Logger.php');
     $log = new Logger(get_relative_path(dirname($_SERVER['PHP_SELF']), DIR_BASE.'resources/').'logs/');
 
@@ -51,10 +51,4 @@
     $db = new DatabaseHelper('localhost', 'root', '', 'Delakilo', 3306);
 
     sec_session_start();
-
-    // TODO: controlla se da tenere
-    // if (!$db->userIsAlreadyLogged()) {
-    //     header('Location: ../');
-    //     exit;
-    // }
 ?>

@@ -44,6 +44,11 @@ body > main form > ul > li > input[type="submit"] {
     padding: 5px 8px;
 }
 
+/* Errors */
+body > main form > ul > li > p {
+    color: red;
+}
+
 @media only screen
         and (orientation: landscape)
         and (min-width: 768px) {

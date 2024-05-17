@@ -1,10 +1,7 @@
 <?php
-    require_once('config.php');
+    require_once('bootstrap.php');
 
-    if ($db->userIsAlreadyLogged()) {
-        sec_session_end();
-    }
-
+    sec_session_end();
     header('Location: ./');
     exit;
 ?>

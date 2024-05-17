@@ -1,10 +1,5 @@
 <?php
-    require_once('config.php');
-
-    if (!$db->userIsAlreadyLogged()) {
-        header('Location: ./');
-        exit;
-    }
+    require_once('bootstrap.php');
 
     $templateParams['title'] = 'Profile';
     $templateParams['page'] = 'page.php';

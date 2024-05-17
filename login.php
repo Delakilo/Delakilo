@@ -1,5 +1,5 @@
 <?php
-    require_once('config.php');
+    require_once('bootstrap.php');
 
     if ($db->userIsAlreadyLogged()) {
         header('Location: ./home.php');
