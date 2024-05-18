@@ -24,9 +24,16 @@
         <button type="button" onclick="location.href='<?php echo $_SERVER['PHP_SELF']; ?>?id_post=<?php echo $post['IdPost']; ?>'" class="img"><img src="<?php echo ICON_COMMENT; ?>" alt="Comment"/></button>
     </footer>
     <aside>
+    <?php if ($post['nLikes'] >= 3):
+        $images = $db->postUsersLike($postID);
+        foreach ($images as $image): ?>
+            <img src="<?php echo $image['userImageName']; ?>" alt=""/>
+        <?php endforeach; ?>
+    <?php else: ?>
         <img src="<?php echo IMG_DEFAULT_PROFILE; ?>" alt=""/>
         <img src="<?php echo IMG_DEFAULT_PROFILE; ?>" alt=""/>
         <img src="<?php echo IMG_DEFAULT_PROFILE; ?>" alt=""/>
+    <?php endif; ?>
         <p><small>Liked by <?php echo $post['nLikes']; ?> users</small></p>
         <p><a href="<?php echo $_SERVER['PHP_SELF']; ?>?id_post=<?php echo $post['IdPost']; ?>">View all comments</a></p>
         <p><small><?php echo $post['timestamp'] ?></small></p>

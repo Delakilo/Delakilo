@@ -422,6 +422,20 @@ class DatabaseHelper {
         $stmt->execute();
         return $this->conn->insert_id;
     }
+
+    function postUsersLike($postID) {
+        $stmt = $this->conn->prepare('SELECT U.userImageName
+                                    FROM `USER` U JOIN `LIKE_POST` LP ON (U.`IdUser` = LP.`EkIdUser`)
+                                    WHERE LP.`EkIdPost` = ?
+                                    ORDER BY RAND()
+                                    LIMIT 3;');
+        $stmt->bind_param('i', $postID);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
 }
 
 ?>
