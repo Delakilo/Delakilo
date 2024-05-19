@@ -424,7 +424,7 @@ class DatabaseHelper {
     }
 
     function postUsersLike($postID) {
-        $stmt = $this->conn->prepare('SELECT U.userImageName
+        $stmt = $this->conn->prepare('SELECT U.`userImageName`, U.`IdUser`
                                     FROM `USER` U JOIN `LIKE_POST` LP ON (U.`IdUser` = LP.`EkIdUser`)
                                     WHERE LP.`EkIdPost` = ?
                                     ORDER BY RAND()

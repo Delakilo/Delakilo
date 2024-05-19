@@ -25,9 +25,9 @@
     </footer>
     <aside>
     <?php if ($post['nLikes'] >= 3):
-        $images = $db->postUsersLike($postID);
+        $images = $db->postUsersLike($post['IdPost']);
         foreach ($images as $image): ?>
-            <img src="<?php echo $image['userImageName']; ?>" alt=""/>
+            <img src="<?php echo get_user_profile($image['IdUser'], $image['userImageName']); ?>" alt=""/>
         <?php endforeach; ?>
     <?php else: ?>
         <img src="<?php echo IMG_DEFAULT_PROFILE; ?>" alt=""/>
