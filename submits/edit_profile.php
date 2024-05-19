@@ -1,7 +1,7 @@
 <?php
     require_once('../config.php');
 
-    function upload_profile($db, $image, $username, $name, $surname, $bio) {
+    function upload_profile($log, $db, $image, $username, $name, $surname, $bio) {
         if ($image != null) {
             $fileTmpPath = $image['tmp_name'];
             $imageSize = getimagesize($fileTmpPath);
@@ -17,11 +17,15 @@
             }
             $fileExtension = '.'.(explode('/', $fileType)[1]);
             $imageFile = 'profile'.$fileExtension;
-            $db->userEditProfileWithImage($username, $name, $surname, $bio, $imageFile);
             $fullPath = '../'.get_current_user_profile($imageFile);
-            if (move_uploaded_file($fileTmpPath, $fullPath) == false) {
+            $oldFullPath = '../'.get_current_user_profile($db->userGetMyImageProfile());
+            if (!move_uploaded_file($fileTmpPath, $fullPath)) {
                 return 'Error in uploading image in '.$fullPath.'.';
             }
+            if (!unlink($oldFullPath)) {
+                $log->logError('Unable to delete old profile image at '.$oldFullPath.'.');
+            }
+            $db->userEditProfileWithImage($username, $name, $surname, $bio, $imageFile);
         } else {
             $db->userEditProfile($username, $name, $surname, $bio);
         }
@@ -49,7 +53,7 @@
         if (isset($_POST['bio'])) {
             $bio = $_POST['bio'];
         }
-        $result = upload_profile($db, $image, $username, $name, $surname, $bio);
+        $result = upload_profile($log, $db, $image, $username, $name, $surname, $bio);
         if ($result === '') {
             header('Location: ../profile.php');
         } else {
