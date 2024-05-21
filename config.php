@@ -50,5 +50,11 @@
     require_once('database/DatabaseHelper.php');
     $db = new DatabaseHelper('localhost', 'root', '', 'Delakilo', 3306);
 
+    // Avoids PATH_INFO insertion, because never used in this website
+    if (isset($_SERVER['PATH_INFO'])) {
+        header('location: '.$_SERVER['SCRIPT_NAME']);
+        exit;
+    }
+
     sec_session_start();
 ?>
