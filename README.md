@@ -45,6 +45,18 @@ These are text messages that can be appended in chronological order to a publish
 
 Posts and comments can be liked, posts like counter is displayed.
 
+### Menu
+
+With a fixed menu, the user can easily navigate troughout the website.
+
+### Explore Searchbar
+
+The explore searchbar allows to find a user by a string-matching research.
+
+### Edit Profile
+
+The user can change his username, name, surname, profile pic and bio. If the user want to change only some of them, the other information remain the same.
+
 ## Techniques
 
 We tried to use some of the most advanced techniques for web developing:
