@@ -20,12 +20,14 @@
             $fullPath = '../'.get_current_user_profile($imageFile);
             $oldFullPath = '../'.get_current_user_profile($db->userGetMyImageProfile());
             if (!move_uploaded_file($fileTmpPath, $fullPath)) {
+                $log->logError('Unable to upload image in "'.$fullPath.'".');
                 return 'Error in uploading image in '.$fullPath.'.';
             }
-            if (!unlink($oldFullPath)) {
-                $log->logError('Unable to delete old profile image at '.$oldFullPath.'.');
+            if ($fullPath != $oldFullPath && !unlink($oldFullPath)) {
+                $log->logError('Unable to delete old profile image at "'.$oldFullPath.'".');
+            } else {
+                $db->userEditProfileWithImage($username, $name, $surname, $bio, $imageFile);
             }
-            $db->userEditProfileWithImage($username, $name, $surname, $bio, $imageFile);
         } else {
             $db->userEditProfile($username, $name, $surname, $bio);
         }
@@ -55,11 +57,9 @@
         }
         $result = upload_profile($log, $db, $image, $username, $name, $surname, $bio);
         if ($result === '') {
-            header('Location: ../profile.php');
-        } else {
-            header('Location: ../profile.php?edit&error_message='.urlencode($result));
+            link_to('profile.php');
         }
-        exit;
+        link_to('profile.php?edit&error_message='.urlencode($result));
     } else {
         $log->logFatalError('Script called without POST method');
     }

@@ -28,11 +28,9 @@
         if (isset($_POST['caption']) && isset($_FILES['image']) && $_FILES['image']['error'] == UPLOAD_ERR_OK) {
             $result = upload_post_image($db, $_FILES['image'], $_POST['caption']);
             if ($result === '') {
-                header('Location: ../profile.php');
-            } else {
-                header('Location: ../profile.php?add_post&error_message='.urlencode($result));
+                link_to('profile.php');
             }
-            exit;
+            link_to('profile.php?add_post&error_message='.urlencode($result));
         } else {
             $log->logFatalError('Script called without correct caption and image parameters of POST method');
         }

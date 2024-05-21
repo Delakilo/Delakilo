@@ -1,5 +1,10 @@
 <?php
 
+function link_to($page) {
+    header('Location: '.DIR_BASE.$page);
+    exit;
+}
+
 function sec_session_start() {
     $session_name = 'sec_session_id';
     $secure = false;

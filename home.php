@@ -27,7 +27,6 @@
             $templateParams['user_id'] = $_GET['user_id'];
         } else {
             $templateParams['title'] .= ' Profile';
-            $GLOBALS['log']->logInfo('Welcome in page_profile page');
             $templateParams['subpage'] = 'page_profile.php';
             $templateParams['css'][] = 'home.css';
             $templateParams['user_id'] = $_GET['user_id'];
@@ -36,7 +35,6 @@
             $templateParams['js'][] = 'js/user_profile.js';
         }
     } else {
-        $GLOBALS['log']->logInfo('Welcome in home page');
         $templateParams['subpage'] = 'page_home.php';
         $templateParams['css'][] = 'home.css';
         $templateParams['js'][] = 'https://code.jquery.com/jquery-3.6.4.min.js';

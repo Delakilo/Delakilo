@@ -45,7 +45,7 @@
     require_once('utils/functions.php');
 
     require_once('logging/Logger.php');
-    $log = new Logger(get_relative_path(dirname($_SERVER['PHP_SELF']), DIR_BASE.'resources/').'logs/');
+    $log = new Logger(get_relative_path(dirname($_SERVER['SCRIPT_NAME']), DIR_BASE.'resources/').'logs/');
 
     require_once('database/DatabaseHelper.php');
     $db = new DatabaseHelper('localhost', 'root', '', 'Delakilo', 3306);
