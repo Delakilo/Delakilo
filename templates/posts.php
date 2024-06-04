@@ -17,7 +17,7 @@
     <?php endif; ?>
     <figure>
         <img src="<?php echo get_user_post_path($post['EkIdUser'], $post['IdPost'].$post['postImageExtension']) ?>" alt=""/>
-        <figcaption><?php echo $post['caption'];?></figcaption>
+        <figcaption><?php echo htmlspecialchars($post['caption'], ENT_QUOTES, 'UTF-8'); ?></figcaption>
     </figure>
     <footer>
         <button type="button" onclick="togglePostLike(<?php echo $post['IdPost']; ?>)" class="img"><img src="<?php echo $image; ?>" alt="<?php echo $alt; ?>"/></button>
