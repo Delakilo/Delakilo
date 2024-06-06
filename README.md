@@ -57,6 +57,14 @@ The explore searchbar allows to find a user by a string-matching research.
 
 The user can change his username, name, surname, profile pic and bio. If the user want to change only some of them, the other information remain the same.
 
+### Notifications
+
+In this section the user can see notifications like when someone starts or stops following him.
+
+### Followers and Followings
+
+The user can check who the followers and followings of anyone are, including users' followers/followings. 
+
 ## Techniques
 
 We tried to use some of the most advanced techniques for web developing:
