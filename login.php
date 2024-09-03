@@ -14,8 +14,13 @@
                     $templateParams['error'] = 'Wrong username';
                 }
             } else {
+                if (isset($_SESSION['redirect_after_login'])) {
+                    $redirect_url = $_SESSION['redirect_after_login'];
+                    unset($_SESSION['redirect_after_login']);
+                    header('Location: '.$redirect_url);
+                    exit;
+                }
                 link_to('home.php');
-                exit;
             }
         } else if (isset($_POST['pwd1'])) {
             if ($GLOBALS['db']->userExists($_POST['username'])) {
